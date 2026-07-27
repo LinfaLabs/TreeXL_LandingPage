@@ -4,512 +4,433 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TreeXL - Export Folder Structures to Excel (.xlsx)</title>
+    <title>TreeXL - Export Folder Structures to Excel</title>
 
     <meta name="description"
-          content="Export folder structures to Excel with true hierarchy, detect duplicate files, audit directories and reclaim disk space with TreeXL.">
-
-    images/treexl-logo.png
+          content="Export folder structures to Excel (.xlsx) with true hierarchy, detect duplicates and audit directories with TreeXL.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
-        :root{
-            --bg-color:#0f172a;
-            --surface-color:#1e293b;
-            --surface-border:#334155;
-            --text-main:#f8fafc;
-            --text-muted:#94a3b8;
-            --accent:#10b981;
-            --accent-hover:#059669;
-            --accent-glow:rgba(16,185,129,.15);
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #10b981;
+            --accent-hover: #059669;
         }
 
-        *{
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        body{
-            font-family:'Inter',sans-serif;
-            background:var(--bg-color);
-            color:var(--text-main);
-            line-height:1.6;
-            overflow-x:hidden;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
 
-        .container{
-            max-width:1150px;
-            margin:0 auto;
-            padding:0 24px;
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 24px;
         }
 
-        header{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:24px 0;
-            border-bottom:1px solid var(--surface-border);
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo{
-            display:flex;
-            align-items:center;
-            gap:12px;
-            text-decoration:none;
-            color:var(--text-main);
-            font-size:1.4rem;
-            font-weight:700;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
 
-        .logo img{
-            width:44px;
-            height:44px;
-            border-radius:10px;
+            .logo img {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+            }
+
+            .logo span {
+                color: var(--accent);
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
         }
 
-        .logo span{
-            color:var(--accent);
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .nav-links a:hover {
+                    color: white;
+                }
+
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: .2s;
         }
 
-        .nav-links{
-            display:flex;
-            gap:24px;
+            .btn:hover {
+                background: var(--accent-hover);
+            }
+
+        .hero {
+            padding: 90px 0;
+            text-align: center;
         }
 
-        .nav-links a{
-            text-decoration:none;
-            color:var(--text-muted);
-            font-weight:500;
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(16,185,129,.15);
+            color: var(--accent);
+            border: 1px solid rgba(16,185,129,.2);
+            margin-bottom: 24px;
+            font-size: .85rem;
+            font-weight: 600;
         }
 
-        .nav-links a:hover{
-            color:var(--text-main);
+        .hero h1 {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
-        .btn{
-            background:var(--accent);
-            color:var(--bg-color);
-            text-decoration:none;
-            padding:12px 22px;
-            border-radius:8px;
-            font-weight:700;
-            transition:.2s;
+            .hero h1 span {
+                color: var(--accent);
+            }
+
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
         }
 
-        .btn:hover{
-            background:var(--accent-hover);
-            transform:translateY(-2px);
-            box-shadow:0 6px 18px var(--accent-glow);
+        .hero-cta {
+            margin-bottom: 40px;
         }
 
-        .hero{
-            padding:90px 0 70px;
-            text-align:center;
+        .input-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 60px;
         }
 
-        .badge{
-            display:inline-block;
-            padding:7px 14px;
-            border-radius:30px;
-            color:var(--accent);
-            border:1px solid rgba(16,185,129,.25);
-            background:rgba(16,185,129,.08);
-            font-size:.85rem;
-            font-weight:600;
-            margin-bottom:24px;
+        .method {
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            font-weight: 600;
         }
 
-        .hero h1{
-            font-size:clamp(2.8rem,5vw,4.4rem);
-            line-height:1.1;
-            margin-bottom:20px;
-            letter-spacing:-.03em;
+        .preview-card {
+            max-width: 900px;
+            margin: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,.35);
         }
 
-        .hero h1 span{
-            color:var(--accent);
+        .preview-header {
+            background: #111827;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .hero p{
-            max-width:800px;
-            margin:0 auto 40px;
-            color:var(--text-muted);
-            font-size:1.15rem;
+        .preview-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .hero-cta{
-            margin-bottom:30px;
-        }
+            .preview-title img {
+                width: 24px;
+                height: 24px;
+            }
 
-        .input-methods{
-            display:flex;
-            justify-content:center;
-            flex-wrap:wrap;
-            gap:16px;
-            margin-bottom:60px;
-        }
-
-        .method{
-            background:var(--surface-color);
-            border:1px solid var(--surface-border);
-            padding:12px 18px;
-            border-radius:8px;
-            font-weight:600;
-        }
-
-        .preview-card{
-            max-width:900px;
-            margin:0 auto;
-            border-radius:10px;
-            overflow:hidden;
-            border:1px solid var(--surface-border);
-            background:var(--surface-color);
-            box-shadow:0 20px 50px rgba(0,0,0,.4);
-        }
-
-        .preview-header{
-            background:#111827;
-            padding:12px 18px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            border-bottom:1px solid var(--surface-border);
-        }
-
-        .preview-title{
-            display:flex;
-            align-items:center;
-            gap:10px;
-            font-size:.9rem;
-        }
-
-        .preview-title img{
-            width:24px;
-            height:24px;
-            border-radius:6px;
-        }
-
-        .preview-body{
-            background:#090d16;
-            color:#10b981;
-            font-family:Consolas,monospace;
-            padding:25px;
-            text-align:left;
+        .preview-body {
+            background: #090d16;
+            color: #10b981;
+            font-family: Consolas, monospace;
+            text-align: left;
+            padding: 24px;
         }
 
         .features,
-        .workflow{
-            padding:80px 0;
-            border-top:1px solid var(--surface-border);
+        .workflow {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
         }
 
-        .section-title{
-            text-align:center;
-            font-size:2rem;
-            margin-bottom:12px;
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 12px;
         }
 
-        .section-subtitle{
-            text-align:center;
-            max-width:700px;
-            margin:0 auto 55px;
-            color:var(--text-muted);
+        .section-subtitle {
+            text-align: center;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 50px;
         }
 
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:24px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        .feature-card{
-            background:var(--surface-color);
-            border:1px solid var(--surface-border);
-            border-radius:12px;
-            padding:30px;
-            transition:.2s;
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px;
         }
 
-        .feature-card:hover{
-            transform:translateY(-4px);
-            border-color:var(--accent);
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
         }
 
-        .feature-icon{
-            font-size:2rem;
-            margin-bottom:15px;
+        .feature-card h3 {
+            margin-bottom: 10px;
         }
 
-        .feature-card h3{
-            margin-bottom:10px;
+        .feature-card p {
+            color: var(--muted);
         }
 
-        .feature-card p{
-            color:var(--text-muted);
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
         }
 
-        .steps-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:24px;
-            margin-top:40px;
+        .step-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
         }
 
-        .step-item{
-            background:var(--surface-color);
-            border:1px solid var(--surface-border);
-            border-radius:10px;
-            padding:24px;
+        .step-number {
+            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .step-number{
-            color:var(--accent);
-            font-size:1.8rem;
-            font-weight:700;
-            margin-bottom:10px;
+        .step-item p {
+            color: var(--muted);
         }
 
-        .step-item p{
-            color:var(--text-muted);
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px 0;
+            color: var(--muted);
         }
 
-        footer{
-            border-top:1px solid var(--surface-border);
-            padding:35px 0;
-            text-align:center;
-            color:var(--text-muted);
-        }
-
-        footer span{
-            color:var(--accent);
-            font-weight:700;
-        }
-
-        @media(max-width:768px){
-
-            .nav-links{
-                display:none;
+            footer span {
+                color: var(--accent);
+                font-weight: 700;
             }
 
-            header{
-                flex-direction:column;
-                gap:20px;
+        @media(max-width:768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .hero{
-                padding-top:60px;
+            .nav-links {
+                display: none;
             }
         }
-
     </style>
 </head>
-
 <body>
 
-<header class="container">
-
-    #
-        images/treexl-logo.png
-        Tree<span>XL</span>
-    </a>
-
-    <nav class="nav-links">
-        #featuresFeatures</a>
-        #workflowHow It Works</a>
-    </nav>
-
-    <a href="https://apps.microsoft.com/store/detail/tuo-store-id"
-       target="_blank"
-       class="btn">
-        Download
-    </a>
-
-</header>
-
-<section class="hero container">
-
-    <div class="badge">
-        A Linfa Labs Product • Windows 10 & 11
-    </div>
-
-    <h1>
-        Export Folder Trees to Excel
-        <span>with Real Visual Hierarchy</span>
-    </h1>
-
-    <p>
-        Generate professional Excel reports from any folder structure,
-        detect duplicate files, identify path issues and reclaim disk space.
-        Start with a right-click, drag & drop a folder, or browse and select it manually.
-    </p>
-
-    <div class="hero-cta">
-        <a href="https://apps.microsoft.com/store/detail/tuo-store-id"
-           class="btn"
-           target="_blank">
-            📥 Download from Microsoft Store
+    <header class="container">
+        <a href="#" class="logo">
+            <img src="images/XLTree_logo.png" alt="TreeXL Logo">
+            <span>TreeXL</span>
         </a>
-    </div>
 
-    <div class="input-methods">
-        <div class="method">🖱️ Right-Click Folder</div>
-        <div class="method">📂 Drag & Drop</div>
-        <div class="method">🔍 Browse Folder</div>
-    </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#workflow">How it works</a>
+        </nav>
 
-    <div class="preview-card">
+        <a href="#" class="btn">Download</a>
+    </header>
 
-        <div class="preview-header">
-
-            <div class="preview-title">
-                images/treexl-logo.png
-                TreeXL - Folder Export
-            </div>
-
-            <div>
-                🗕 🗖 ✕
-            </div>
-
+    <section class="hero container">
+        <div class="badge">
+            A Linfa Labs Product • Windows 10 & 11
         </div>
 
-        <div class="preview-body">
-📁 Corporate_Docs/<br>
-├── 📄 Budget_2026.xlsx (450 KB)<br>
-└── 📂 Projects/<br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 Specifications.docx (1.2 MB)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Architecture_Schema.png (3.4 MB)
-        </div>
+        <h1>
+            Export Folder Trees to Excel
+            <span>with Real Visual Hierarchy</span>
+        </h1>
 
-    </div>
-
-</section>
-
-<section id="features" class="features container">
-
-    <h2 class="section-title">
-        Everything You Need
-    </h2>
-
-    <p class="section-subtitle">
-        Powerful file system analysis packed into a clean, intuitive Windows application.
-    </p>
-
-    <div class="grid">
-
-        <div class="feature-card">
-            <div class="feature-icon">📈</div>
-            <h3>Hierarchical Excel Export</h3>
-            <p>
-                Export folders to Excel (.xlsx) while preserving the real visual hierarchy
-                of your directory structure.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">📂</div>
-            <h3>Flexible Folder Selection</h3>
-            <p>
-                Launch from the Windows context menu, drag & drop a folder,
-                or browse and select a directory manually.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <h3>Smart Audit & Duplicates</h3>
-            <p>
-                Detect duplicate files, access issues, long paths and discover
-                how much storage space you can recover.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Extreme Performance</h3>
-            <p>
-                Highly optimized parallel scanning algorithms ensure fast analysis
-                even on large datasets.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">📑</div>
-            <h3>Advanced Flat List</h3>
-            <p>
-                Sort and filter files instantly by size, extension, date and name.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">✨</div>
-            <h3>Minimal Interface</h3>
-            <p>
-                Clean, focused design with no unnecessary settings or distractions.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="workflow" class="workflow container">
-
-    <h2 class="section-title">
-        How It Works
-    </h2>
-
-    <p class="section-subtitle">
-        Three simple steps to gain complete visibility over your folders.
-    </p>
-
-    <div class="steps-grid">
-
-        <div class="step-item">
-            <div class="step-number">01</div>
-            <h4>Select Your Folder</h4>
-            <p>
-                Right-click, drag & drop, or browse and choose a folder manually.
-            </p>
-        </div>
-
-        <div class="step-item">
-            <div class="step-number">02</div>
-            <h4>Analyze In Real Time</h4>
-            <p>
-                TreeXL scans the directory structure, detects duplicates,
-                long paths and potential issues.
-            </p>
-        </div>
-
-        <div class="step-item">
-            <div class="step-number">03</div>
-            <h4>Export or Clean</h4>
-            <p>
-                Export everything to Excel or free valuable storage space
-                by eliminating redundant files.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<footer>
-
-    <div class="container">
         <p>
-            © 2026 <span>Linfa Labs</span>. All Rights Reserved.
+            Export folder structures to Excel (.xlsx), detect duplicate files,
+            identify path issues and analyze storage usage. Start with a right-click,
+            drag & drop a folder, or browse and select it manually.
         </p>
-    </div>
 
-</footer>
+        <div class="hero-cta">
+            <a href="#" class="btn">
+                📥 Download from Microsoft Store
+            </a>
+        </div>
+
+        <div class="input-methods">
+            <div class="method">🖱️ Right-Click Folder</div>
+            <div class="method">📂 Drag & Drop</div>
+            <div class="method">🔍 Browse Folder</div>
+        </div>
+
+        <div class="preview-card">
+            <div class="preview-header">
+                <div class="preview-title">
+                    <img src="images/XLTree_logo.png" alt="TreeXL">
+                    TreeXL - Folder Analysis
+                </div>
+                <div>🗕 🗖 ✕</div>
+            </div>
+
+            <div class="preview-body">
+                📁 Corporate_Docs/<br>
+                ├── 📄 Budget_2026.xlsx (450 KB)<br>
+                └── 📂 Projects/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── 📄 Specifications.docx (1.2 MB)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Architecture_Schema.png (3.4 MB)
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features container">
+        <h2 class="section-title">
+            Everything You Need
+        </h2>
+
+        <p class="section-subtitle">
+            Powerful file system analysis packed into a clean Windows experience.
+        </p>
+
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Hierarchical Excel Export</h3>
+                <p>Generate Excel files preserving the visual hierarchy of folders and files.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>Flexible Folder Selection</h3>
+                <p>Use right-click integration, drag & drop or browse folders manually.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Smart Audit & Duplicates</h3>
+                <p>Detect duplicate files, path length issues and storage waste.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Extreme Performance</h3>
+                <p>Optimized parallel scanning for very large folder structures.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📑</div>
+                <h3>Advanced Flat List</h3>
+                <p>Filter and sort files by extension, size, date and name.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Minimal Interface</h3>
+                <p>Clean design focused on productivity and simplicity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="workflow container">
+        <h2 class="section-title">
+            How It Works
+        </h2>
+
+        <p class="section-subtitle">
+            Analyze any folder in three simple steps.
+        </p>
+
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <h4>Select a Folder</h4>
+                <p>Right-click, drag & drop or browse and select a folder.</p>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <h4>Analyze</h4>
+                <p>TreeXL scans the directory and detects anomalies and duplicates.</p>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <h4>Export & Optimize</h4>
+                <p>Save the hierarchy to Excel and reclaim disk space.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            © 2026 <span>Linfa Labs</span>. All rights reserved.
+        </p>
+    </footer>
 
 </body>
 </html>
