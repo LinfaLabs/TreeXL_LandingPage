@@ -283,6 +283,150 @@
                 display: none;
             }
         }
+
+        /* --- STILI AGGIUNTIVI PER IL CAROSELLO --- */
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .preview-body-carousel {
+            background: #090d16;
+            position: relative;
+            overflow: hidden; /* Nasconde le immagini che escono dal riquadro */
+            width: 100%;
+            /* Altezza fissa per il carosello, adattala alle tue immagini */
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        .carousel-track {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            display: flex; /* Dispone le slide in orizzontale */
+            transition: transform 0.5s ease-in-out; /* Effetto scorrimento fluido */
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%; /* Ogni slide occupa il 100% del contenitore */
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .carousel-slide img {
+                max-width: 90%;
+                max-height: 85%;
+                object-fit: contain; /* Mantiene le proporzioni dell'immagine */
+                border-radius: 8px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.85);
+            color: #f8fafc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            pointer-events: none; /* Non interferisce con i clic */
+            text-align: center;
+        }
+
+        /* Bottoni di navigazione */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(30, 41, 59, 0.7);
+            color: #10b981;
+            border: 1px solid #334155;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10;
+            opacity: 0; /* Nascosti di default, appaiono al passaggio del mouse */
+        }
+
+        .carousel-container:hover .carousel-button {
+            opacity: 1;
+        }
+
+        .carousel-button:hover {
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+            border-color: #10b981;
+        }
+
+        .carousel-button-left {
+            left: 15px;
+        }
+
+        .carousel-button-right {
+            right: 15px;
+        }
+
+        /* Indicatori (pallini in basso) */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-indicator {
+            border: none;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            background: #334155;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            padding: 0;
+        }
+
+            .carousel-indicator.current-slide {
+                background: #10b981;
+            }
+
+        /* Responsive per mobile */
+        @media (max-width: 768px) {
+            .preview-body-carousel {
+                height: 300px; /* Altezza ridotta su mobile */
+            }
+
+            .slide-caption {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -329,23 +473,33 @@
             <div class="method">🔍 Browse Folder</div>
         </div>
 
-        <div class="preview-card">
-            <div class="preview-header">
-                <div class="preview-title">
-                    <img src="images/XLTree_logo.png" alt="TreeXL">
-                    TreeXL - Folder Analysis
+
+        <!-- Struttura HTML del carosello (più pulita) -->
+        <div class="carousel-container">
+            <div class="preview-card">
+                <div class="preview-header">
+                    <div class="preview-title">
+                        <img src="images/XLTree_logo.png" alt="TreeXL">
+                        TreeXL - Funzionalità
+                    </div>
                 </div>
-                <div>🗕 🗖 ✕</div>
+
+                <div class="preview-body-carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track" id="carouselTrack">
+                            <!-- Le slide verranno generate automaticamente dallo script JavaScript -->
+                        </ul>
+                    </div>
+
+                    <button class="carousel-button carousel-button-left" id="btnPrev" aria-label="Slide Precedente">&#10094;</button>
+                    <button class="carousel-button carousel-button-right" id="btnNext" aria-label="Slide Successiva">&#10095;</button>
+                </div>
             </div>
 
-            <div class="preview-body">
-                📁 Corporate_Docs/<br>
-                ├── 📄 Budget_2026.xlsx (450 KB)<br>
-                └── 📂 Projects/<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;├── 📄 Specifications.docx (1.2 MB)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;└── 📄 Architecture_Schema.png (3.4 MB)
-            </div>
+            <!-- Indicatori (pallini) generati dinamicamente -->
+            <div class="carousel-nav" id="carouselNav"></div>
         </div>
+
     </section>
 
     <section id="features" class="features container">
@@ -432,5 +586,116 @@
         </p>
     </footer>
 
+
+    <!-- Script JavaScript con l'array delle immagini -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // --- CONFIGURA QUI LE TUE IMMAGINI E DIDASCALIE ---
+        const immagini = [
+        {
+        src: "images/slide1.png",
+        alt: "Anteprima 1: Esportazione Excel",
+        caption: "Esportazione gerarchica in formato .xlsx nativo"
+        },
+        {
+        src: "images/slide2.png",
+        alt: "Anteprima 2: Rilevamento Duplicati",
+        caption: "Identificazione intelligente di file duplicati e percorsi lunghi"
+        },
+        {
+        src: "images/slide3.png",
+        alt: "Anteprima 3: Interfaccia Pulita",
+        caption: "Interfaccia utente moderna, minima e ottimizzata per Windows"
+        }
+        // Puoi aggiungere altre immagini semplicemente copiando la struttura sopra:
+        // { src: "images/tuaimmagine.png", alt: "Descrizione", caption: "Testo didascalia" }
+        ];
+
+        const track = document.getElementById('carouselTrack');
+        const dotsNav = document.getElementById('carouselNav');
+        const nextButton = document.getElementById('btnNext');
+        const prevButton = document.getElementById('btnPrev');
+
+        // 1. Inserisce dinamicamente le slide e i pallini in base all'array
+        immagini.forEach((item, index) => {
+        // Crea la slide
+        const slide = document.createElement('li');
+        slide.classList.add('carousel-slide');
+        if (index === 0) slide.classList.add('current-slide');
+
+        slide.innerHTML = `
+        <img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'; this.parentNode.innerHTML='<h3>Immagine non trovata: ${item.src}</h3>';">
+        <div class="slide-caption">${item.caption}</div>
+        `;
+        track.appendChild(slide);
+
+        // Crea il pallino indicatore
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-indicator');
+        if (index === 0) dot.classList.add('current-slide');
+        dotsNav.appendChild(dot);
+        });
+
+        const slides = Array.from(track.children);
+        const dots = Array.from(dotsNav.children);
+
+        // Imposta la posizione iniziale di ogni slide
+        const slideWidth = slides[0] ? slides[0].getBoundingClientRect().width : 0;
+        slides.forEach((slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+        });
+
+        // Funzione per spostare il carosello
+        const moveToSlide = (track, currentSlide, targetSlide) => {
+        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        currentSlide.classList.remove('current-slide');
+        targetSlide.classList.add('current-slide');
+        };
+
+        // Funzione per aggiornare i pallini
+        const updateDots = (currentDot, targetDot) => {
+        currentDot.classList.remove('current-slide');
+        targetDot.classList.add('current-slide');
+        };
+
+        // Event listener per il pulsante SINISTRA
+        prevButton.addEventListener('click', () => {
+        const currentSlide = track.querySelector('.current-slide');
+        const prevSlide = currentSlide.previousElementSibling;
+        const currentDot = dotsNav.querySelector('.current-slide');
+
+        if (prevSlide) {
+        moveToSlide(track, currentSlide, prevSlide);
+        updateDots(currentDot, currentDot.previousElementSibling);
+        }
+        });
+
+        // Event listener per il pulsante DESTRA
+        nextButton.addEventListener('click', () => {
+        const currentSlide = track.querySelector('.current-slide');
+        const nextSlide = currentSlide.nextElementSibling;
+        const currentDot = dotsNav.querySelector('.current-slide');
+
+        if (nextSlide) {
+        moveToSlide(track, currentSlide, nextSlide);
+        updateDots(currentDot, currentDot.nextElementSibling);
+        }
+        });
+
+        // Event listener per i pallini
+        dotsNav.addEventListener('click', e => {
+        const targetDot = e.target.closest('button');
+        if (!targetDot) return;
+
+        const currentSlide = track.querySelector('.current-slide');
+        const currentDot = dotsNav.querySelector('.current-slide');
+        const targetIndex = dots.findIndex(dot => dot === targetDot);
+        const targetSlide = slides[targetIndex];
+
+        moveToSlide(track, currentSlide, targetSlide);
+        updateDots(currentDot, targetDot);
+        });
+        });
+    </script>
 </body>
 </html>
