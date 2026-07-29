@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TreeXL - Export Folder Structures to Excel</title>
-
-    <meta name="description"
-          content="Export folder structures to Excel (.xlsx) with true hierarchy, detect duplicates and audit directories with TreeXL.">
-
+    <title>TreeXL - Export Folder Structures to Excel & Smart Audit | Linfa Labs</title>
+    <meta name="description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space. Developed by Linfa Labs.">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +19,12 @@
             --muted: #94a3b8;
             --accent: #10b981;
             --accent-hover: #059669;
+            /* Mapping delle variabili miste per compatibilità totale */
+            --surface-color: var(--surface);
+            --surface-border: var(--border);
+            --text-muted: var(--muted);
+            --text-main: var(--text);
+            --bg-color: var(--bg);
         }
 
         * {
@@ -94,10 +97,28 @@
             border-radius: 8px;
             font-weight: 700;
             transition: .2s;
+            display: inline-block;
         }
 
             .btn:hover {
                 background: var(--accent-hover);
+            }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            transition: .2s;
+            display: inline-block;
+        }
+
+            .btn-secondary:hover {
+                background: var(--surface);
+                border-color: var(--muted);
             }
 
         .hero {
@@ -136,23 +157,17 @@
         }
 
         .hero-cta {
-            margin-bottom: 40px;
-        }
-
-        .input-methods {
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            gap: 16px;
             flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 60px;
         }
 
-        .method {
-            padding: 12px 18px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            font-weight: 600;
+        .store-guarantee {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
         }
 
         .preview-card {
@@ -183,12 +198,10 @@
                 height: 24px;
             }
 
-        .preview-body {
-            background: #090d16;
-            color: #10b981;
-            font-family: Consolas, monospace;
-            text-align: left;
-            padding: 24px;
+        /* Use Cases Section */
+        .use-cases {
+            padding: 60px 0 20px 0;
+            border-top: 1px solid var(--surface-border);
         }
 
         .features,
@@ -217,23 +230,33 @@
         }
 
         .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
             border-radius: 10px;
-            padding: 28px;
+            padding: 32px;
+            transition: transform 0.2s, border-color 0.2s;
         }
+
+            .feature-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+            }
 
         .feature-icon {
             font-size: 2rem;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
         .feature-card p {
-            color: var(--muted);
+            color: var(--text-muted);
+            font-size: 0.925rem;
+            line-height: 1.5;
         }
 
         .steps-grid {
@@ -284,7 +307,7 @@
             }
         }
 
-        /* --- NUOVO CSS CAROSELLO STabile --- */
+        /* --- Carosello CSS --- */
         .carousel-container {
             position: relative;
             max-width: 900px;
@@ -353,7 +376,6 @@
             border: 1px solid var(--border);
         }
 
-        /* Bottoni di navigazione */
         .carousel-button {
             position: absolute;
             top: 50%;
@@ -392,7 +414,6 @@
             right: 15px;
         }
 
-        /* Indicatori */
         .carousel-nav {
             display: flex;
             justify-content: center;
@@ -426,6 +447,15 @@
                 bottom: 10px;
             }
         }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -438,42 +468,29 @@
 
         <nav class="nav-links">
             <a href="#features">Features</a>
+            <a href="#usecases">Who Is It For</a>
             <a href="#workflow">How it works</a>
+            <a href="#pricing">Pricing</a>
         </nav>
 
-        <a href="#" class="btn">Download</a>
+        <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">Download</a>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero container">
         <div class="badge">
-            A Linfa Labs Product • Windows 10 & 11
+            <span>🛡️</span> Verified Microsoft Store App • Windows 10 & 11
         </div>
-
-        <h1>
-            Export Folder Trees to Excel
-            <span>with True Hierarchy</span>
-        </h1>
-
-        <p>
-            Export folder structures to Excel (.xlsx), detect duplicate files,
-            identify path issues and analyze storage usage. Start with a right-click,
-            drag & drop a folder, or browse and select it manually.
-        </p>
+        <h1>Turn Messy Folders Into <span>Perfect Excel Reports</span> Instantly</h1>
+        <p>Stop wasting hours manually copying directory structures or dealing with unreadable lists. TreeXL maps your files into a true visual Excel hierarchy, finds duplicates, and audits paths in seconds.</p>
 
         <div class="hero-cta">
-            <a href="#" class="btn">
-                📥 Download from Microsoft Store
-            </a>
+            <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">📥 Download Free from Microsoft Store</a>
+            <a href="#pricing" class="btn-secondary">View PRO Edition</a>
         </div>
+        <div class="store-guarantee">Free forever for standard checks • No credit card required</div>
 
-        <div class="input-methods">
-            <div class="method">🖱️ Right-Click Folder</div>
-            <div class="method">📂 Hierarchical Excel Report</div>
-            <div class="method">🔍 Audit on folder</div>
-        </div>
-
-
-        <!-- Struttura HTML del carosello (più pulita) -->
+        <!-- Carosello -->
         <div class="carousel-container">
             <div class="preview-card">
                 <div class="preview-header">
@@ -486,7 +503,7 @@
                 <div class="preview-body-carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track" id="carouselTrack">
-                            <!-- Le slide verranno generate automaticamente dallo script JavaScript -->
+                            <!-- Le slide vengono generate dinamicamente dallo script JS -->
                         </ul>
                     </div>
 
@@ -495,68 +512,76 @@
                 </div>
             </div>
 
-            <!-- Indicatori (pallini) generati dinamicamente -->
             <div class="carousel-nav" id="carouselNav"></div>
         </div>
 
     </section>
 
-    <section id="features" class="features container">
-        <h2 class="section-title">
-            Everything You Need
-        </h2>
-
-        <p class="section-subtitle">
-            Powerful file system analysis packed into a clean Windows experience.
-        </p>
+    <!-- Who Is It For Section -->
+    <section id="usecases" class="use-cases container">
+        <h2 class="section-title" style="margin-top: 40px;">Built for Professionals Who Need to Share Hierarchies</h2>
+        <p class="section-subtitle">See how TreeXL speeds up your directory delivery and client reporting workflows.</p>
 
         <div class="grid">
             <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3>Hierarchical Excel Export</h3>
-                <p>Generate Excel files preserving the visual hierarchy of folders and files.</p>
+                <div class="feature-icon">🖥️</div>
+                <h3>IT Consultants & System Admins</h3>
+                <p>Quickly generate and hand over detailed server and storage inventories to clients, complete with visual directory hierarchies.</p>
             </div>
-
             <div class="feature-card">
-                <div class="feature-icon">📂</div>
-                <h3>Flexible Folder Selection</h3>
-                <p>Use right-click integration, drag & drop or browse folders manually.</p>
+                <div class="feature-icon">⚖️</div>
+                <h3>Legal & Compliance Teams</h3>
+                <p>Produce precise file indexes and folder structures required for legal proceedings, corporate audits, and formal handovers.</p>
             </div>
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3>Project Managers & Agencies</h3>
+                <p>Attach clean, professional folder trees to client deliverables, contracts, or project documentation without manual copy-pasting.</p>
+            </div>
+        </div>
+    </section>
 
+    <section id="features" class="features container">
+        <h2 class="section-title">Everything you need, zero learning curve</h2>
+        <p class="section-subtitle">Designed to integrate seamlessly into your Windows workflow with native context menu integration.</p>
+
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>True Hierarchical Excel Export</h3>
+                <p>Exports files and folders directly into an `.xlsx` file maintaining an accurate, readable visual tree layout.</p>
+            </div>
             <div class="feature-card">
                 <div class="feature-icon">🔍</div>
-                <h3>Smart Audit & Duplicates</h3>
-                <p>Detect duplicate files, path length issues and storage waste.</p>
+                <h3>Smart Duplicate Finder</h3>
+                <p>Track down redundant files taking up valuable disk space and evaluate potential storage savings instantly.</p>
             </div>
-
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
-                <h3>Extreme Performance</h3>
-                <p>Optimized parallel scanning for very large folder structures.</p>
+                <h3>Blazing Fast Parallel Scanning</h3>
+                <p>Powered by multi-threaded asynchronous algorithms to parse hundreds of thousands of files in a blink.</p>
             </div>
-
+            <div class="feature-card">
+                <div class="feature-icon">🖱️</div>
+                <h3>Right-Click Context Menu</h3>
+                <p>Analyze any directory instantly by simply right-clicking it directly inside Windows File Explorer.</p>
+            </div>
             <div class="feature-card">
                 <div class="feature-icon">📑</div>
-                <h3>Advanced Flat List</h3>
-                <p>Filter and sort files by extension, size, date and name.</p>
+                <h3>Advanced Flat View & Filters</h3>
+                <p>Browse a complete flat list of files with robust sorting options by extension, size, name, and modification date.</p>
             </div>
-
             <div class="feature-card">
                 <div class="feature-icon">✨</div>
-                <h3>Minimal Interface</h3>
-                <p>Clean design focused on productivity and simplicity.</p>
+                <h3>Clean Minimalist Interface</h3>
+                <p>No bloated menus or steep learning curves. Just open the app, pick a folder, and get results immediately.</p>
             </div>
         </div>
     </section>
 
     <section id="workflow" class="workflow container">
-        <h2 class="section-title">
-            How It Works
-        </h2>
-
-        <p class="section-subtitle">
-            Analyze any folder in three simple steps.
-        </p>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Analyze any folder in three simple steps.</p>
 
         <div class="steps-grid">
             <div class="step-item">
@@ -579,28 +604,60 @@
         </div>
     </section>
 
+    <!-- Pricing / Edition Section -->
+    <section id="pricing" class="features container">
+        <h2 class="section-title">Transparent Freemium Pricing</h2>
+        <p class="section-subtitle">Try out essential features for free, or unlock complete professional reporting power.</p>
+
+        <div class="pricing-grid">
+            <!-- Free Version -->
+            <div class="feature-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3 style="color: var(--text-muted); margin-bottom: 8px;">Free Version</h3>
+                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">$0 <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted);">/ forever</span></div>
+                    <p style="margin-bottom: 20px;">Ideal for quick directory checks and personal file sorting.</p>
+                    <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+                        <li>✓ Fast parallel folder scanning</li>
+                        <li>✓ Windows right-click menu integration</li>
+                        <li>✕ Excel report limited to <strong>100 files</strong></li>
+                        <li>✕ Duplicate check limited to <strong>2 groups</strong></li>
+                    </ul>
+                </div>
+                <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn-secondary" style="text-align: center; display: block;" target="_blank">Download Free</a>
+            </div>
+
+            <!-- PRO Version -->
+            <div class="feature-card" style="border-color: var(--accent); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="position: absolute; top: -12px; right: 24px; background: var(--accent); color: var(--bg-color); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px;">RECOMMENDED</div>
+                <div>
+                    <h3 style="color: var(--accent); margin-bottom: 8px;">PRO Edition</h3>
+                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">Full Access</div>
+                    <p style="margin-bottom: 20px;">Built for power users, data auditors, and corporate professionals.</p>
+                    <ul style="list-style: none; color: var(--text-main); font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+                        <li>✓ <strong>Unlimited</strong> Excel report hierarchy</li>
+                        <li>✓ Full Smart Audit & Path Overflow checks</li>
+                        <li>✓ Complete Duplicate Finder (<strong>unlimited groups</strong>)</li>
+                        <li>✓ Direct priority updates via Microsoft Store</li>
+                    </ul>
+                </div>
+                <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" style="text-align: center; display: block;" target="_blank">Get PRO Edition</a>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>
-            © 2026 <span>Linfa Labs</span>. All rights reserved.
-        </p>
+        <p>© 2026 <span>Linfa Labs</span>. All rights reserved.</p>
     </footer>
 
-
-    <!-- Script JavaScript con l'array delle immagini -->
+    <!-- Script JavaScript per il carosello -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const immagini = [
-        /* {
-        src: "images/Schermata_base.PNG",
-        alt: "Clean Interface",
-        caption: "Modern, minimal user interface optimized for Windows"
-        },*/
         {
         src: "images/Schermata_cartella.PNG",
         alt: "Clean Interface",
         caption: "Modern, minimal user interface optimized for Windows"
         },
-
         {
         src: "images/Report-tree.PNG",
         alt: "Excel Export",
@@ -614,18 +671,18 @@
         {
         src: "images/Report-flatlist-oscurata.png",
         alt: "File list with filters and sorting",
-        caption: "Visiona l'elenco dei file e filtra in base a ciò di cui hai bisogno."
+        caption: "View the list of files and filter based on what you need."
         },
         {
         src: "images/Report-duplicated.png",
         alt: "Duplicate files list",
-        caption: "Visiona l'elenco dei file duplicati, recupera spazio tenendo solo l'originale."
+        caption: "Find duplicate files and reclaim space by keeping only the original."
         },
         {
         src: "images/Schermata_scansione.PNG",
         alt: "Instant Scans",
         caption: "Quickly scan large folders."
-        },
+        }
         ];
 
         const carouselContainer = document.querySelector('.carousel-container');
@@ -634,14 +691,13 @@
         const nextButton = document.getElementById('btnNext');
         const prevButton = document.getElementById('btnPrev');
 
-        // Inserimento dinamico di slide e pallini
         immagini.forEach((item, index) => {
         const slide = document.createElement('li');
         slide.classList.add('carousel-slide');
         if (index === 0) slide.classList.add('current-slide');
 
         slide.innerHTML = `
-        <img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'; this.parentNode.innerHTML='<h3 style=\'color:#10b981\'>Immagine non trovata: ${item.src}</h3>';">
+        <img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'; this.parentNode.innerHTML='<h3 style=\\'color:#10b981\\'>Immagine non trovata: ${item.src}</h3>';">
         <div class="slide-caption">${item.caption}</div>
         `;
         track.appendChild(slide);
@@ -658,7 +714,6 @@
         let slideInterval = null;
         let isHovered = false;
 
-        // Funzione di movimento del carosello
         const updateCarousel = (targetIndex) => {
         const currentSlide = track.querySelector('.current-slide');
         const currentDot = dotsNav.querySelector('.current-slide');
@@ -690,9 +745,8 @@
         updateCarousel(prevIndex);
         };
 
-        // --- GESTIONE AUTOPLAY STABILE ---
         const startAutoplay = () => {
-        if (slideInterval) return; // Evita di avviare più timer insieme
+        if (slideInterval) return;
         slideInterval = setInterval(() => {
         if (!isHovered) {
         moveToNextSlide();
@@ -731,7 +785,6 @@
         }
         });
 
-        // Gestione del passaggio del mouse pulita
         const handleMouseEnter = () => { isHovered = true; };
         const handleMouseLeave = () => { isHovered = false; };
 
@@ -740,7 +793,6 @@
         dotsNav.addEventListener('mouseenter', handleMouseEnter);
         dotsNav.addEventListener('mouseleave', handleMouseLeave);
 
-        // Avvia l'autoplay all'avvio della pagina
         startAutoplay();
         });
     </script>
