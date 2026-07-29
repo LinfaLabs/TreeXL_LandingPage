@@ -284,8 +284,7 @@
             }
         }
 
-        /* --- STILI AGGIUNTIVI PER IL CAROSELLO --- */
-
+        /* --- NUOVO CSS CAROSELLO STabile --- */
         .carousel-container {
             position: relative;
             max-width: 900px;
@@ -295,19 +294,17 @@
         .preview-body-carousel {
             background: #090d16;
             position: relative;
-            overflow: hidden; /* Nasconde le immagini che escono dal riquadro */
+            overflow: hidden;
             width: 100%;
-            /* Altezza fissa per il carosello, adattala alle tue immagini */
             height: 500px;
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         .carousel-track-container {
             height: 100%;
             width: 100%;
-            position: relative;
+            overflow: hidden;
         }
 
         .carousel-track {
@@ -315,26 +312,27 @@
             padding: 0;
             margin: 0;
             height: 100%;
-            display: flex; /* Dispone le slide in orizzontale */
-            transition: transform 0.5s ease-in-out; /* Effetto scorrimento fluido */
+            display: flex;
+            transition: transform 0.4s ease-in-out;
             will-change: transform;
         }
 
         .carousel-slide {
-            flex: 0 0 100%; /* Ogni slide occupa il 100% del contenitore */
+            min-width: 100%;
             width: 100%;
             height: 100%;
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            flex-shrink: 0;
         }
 
             .carousel-slide img {
                 max-width: 90%;
-                max-height: 85%;
-                object-fit: contain; /* Mantiene le proporzioni dell'immagine */
-                border-radius: 8px;
+                max-height: 75%;
+                object-fit: contain;
+                border-radius: 6px;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
 
@@ -343,14 +341,16 @@
             bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.9);
             color: #f8fafc;
             padding: 8px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-family: 'Inter', sans-serif;
-            pointer-events: none; /* Non interferisce con i clic */
+            pointer-events: none;
             text-align: center;
+            max-width: 80%;
+            border: 1px solid var(--border);
         }
 
         /* Bottoni di navigazione */
@@ -371,7 +371,7 @@
             justify-content: center;
             transition: all 0.2s ease;
             z-index: 10;
-            opacity: 0; /* Nascosti di default, appaiono al passaggio del mouse */
+            opacity: 0;
         }
 
         .carousel-container:hover .carousel-button {
@@ -392,7 +392,7 @@
             right: 15px;
         }
 
-        /* Indicatori (pallini in basso) */
+        /* Indicatori */
         .carousel-nav {
             display: flex;
             justify-content: center;
@@ -415,14 +415,13 @@
                 background: #10b981;
             }
 
-        /* Responsive per mobile */
         @media (max-width: 768px) {
             .preview-body-carousel {
-                height: 300px; /* Altezza ridotta su mobile */
+                height: 300px;
             }
 
             .slide-caption {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 padding: 6px 12px;
                 bottom: 10px;
             }
@@ -452,7 +451,7 @@
 
         <h1>
             Export Folder Trees to Excel
-            <span>with Real Visual Hierarchy</span>
+            <span>with True Hierarchy</span>
         </h1>
 
         <p>
@@ -469,8 +468,8 @@
 
         <div class="input-methods">
             <div class="method">🖱️ Right-Click Folder</div>
-            <div class="method">📂 Drag & Drop</div>
-            <div class="method">🔍 Browse Folder</div>
+            <div class="method">📂 Hierarchical Excel Report</div>
+            <div class="method">🔍 Audit on folder</div>
         </div>
 
 
@@ -480,7 +479,7 @@
                 <div class="preview-header">
                     <div class="preview-title">
                         <img src="images/XLTree_logo.png" alt="TreeXL">
-                        TreeXL - Funzionalità
+                        TreeXL - Features Preview
                     </div>
                 </div>
 
@@ -590,46 +589,63 @@
     <!-- Script JavaScript con l'array delle immagini -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        // --- CONFIGURA QUI LE TUE IMMAGINI E DIDASCALIE ---
         const immagini = [
+        /* {
+        src: "images/Schermata_base.PNG",
+        alt: "Clean Interface",
+        caption: "Modern, minimal user interface optimized for Windows"
+        },*/
         {
-        src: "images/slide1.png",
-        alt: "Anteprima 1: Esportazione Excel",
-        caption: "Esportazione gerarchica in formato .xlsx nativo"
+        src: "images/Schermata_cartella.PNG",
+        alt: "Clean Interface",
+        caption: "Modern, minimal user interface optimized for Windows"
+        },
+
+        {
+        src: "images/Report-tree.PNG",
+        alt: "Excel Export",
+        caption: "Hierarchical export in native .xlsx format."
         },
         {
-        src: "images/slide2.png",
-        alt: "Anteprima 2: Rilevamento Duplicati",
-        caption: "Identificazione intelligente di file duplicati e percorsi lunghi"
+        src: "images/Report-test.PNG",
+        alt: "Folder Audit",
+        caption: "Audit on duplicate files, inaccessible files, and excessively long paths."
         },
         {
-        src: "images/slide3.png",
-        alt: "Anteprima 3: Interfaccia Pulita",
-        caption: "Interfaccia utente moderna, minima e ottimizzata per Windows"
-        }
-        // Puoi aggiungere altre immagini semplicemente copiando la struttura sopra:
-        // { src: "images/tuaimmagine.png", alt: "Descrizione", caption: "Testo didascalia" }
+        src: "images/Report-flatlist-oscurata.png",
+        alt: "File list with filters and sorting",
+        caption: "Visiona l'elenco dei file e filtra in base a ciò di cui hai bisogno."
+        },
+        {
+        src: "images/Report-duplicated.png",
+        alt: "Duplicate files list",
+        caption: "Visiona l'elenco dei file duplicati, recupera spazio tenendo solo l'originale."
+        },
+        {
+        src: "images/Schermata_scansione.PNG",
+        alt: "Instant Scans",
+        caption: "Quickly scan large folders."
+        },
         ];
 
+        const carouselContainer = document.querySelector('.carousel-container');
         const track = document.getElementById('carouselTrack');
         const dotsNav = document.getElementById('carouselNav');
         const nextButton = document.getElementById('btnNext');
         const prevButton = document.getElementById('btnPrev');
 
-        // 1. Inserisce dinamicamente le slide e i pallini in base all'array
+        // Inserimento dinamico di slide e pallini
         immagini.forEach((item, index) => {
-        // Crea la slide
         const slide = document.createElement('li');
         slide.classList.add('carousel-slide');
         if (index === 0) slide.classList.add('current-slide');
 
         slide.innerHTML = `
-        <img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'; this.parentNode.innerHTML='<h3>Immagine non trovata: ${item.src}</h3>';">
+        <img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'; this.parentNode.innerHTML='<h3 style=\'color:#10b981\'>Immagine non trovata: ${item.src}</h3>';">
         <div class="slide-caption">${item.caption}</div>
         `;
         track.appendChild(slide);
 
-        // Crea il pallino indicatore
         const dot = document.createElement('button');
         dot.classList.add('carousel-indicator');
         if (index === 0) dot.classList.add('current-slide');
@@ -639,62 +655,93 @@
         const slides = Array.from(track.children);
         const dots = Array.from(dotsNav.children);
 
-        // Imposta la posizione iniziale di ogni slide
-        const slideWidth = slides[0] ? slides[0].getBoundingClientRect().width : 0;
-        slides.forEach((slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
-        });
+        let slideInterval = null;
+        let isHovered = false;
 
-        // Funzione per spostare il carosello
-        const moveToSlide = (track, currentSlide, targetSlide) => {
-        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        // Funzione di movimento del carosello
+        const updateCarousel = (targetIndex) => {
+        const currentSlide = track.querySelector('.current-slide');
+        const currentDot = dotsNav.querySelector('.current-slide');
+        const targetSlide = slides[targetIndex];
+        const targetDot = dots[targetIndex];
+
+        if (!targetSlide) return;
+
+        track.style.transform = `translateX(-${targetIndex * 100}%)`;
+
         currentSlide.classList.remove('current-slide');
         targetSlide.classList.add('current-slide');
-        };
 
-        // Funzione per aggiornare i pallini
-        const updateDots = (currentDot, targetDot) => {
+        if (currentDot && targetDot) {
         currentDot.classList.remove('current-slide');
         targetDot.classList.add('current-slide');
+        }
         };
 
-        // Event listener per il pulsante SINISTRA
+        const moveToNextSlide = () => {
+        const currentIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+        const nextIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(nextIndex);
+        };
+
+        const moveToPrevSlide = () => {
+        const currentIndex = slides.findIndex(slide => slide.classList.contains('current-slide'));
+        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel(prevIndex);
+        };
+
+        // --- GESTIONE AUTOPLAY STABILE ---
+        const startAutoplay = () => {
+        if (slideInterval) return; // Evita di avviare più timer insieme
+        slideInterval = setInterval(() => {
+        if (!isHovered) {
+        moveToNextSlide();
+        }
+        }, 4500);
+        };
+
+        const stopAutoplay = () => {
+        clearInterval(slideInterval);
+        slideInterval = null;
+        };
+
+        const resetAutoplay = () => {
+        stopAutoplay();
+        startAutoplay();
+        };
+
         prevButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const prevSlide = currentSlide.previousElementSibling;
-        const currentDot = dotsNav.querySelector('.current-slide');
-
-        if (prevSlide) {
-        moveToSlide(track, currentSlide, prevSlide);
-        updateDots(currentDot, currentDot.previousElementSibling);
-        }
+        moveToPrevSlide();
+        resetAutoplay();
         });
 
-        // Event listener per il pulsante DESTRA
         nextButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const nextSlide = currentSlide.nextElementSibling;
-        const currentDot = dotsNav.querySelector('.current-slide');
-
-        if (nextSlide) {
-        moveToSlide(track, currentSlide, nextSlide);
-        updateDots(currentDot, currentDot.nextElementSibling);
-        }
+        moveToNextSlide();
+        resetAutoplay();
         });
 
-        // Event listener per i pallini
         dotsNav.addEventListener('click', e => {
         const targetDot = e.target.closest('button');
         if (!targetDot) return;
 
-        const currentSlide = track.querySelector('.current-slide');
-        const currentDot = dotsNav.querySelector('.current-slide');
         const targetIndex = dots.findIndex(dot => dot === targetDot);
-        const targetSlide = slides[targetIndex];
-
-        moveToSlide(track, currentSlide, targetSlide);
-        updateDots(currentDot, targetDot);
+        if (targetIndex !== -1) {
+        updateCarousel(targetIndex);
+        resetAutoplay();
+        }
         });
+
+        // Gestione del passaggio del mouse pulita
+        const handleMouseEnter = () => { isHovered = true; };
+        const handleMouseLeave = () => { isHovered = false; };
+
+        carouselContainer.addEventListener('mouseenter', handleMouseEnter);
+        carouselContainer.addEventListener('mouseleave', handleMouseLeave);
+        dotsNav.addEventListener('mouseenter', handleMouseEnter);
+        dotsNav.addEventListener('mouseleave', handleMouseLeave);
+
+        // Avvia l'autoplay all'avvio della pagina
+        startAutoplay();
         });
     </script>
 </body>
