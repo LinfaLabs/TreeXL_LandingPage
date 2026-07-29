@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | TreeXL by Linfa Labs</title>
+    <meta name="description" content="TreeXL Privacy Policy: learn what data is (and isn't) collected when you use TreeXL to analyze your folders and export Excel reports.">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #10b981;
+            --accent-hover: #059669;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container { max-width: 800px; margin: auto; padding: 0 24px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo img { width: 48px; height: 48px; border-radius: 12px; }
+        .logo span { color: var(--accent); }
+
+        .back-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { color: white; }
+
+        main { padding: 60px 0 80px; }
+
+        h1 { font-size: 2.2rem; margin-bottom: 8px; }
+        .updated { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 40px;
+            margin-bottom: 14px;
+            color: var(--accent);
+        }
+
+        p, li { color: #cbd5e1; font-size: 0.98rem; }
+        p { margin-bottom: 14px; }
+        ul { margin: 0 0 14px 20px; }
+        li { margin-bottom: 8px; }
+
+        strong { color: var(--text); }
+
+        a.inline-link { color: var(--accent); }
+
+        .notice-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin: 24px 0;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px 0;
+            color: var(--muted);
+        }
+        footer span { color: var(--accent); font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/TreeXL_logo.png" alt="TreeXL Logo">
+            <span>TreeXL</span>
+        </a>
+        <a href="index.html" class="back-link">&larr; Back to home</a>
+    </header>
+
+    <main class="container">
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: January 2026</p>
+
+        <p>
+            Linfa Labs ("we", "us", "our") built TreeXL as a Windows desktop application distributed
+            through the Microsoft Store. This page explains what data TreeXL processes, what (if
+            anything) ever leaves your device, and what data the associated website (this site)
+            processes when you visit it.
+        </p>
+
+        <h2>1. Data processed by the TreeXL application</h2>
+        <p>
+            TreeXL analyzes the folder you select (via right-click, drag &amp; drop, or the "Browse"
+            button) and generates an Excel (.xlsx) report describing its structure, file sizes, dates,
+            duplicate files, and any inaccessible items or overly long paths.
+        </p>
+        <p><strong>All of this scanning and analysis happens entirely on your device.</strong> Specifically:</p>
+        <ul>
+            <li>File and folder names, sizes, paths, and modification dates are read from your disk and used only to build the local report.</li>
+            <li>File contents are read only to compute duplicate-detection hashes locally; file contents are never uploaded anywhere.</li>
+            <li>The generated Excel report is saved to a location you choose and is never transmitted to us or to any third party.</li>
+            <li>TreeXL does not require an internet connection to scan folders or generate reports.</li>
+        </ul>
+
+        <h2>2. License and purchase data</h2>
+        <p>
+            TreeXL offers a Free edition and a paid PRO edition. Purchases are processed entirely by
+            <strong>Microsoft</strong> through the Microsoft Store — Linfa Labs does not receive or
+            store your payment details (card numbers, billing address, etc.). When you purchase or
+            restore your PRO license, TreeXL communicates with Microsoft Store licensing APIs to
+            verify entitlement; this exchange does not include any of your scanned file or folder
+            data.
+        </p>
+
+        <h2>3. Diagnostic and usage data</h2>
+        <p>
+            TreeXL uses <strong>Azure Application Insights</strong>, a Microsoft Azure service, to
+            collect basic, anonymous <strong>usage counters</strong> — for example, which features are
+            used and how often, how many folders are scanned, or whether an export completes
+            successfully. We use this data exclusively to understand how TreeXL is actually used and
+            to prioritize future development.
+        </p>
+        <p>
+            <strong>No personal information is ever sent as part of this telemetry.</strong> Specifically:
+        </p>
+        <ul>
+            <li>No file names, folder names, file paths, file contents, or scan results are ever included in the data sent to Application Insights.</li>
+            <li>No personally identifiable information (name, email address, account identifiers, etc.) is collected or transmitted.</li>
+            <li>Only aggregate, anonymous usage counters and technical diagnostics (e.g. feature usage counts, app version, general error/crash signals) are sent.</li>
+        </ul>
+        <p>
+            Application Insights is provided by Microsoft Azure and is governed by
+            <a class="inline-link" href="https://privacy.microsoft.com/" target="_blank" rel="noopener">Microsoft's own privacy statement</a>.
+            In addition, the Microsoft Store platform itself may separately collect standard
+            install/update counts and OS-level crash reports, also governed by the same Microsoft
+            privacy statement.
+        </p>
+        <p>
+            If we change what this telemetry collects, or add any additional analytics or crash-reporting
+            services, this policy will be updated before that version is released.
+        </p>
+
+        <h2>4. This website</h2>
+        <p>
+            This marketing website does not set its own cookies and does not run analytics scripts.
+            It loads the "Inter" font from Google Fonts (fonts.googleapis.com / fonts.gstatic.com);
+            loading these fonts causes your browser to make a request to Google's servers, which may
+            log your IP address according to
+            <a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.
+            Links on this page to the Microsoft Store are subject to Microsoft's own privacy practices
+            once you leave this site.
+        </p>
+
+        <h2>5. Your rights</h2>
+        <p>
+            Because TreeXL processes your files locally and we do not operate servers that store your
+            personal data, there is generally no personal data held by us to access, correct, or
+            delete. For anything related to your Microsoft Store account or purchase history, please
+            refer to your Microsoft account privacy settings. If you believe we hold any personal data
+            about you (for example, through direct support correspondence), contact us using the
+            details below to request access, correction, or deletion.
+        </p>
+
+        <h2>6. Children's privacy</h2>
+        <p>
+            TreeXL is a general-purpose productivity utility not directed at children, and we do not
+            knowingly collect personal data from children.
+        </p>
+
+        <h2>7. Changes to this policy</h2>
+        <p>
+            We may update this Privacy Policy from time to time, for example if we add new features
+            that process data differently. We will update the "Last updated" date above when we do.
+        </p>
+
+        <h2>8. Contact</h2>
+        <p>
+            Questions about this policy or about TreeXL's data practices can be sent to:
+            <a class="inline-link" href="mailto:linfo@linfalabs.com">linfo@linfalabs.com</a>
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <span>Linfa Labs</span>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

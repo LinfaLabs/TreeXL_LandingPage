@@ -5,10 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TreeXL - Export Folder Structures to Excel & Smart Audit | Linfa Labs</title>
     <meta name="description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space. Developed by Linfa Labs.">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TreeXL by Linfa Labs">
+    <meta property="og:url" content="https://www.linfalabs.com/">
+    <meta property="og:title" content="TreeXL - Export Folder Structures to Excel & Smart Audit">
+    <meta property="og:description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.">
+    <meta property="og:image" content="https://www.yourdomain.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TreeXL - Export Folder Structures to Excel & Smart Audit">
+    <meta name="twitter:description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.">
+    <meta name="twitter:image" content="https://www.yourdomain.com/images/og-image.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured data: helps Google show rich results (price, category) for this app -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "TreeXL",
+          "operatingSystem": "Windows 10, Windows 11",
+          "applicationCategory": "UtilitiesApplication",
+          "description": "Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.",
+          "url": "https://www.linfalabs.com/",
+          "image": "https://www.yourdomain.com/images/TreeXL_logo.png",
+          "author": {
+            "@type": "Organization",
+            "name": "Linfa Labs"
+          },
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Free Edition",
+              "price": "0",
+              "priceCurrency": "USD",
+              "url": "https://apps.microsoft.com/store/detail/tuo-store-id"
+            },
+            {
+              "@type": "Offer",
+              "name": "PRO Edition",
+              "price": "12.99",
+              "priceCurrency": "EUR",
+              "url": "https://apps.microsoft.com/store/detail/tuo-store-id"
+            }
+          ]
+        }
+    </script>
 
     <style>
         :root {
@@ -19,6 +70,7 @@
             --muted: #94a3b8;
             --accent: #10b981;
             --accent-hover: #059669;
+            --danger: #f87171;
             /* Mapping delle variabili miste per compatibilità totale */
             --surface-color: var(--surface);
             --surface-border: var(--border);
@@ -52,6 +104,7 @@
             align-items: center;
             padding: 24px 0;
             border-bottom: 1px solid var(--border);
+            position: relative;
         }
 
         .logo {
@@ -76,6 +129,7 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 24px;
         }
 
@@ -88,6 +142,12 @@
                 .nav-links a:hover {
                     color: white;
                 }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
         .btn {
             background: var(--accent);
@@ -120,6 +180,76 @@
                 background: var(--surface);
                 border-color: var(--muted);
             }
+
+        /* --- Hamburger menu (mobile) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+            .hamburger span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: var(--text);
+                margin: 0 auto;
+                transition: transform .2s ease, opacity .2s ease;
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            z-index: 50;
+        }
+
+            .mobile-nav.open {
+                display: flex;
+            }
+
+            .mobile-nav a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+                .mobile-nav a:last-child {
+                    border-bottom: none;
+                }
+
+                .mobile-nav a:hover {
+                    color: white;
+                }
 
         .hero {
             padding: 90px 0;
@@ -296,14 +426,31 @@
                 font-weight: 700;
             }
 
-        @media(max-width:768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+            .footer-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.85rem;
             }
 
+                .footer-links a:hover {
+                    color: white;
+                }
+
+        @media(max-width:768px) {
             .nav-links {
                 display: none;
+            }
+
+            .hamburger {
+                display: flex;
             }
         }
 
@@ -456,6 +603,42 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        .plan-features {
+            list-style: none;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+            .plan-features li {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+        .feat-yes,
+        .feat-no {
+            flex-shrink: 0;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .feat-yes {
+            color: var(--accent);
+        }
+
+        .feat-no {
+            color: var(--danger);
+            opacity: .9;
+        }
+
+        .plan-features li.limited {
+            color: var(--text-muted);
+            opacity: .85;
+        }
     </style>
 </head>
 <body>
@@ -471,9 +654,23 @@
             <a href="#usecases">Who Is It For</a>
             <a href="#workflow">How it works</a>
             <a href="#pricing">Pricing</a>
+            <a href="privacy.html">Privacy</a>
         </nav>
 
-        <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">Download</a>
+        <div class="header-actions">
+            <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">Download</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#features">Features</a>
+            <a href="#usecases">Who Is It For</a>
+            <a href="#workflow">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -507,8 +704,8 @@
                         </ul>
                     </div>
 
-                    <button class="carousel-button carousel-button-left" id="btnPrev" aria-label="Slide Precedente">&#10094;</button>
-                    <button class="carousel-button carousel-button-right" id="btnNext" aria-label="Slide Successiva">&#10095;</button>
+                    <button class="carousel-button carousel-button-left" id="btnPrev" aria-label="Previous slide">&#10094;</button>
+                    <button class="carousel-button carousel-button-right" id="btnNext" aria-label="Next slide">&#10095;</button>
                 </div>
             </div>
 
@@ -572,9 +769,9 @@
                 <p>Browse a complete flat list of files with robust sorting options by extension, size, name, and modification date.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">✨</div>
-                <h3>Clean Minimalist Interface</h3>
-                <p>No bloated menus or steep learning curves. Just open the app, pick a folder, and get results immediately.</p>
+                <div class="feature-icon">🔒</div>
+                <h3>100% Local & Private</h3>
+                <p>Every scan runs entirely on your device. Your file names, folder structure, and contents are never uploaded or sent anywhere — no internet connection required.</p>
             </div>
         </div>
     </section>
@@ -614,13 +811,13 @@
             <div class="feature-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <h3 style="color: var(--text-muted); margin-bottom: 8px;">Free Version</h3>
-                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">$0 <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted);">/ forever</span></div>
+                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">€0 <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted);">/ forever</span></div>
                     <p style="margin-bottom: 20px;">Ideal for quick directory checks and personal file sorting.</p>
-                    <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
-                        <li>✓ Fast parallel folder scanning</li>
-                        <li>✓ Windows right-click menu integration</li>
-                        <li>✕ Excel report limited to <strong>100 files</strong></li>
-                        <li>✕ Duplicate check limited to <strong>2 groups</strong></li>
+                    <ul class="plan-features">
+                        <li><span class="feat-yes">✓</span> Fast parallel folder scanning</li>
+                        <li><span class="feat-yes">✓</span> Windows right-click menu integration</li>
+                        <li class="limited"><span class="feat-no">✕</span> Excel report limited to <strong>100 files</strong></li>
+                        <li class="limited"><span class="feat-no">✕</span> Duplicate check limited to <strong>2 groups</strong></li>
                     </ul>
                 </div>
                 <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn-secondary" style="text-align: center; display: block;" target="_blank">Download Free</a>
@@ -631,13 +828,13 @@
                 <div style="position: absolute; top: -12px; right: 24px; background: var(--accent); color: var(--bg-color); font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px;">RECOMMENDED</div>
                 <div>
                     <h3 style="color: var(--accent); margin-bottom: 8px;">PRO Edition</h3>
-                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">Full Access</div>
+                    <div style="font-size: 1.75rem; font-weight: 700; margin-bottom: 20px;">€12.99 <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted);">one-time payment</span></div>
                     <p style="margin-bottom: 20px;">Built for power users, data auditors, and corporate professionals.</p>
-                    <ul style="list-style: none; color: var(--text-main); font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
-                        <li>✓ <strong>Unlimited</strong> Excel report hierarchy</li>
-                        <li>✓ Full Smart Audit & Path Overflow checks</li>
-                        <li>✓ Complete Duplicate Finder (<strong>unlimited groups</strong>)</li>
-                        <li>✓ Direct priority updates via Microsoft Store</li>
+                    <ul class="plan-features" style="color: var(--text-main);">
+                        <li><span class="feat-yes">✓</span> <strong>Unlimited</strong> Excel report hierarchy</li>
+                        <li><span class="feat-yes">✓</span> Full Smart Audit & Path Overflow checks</li>
+                        <li><span class="feat-yes">✓</span> Complete Duplicate Finder (<strong>unlimited groups</strong>)</li>
+                        <li><span class="feat-yes">✓</span> Direct priority updates via Microsoft Store</li>
                     </ul>
                 </div>
                 <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" style="text-align: center; display: block;" target="_blank">Get PRO Edition</a>
@@ -647,24 +844,54 @@
 
     <footer>
         <p>© 2026 <span>Linfa Labs</span>. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="mailto:linfo@linfalabs.com">Contact</a>
+        </div>
     </footer>
 
-    <!-- Script JavaScript per il carosello -->
+    <!-- Script JavaScript per il carosello e il menu mobile -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Menu hamburger mobile ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        const closeMobileNav = () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        hamburgerBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+        });
+
+        document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        closeMobileNav();
+        }
+        });
+
+        // --- Carosello ---
         const immagini = [
         {
-        src: "images/Schermata_cartella.PNG",
+        src: "images/Schermata_cartella.png",
         alt: "Clean Interface",
         caption: "Modern, minimal user interface optimized for Windows"
         },
         {
-        src: "images/Report-tree.PNG",
+        src: "images/Report-tree.png",
         alt: "Excel Export",
         caption: "Hierarchical export in native .xlsx format."
         },
         {
-        src: "images/Report-test.PNG",
+        src: "images/Report-test.png",
         alt: "Folder Audit",
         caption: "Audit on duplicate files, inaccessible files, and excessively long paths."
         },
@@ -679,7 +906,7 @@
         caption: "Find duplicate files and reclaim space by keeping only the original."
         },
         {
-        src: "images/Schermata_scansione.PNG",
+        src: "images/Schermata_scansione.png",
         alt: "Instant Scans",
         caption: "Quickly scan large folders."
         }
@@ -704,6 +931,7 @@
 
         const dot = document.createElement('button');
         dot.classList.add('carousel-indicator');
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}: ${item.alt}`);
         if (index === 0) dot.classList.add('current-slide');
         dotsNav.appendChild(dot);
         });
