@@ -32,10 +32,10 @@ TreeXL solves this problem with a modern, secure, and high-performance Windows a
 
 TreeXL is available on the Microsoft Store.
 
-✅ Free to download
-✅ Freemium model (advanced features available with Pro)
-✅ Automatic updates through Microsoft Store
-✅ Safe MSIX installation with clean uninstall
+✅ Free to download  
+✅ Freemium model (advanced features available with Pro)  
+✅ Automatic updates through Microsoft Store  
+✅ Safe MSIX installation with clean uninstall  
 
 «Download TreeXL from the Microsoft Store (add your Store link here)»
 
