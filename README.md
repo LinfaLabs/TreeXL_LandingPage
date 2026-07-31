@@ -1,12 +1,10 @@
 TreeXL – Export Folder Trees and Directory Structures to Excel with One Click
 
-"Windows 11" (https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows&logoColor=white)
-"Microsoft Store" (https://img.shields.io/badge/Download-Microsoft%20Store-00A4EF?logo=microsoft&logoColor=white)
-"Freemium" (https://img.shields.io/badge/License-Freemium-success)
-".NET" (https://img.shields.io/badge/.NET-9-512BD4?logo=dotnet&logoColor=white)
-"ClosedXML" (https://img.shields.io/badge/Excel-ClosedXML-217346?logo=microsoftexcel&logoColor=white)
-"MSIX" (https://img.shields.io/badge/Package-MSIX-blue)
-"Platform" (https://img.shields.io/badge/Platform-x64-lightgrey)
+[![Windows 10 & 11](https://img.shields.io/badge/Windows-10%20%26%2011-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Microsoft Store](https://img.shields.io/badge/Download-Microsoft%20Store-00A4EF?logo=microsoft&logoColor=white)](https://apps.microsoft.com/)
+![Freemium](https://img.shields.io/badge/Freemium-Free%20%2B%20Pro-28A745)
+![Excel (.xlsx)](https://img.shields.io/badge/Export-Excel%20(.xlsx)-217346?logo=microsoftexcel&logoColor=white)
+![MSIX](https://img.shields.io/badge/Secure-MSIX-00599C)
 
 «TreeXL is the ultimate Windows tool for exporting folder structures and directory contents directly to Microsoft Excel (.xlsx) with seamless native Windows File Explorer context menu integration.»
 
