@@ -1,4 +1,4 @@
-TreeXL – Export Folder Trees and Directory Structures to Excel with One Click
+# TreeXL – Export Folder Trees and Directory Structures to Excel with One Click
 
 [![Windows 10 & 11](https://img.shields.io/badge/Windows-10%20%26%2011-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
 [![Microsoft Store](https://img.shields.io/badge/Download-Microsoft%20Store-00A4EF?logo=microsoft&logoColor=white)](https://apps.microsoft.com/)
