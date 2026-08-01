@@ -13,97 +13,207 @@
 
     <style>
         :root {
-            --bg: #0f172a;
-            --surface: #1e293b;
-            --border: #334155;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --accent: #10b981;
-            --accent-hover: #059669;
-        }
+    --bg: #0b1220;
+    --surface: #172235;
+    --surface-2: #1d2b40;
+    --border: #2b3c54;
+    --text: #f8fafc;
+    --muted: #9fb0c7;
+    --accent: #22c55e;
+    --accent-hover: #16a34a;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .container { max-width: 800px; margin: auto; padding: 0 24px; }
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.8;
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 24px;
-            padding-right: 24px;
-        }
+.container{
+    max-width:920px;
+    margin:auto;
+    padding:0 24px;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+    padding:18px 24px;
+    backdrop-filter:blur(14px);
+    background:rgba(11,18,32,.85);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
 
-        .logo img { width: 48px; height: 48px; border-radius: 12px; }
-        .logo span { color: var(--accent); }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:white;
+    font-weight:700;
+    font-size:1.4rem;
+}
 
-        .back-link {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .back-link:hover { color: white; }
+.logo img{
+    width:46px;
+    height:46px;
+    border-radius:12px;
+}
 
-        main { padding: 60px 0 80px; }
+.logo span{
+    color:var(--accent);
+}
 
-        h1 { font-size: 2.2rem; margin-bottom: 8px; }
-        .updated { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+.back-link{
+    color:var(--muted);
+    text-decoration:none;
+    transition:.2s;
+}
 
-        h2 {
-            font-size: 1.3rem;
-            margin-top: 40px;
-            margin-bottom: 14px;
-            color: var(--accent);
-        }
+.back-link:hover{
+    color:white;
+}
 
-        p, li { color: #cbd5e1; font-size: 0.98rem; }
-        p { margin-bottom: 14px; }
-        ul { margin: 0 0 14px 20px; }
-        li { margin-bottom: 8px; }
+main{
+    padding:60px 0 80px;
+}
 
-        strong { color: var(--text); }
+.policy-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:50px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
 
-        a.inline-link { color: var(--accent); }
+h1{
+    font-size:2.7rem;
+    margin-bottom:8px;
+}
 
-        .notice-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent);
-            border-radius: 6px;
-            padding: 18px 20px;
-            margin: 24px 0;
-            font-size: 0.92rem;
-            color: var(--muted);
-        }
+.updated{
+    color:var(--muted);
+    margin-bottom:40px;
+}
 
-        footer {
-            border-top: 1px solid var(--border);
-            text-align: center;
-            padding: 30px 0;
-            color: var(--muted);
-        }
-        footer span { color: var(--accent); font-weight: 700; }
+h2{
+    margin-top:48px;
+    margin-bottom:18px;
+    color:var(--accent);
+    font-size:1.45rem;
+}
+
+p{
+    margin-bottom:18px;
+    color:#d4dde9;
+}
+
+ul{
+    margin:18px 0 18px 24px;
+}
+
+li{
+    margin-bottom:12px;
+    color:#d4dde9;
+}
+
+strong{
+    color:white;
+}
+
+.inline-link{
+    color:var(--accent);
+    text-decoration:none;
+}
+
+.inline-link:hover{
+    text-decoration:underline;
+}
+
+.notice-box{
+    margin:32px 0;
+    background:var(--surface-2);
+    border-left:5px solid var(--accent);
+    border-radius:12px;
+    padding:22px;
+    color:#d4dde9;
+}
+
+.toc{
+    margin:40px 0;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px;
+}
+
+.toc h3{
+    margin-bottom:15px;
+}
+
+.toc ul{
+    margin-left:18px;
+}
+
+.toc a{
+    color:#d9e6f7;
+    text-decoration:none;
+}
+
+.toc a:hover{
+    color:var(--accent);
+}
+
+footer{
+    border-top:1px solid rgba(255,255,255,.08);
+    margin-top:70px;
+    padding:40px 20px;
+    text-align:center;
+    color:var(--muted);
+}
+
+footer span{
+    color:var(--accent);
+    font-weight:700;
+}
+
+@media (max-width:768px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    .policy-card{
+        padding:28px;
+    }
+
+    header{
+        padding:16px;
+    }
+
+    .logo{
+        font-size:1.2rem;
+    }
+
+}
+      
     </style>
 </head>
 <body>
@@ -116,18 +226,37 @@
         <a href="index.html" class="back-link">&larr; Back to home</a>
     </header>
 
-    <main class="container">
+ <main class="container">
+
+    <div class="policy-card">
+
         <h1>Privacy Policy</h1>
         <p class="updated">Last updated: January 2026</p>
 
-        <p>
-            Linfa Labs ("we", "us", "our") built TreeXL as a Windows desktop application distributed
-            through the Microsoft Store. This page explains what data TreeXL processes, what (if
-            anything) ever leaves your device, and what data the associated website (this site)
-            processes when you visit it.
-        </p>
+        <div class="toc">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#app">1. TreeXL application</a></li>
+                <li><a href="#license">2. License & Purchases</a></li>
+                <li><a href="#telemetry">3. Diagnostic Data</a></li>
+                <li><a href="#website">4. Website</a></li>
+                <li><a href="#rights">5. Your Rights</a></li>
+                <li><a href="#children">6. Children's Privacy</a></li>
+                <li><a href="#changes">7. Policy Changes</a></li>
+                <li><a href="#contact">8. Contact</a></li>
+            </ul>
+        </div>
 
-        <h2>1. Data processed by the TreeXL application</h2>
+        <div class="notice-box">
+            <strong>Privacy at a glance</strong><br><br>
+            ✔ Your folders are scanned entirely on your computer.<br>
+            ✔ Your files are never uploaded.<br>
+            ✔ Your Excel reports stay on your device.<br>
+            ✔ We only collect anonymous usage statistics to improve TreeXL.
+        </div>
+
+
+        <h2 id="app">1. Data processed by the TreeXL application</h2>
         <p>
             TreeXL analyzes the folder you select (via right-click, drag &amp; drop, or the "Browse"
             button) and generates an Excel (.xlsx) report describing its structure, file sizes, dates,
@@ -141,7 +270,7 @@
             <li>TreeXL does not require an internet connection to scan folders or generate reports.</li>
         </ul>
 
-        <h2>2. License and purchase data</h2>
+        <h2 id="license">2. License and purchase data</h2>
         <p>
             TreeXL offers a Free edition and a paid PRO edition. Purchases are processed entirely by
             <strong>Microsoft</strong> through the Microsoft Store — Linfa Labs does not receive or
@@ -151,7 +280,7 @@
             data.
         </p>
 
-        <h2>3. Diagnostic and usage data</h2>
+<h2 id="telemetry">3. Diagnostic and usage data</h2>
         <p>
             TreeXL uses <strong>Azure Application Insights</strong>, a Microsoft Azure service, to
             collect basic, anonymous <strong>usage counters</strong> — for example, which features are
@@ -179,44 +308,82 @@
             services, this policy will be updated before that version is released.
         </p>
 
-        <h2>4. This website</h2>
+        <h2 id="website">4. This website</h2>
         <p>
-            This marketing website does not set its own cookies and does not run analytics scripts.
-            It loads the "Inter" font from Google Fonts (fonts.googleapis.com / fonts.gstatic.com);
-            loading these fonts causes your browser to make a request to Google's servers, which may
-            log your IP address according to
+            This marketing website (the site you are reading this policy on) is separate from the
+            TreeXL application itself and uses the following third-party services to understand how
+            visitors use the site:
+        </p>
+        <ul>
+            <li>
+                <strong>Google Analytics</strong> — collects standard web analytics data such as pages
+                visited, referral source, approximate location (country/city level), device/browser
+                type, and time spent on the site. Google Analytics uses cookies to distinguish
+                visitors. See
+                <a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>
+                and
+                <a class="inline-link" href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out</a>.
+            </li>
+            <li>
+                <strong>Microsoft Clarity</strong> — collects behavioral analytics such as page views,
+                session recordings, click/scroll heatmaps, and device/browser information, to help us
+                understand how visitors navigate the site and improve its usability. Clarity uses
+                cookies as well. See
+                <a class="inline-link" href="https://privacy.microsoft.com/" target="_blank" rel="noopener">Microsoft's Privacy Statement</a>
+                and
+                <a class="inline-link" href="https://clarity.microsoft.com/" target="_blank" rel="noopener">Microsoft Clarity</a>.
+            </li>
+        </ul>
+        <p>
+            Both services are configured to analyze <strong>website visits only</strong> — they are
+            not embedded in, and do not run inside, the TreeXL desktop application. Neither service
+            has any access to the folders, files, or data you scan with TreeXL; that processing
+            remains entirely local to your device as described in Section&nbsp;1.
+        </p>
+        <p>
+            This site also loads the "Inter" font from Google Fonts (fonts.googleapis.com /
+            fonts.gstatic.com); loading these fonts causes your browser to make a request to Google's
+            servers, which may log your IP address according to
             <a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.
             Links on this page to the Microsoft Store are subject to Microsoft's own privacy practices
             once you leave this site.
         </p>
-
-        <h2>5. Your rights</h2>
         <p>
-            Because TreeXL processes your files locally and we do not operate servers that store your
-            personal data, there is generally no personal data held by us to access, correct, or
-            delete. For anything related to your Microsoft Store account or purchase history, please
-            refer to your Microsoft account privacy settings. If you believe we hold any personal data
-            about you (for example, through direct support correspondence), contact us using the
-            details below to request access, correction, or deletion.
+            Depending on your location, you may be entitled to control or reject non-essential
+            cookies (for example via your browser's cookie settings, or a cookie-consent banner if
+            one is shown on this site). If you have not yet added a cookie-consent banner for
+            visitors in regions that require one (e.g. the EU/EEA under GDPR/ePrivacy), you should add
+            one before enabling Google Analytics and Microsoft Clarity for those visitors.
         </p>
 
-        <h2>6. Children's privacy</h2>
+        <h2 id="rights">5. Your rights</h2>
+        <p>
+            Because TreeXL processes your files locally and we do not operate our own servers that store TreeXL usage data, there is generally no personal data held by us related to the
+            application itself to access, correct, or delete. For website analytics collected via
+            Google Analytics or Microsoft Clarity, you can exercise your rights (such as opting out)
+            directly through Google's and Microsoft's own tools linked in Section&nbsp;4, or by
+            contacting us using the details below. For anything related to your Microsoft Store
+            account or purchase history, please refer to your Microsoft account privacy settings.
+        </p>
+
+        <h2 id="children">6. Children's privacy</h2>
         <p>
             TreeXL is a general-purpose productivity utility not directed at children, and we do not
             knowingly collect personal data from children.
         </p>
 
-        <h2>7. Changes to this policy</h2>
+        <h2 id="changes">7. Changes to this policy</h2>
         <p>
             We may update this Privacy Policy from time to time, for example if we add new features
             that process data differently. We will update the "Last updated" date above when we do.
         </p>
 
-        <h2>8. Contact</h2>
+        <h2 id="contact">8. Contact</h2>
         <p>
             Questions about this policy or about TreeXL's data practices can be sent to:
             <a class="inline-link" href="mailto:linfo@linfalabs.com">linfo@linfalabs.com</a>
         </p>
+</div>
     </main>
 
     <footer>
