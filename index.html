@@ -211,6 +211,36 @@
                 border-color: var(--muted);
             }
 
+        /* --- Coming soon (Store non ancora pubblicato) --- */
+        .btn-disabled {
+            background: var(--surface);
+            color: var(--muted);
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: 1px dashed var(--border);
+            display: inline-block;
+            cursor: not-allowed;
+            opacity: .85;
+            pointer-events: none;
+        }
+
+        .coming-soon-tag {
+            display: inline-block;
+            background: rgba(148, 163, 184, .15);
+            color: var(--muted);
+            border: 1px solid var(--border);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 12px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
         /* --- Hamburger menu (mobile) --- */
         .hamburger {
             display: none;
@@ -689,7 +719,7 @@
         </nav>
 
         <div class="header-actions">
-            <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">Download</a>
+            <span class="btn-disabled" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
             <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
                 <span></span><span></span><span></span>
             </button>
@@ -713,10 +743,10 @@
         <p>Stop wasting hours manually copying directory structures or dealing with unreadable lists. TreeXL maps your files into a true visual Excel hierarchy, finds duplicates, and audits paths in seconds.</p>
 
         <div class="hero-cta">
-            <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" target="_blank">📥 Download Free from Microsoft Store</a>
+            <span class="btn-disabled" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon on Microsoft Store</span>
             <a href="#pricing" class="btn-secondary">View PRO Edition</a>
         </div>
-        <div class="store-guarantee">Free forever for standard checks • No credit card required</div>
+        <div class="store-guarantee">Free forever for standard checks • No credit card required • Launching soon</div>
 
         <!-- Carosello -->
         <div class="carousel-container">
@@ -851,7 +881,7 @@
                         <li class="limited"><span class="feat-no">✕</span> Duplicate check limited to <strong>2 groups</strong></li>
                     </ul>
                 </div>
-                <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn-secondary" style="text-align: center; display: block;" target="_blank">Download Free</a>
+                <span class="btn-disabled" style="text-align: center; display: block;" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
             </div>
 
             <!-- PRO Version -->
@@ -868,7 +898,7 @@
                         <li><span class="feat-yes">✓</span> Direct priority updates via Microsoft Store</li>
                     </ul>
                 </div>
-                <a href="https://apps.microsoft.com/store/detail/tuo-store-id" class="btn" style="text-align: center; display: block;" target="_blank">Get PRO Edition</a>
+                <span class="btn-disabled" style="text-align: center; display: block;" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
             </div>
         </div>
     </section>
