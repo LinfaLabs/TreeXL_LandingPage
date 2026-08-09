@@ -78,14 +78,14 @@
               "name": "Free Edition",
               "price": "0",
               "priceCurrency": "EUR",
-              "url": "https://apps.microsoft.com/store/detail/tuo-store-id"
+              "url": "https://apps.microsoft.com/detail/9N3BN8K48QTP"
             },
             {
               "@type": "Offer",
               "name": "PRO Edition",
               "price": "12.99",
               "priceCurrency": "EUR",
-              "url": "https://apps.microsoft.com/store/detail/tuo-store-id"
+              "url": "https://apps.microsoft.com/detail/9N3BN8K48QTP"
             }
           ]
         }
@@ -210,36 +210,6 @@
                 background: var(--surface);
                 border-color: var(--muted);
             }
-
-        /* --- Coming soon (Store non ancora pubblicato) --- */
-        .btn-disabled {
-            background: var(--surface);
-            color: var(--muted);
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            border: 1px dashed var(--border);
-            display: inline-block;
-            cursor: not-allowed;
-            opacity: .85;
-            pointer-events: none;
-        }
-
-        .coming-soon-tag {
-            display: inline-block;
-            background: rgba(148, 163, 184, .15);
-            color: var(--muted);
-            border: 1px solid var(--border);
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .03em;
-            text-transform: uppercase;
-            padding: 3px 9px;
-            border-radius: 12px;
-            margin-left: 8px;
-            vertical-align: middle;
-        }
 
         /* --- Hamburger menu (mobile) --- */
         .hamburger {
@@ -655,6 +625,14 @@
             }
         }
 
+        /* Microsoft Store badge */
+        .store-badge { display:inline-block; line-height:0; transition:transform .2s ease, opacity .2s ease; }
+        .store-badge img { display:block; width:200px; height:auto; }
+        .store-badge:hover { transform:translateY(-2px); opacity:.92; }
+        .hero-store-badge { margin-top:4px; }
+        .pricing-store-badge { margin-top:16px; text-align:center; }
+        @media (max-width:480px) { .store-badge img { width:180px; } }
+
         /* Pricing Section */
         .pricing-grid {
             display: grid;
@@ -719,7 +697,7 @@
         </nav>
 
         <div class="header-actions">
-            <span class="btn-disabled" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP" class="btn" target="_blank">Download</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
                 <span></span><span></span><span></span>
             </button>
@@ -743,10 +721,12 @@
         <p>Stop wasting hours manually copying directory structures or dealing with unreadable lists. TreeXL maps your files into a true visual Excel hierarchy, finds duplicates, and audits paths in seconds.</p>
 
         <div class="hero-cta">
-            <span class="btn-disabled" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon on Microsoft Store</span>
+            <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge hero-store-badge" target="_self" aria-label="Download TreeXL from Microsoft Store">
+                <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Download TreeXL from the Microsoft Store">
+            </a>
             <a href="#pricing" class="btn-secondary">View PRO Edition</a>
         </div>
-        <div class="store-guarantee">Free forever for standard checks • No credit card required • Launching soon</div>
+        <div class="store-guarantee">Free forever for standard checks • No credit card required</div>
 
         <!-- Carosello -->
         <div class="carousel-container">
@@ -881,7 +861,11 @@
                         <li class="limited"><span class="feat-no">✕</span> Duplicate check limited to <strong>2 groups</strong></li>
                     </ul>
                 </div>
-                <span class="btn-disabled" style="text-align: center; display: block;" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
+                <div class="pricing-store-badge">
+                    <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge" target="_self" aria-label="Download TreeXL Free from Microsoft Store">
+                        <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Download TreeXL Free from the Microsoft Store">
+                    </a>
+                </div>
             </div>
 
             <!-- PRO Version -->
@@ -898,7 +882,7 @@
                         <li><span class="feat-yes">✓</span> Direct priority updates via Microsoft Store</li>
                     </ul>
                 </div>
-                <span class="btn-disabled" style="text-align: center; display: block;" title="Prossimamente disponibile sul Microsoft Store" aria-disabled="true">🚀 Coming Soon</span>
+                <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP" class="btn" style="text-align: center; display: block;" target="_blank">Get PRO Edition</a>
             </div>
         </div>
     </section>
