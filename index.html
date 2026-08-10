@@ -25,22 +25,23 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TreeXL - Export Folder Structures to Excel & Smart Audit | Linfa Labs</title>
-    <meta name="description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space. Developed by Linfa Labs.">
+    <link rel="canonical" href="https://www.linfalabs.com/">
+    <title>Export Folder Structure to Excel on Windows | TreeXL</title>
+    <meta name="description" content="Export any Windows folder structure to a professional Excel (.xlsx) report in seconds. No PowerShell or scripts. Includes folder hierarchy, duplicates, long-path warnings and audit checks.">
 
   <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TreeXL by Linfa Labs">
-    <meta property="og:url" content="https://www.yourdomain.com/">
+    <meta property="og:url" content="https://www.linfalabs.com/">
     <meta property="og:title" content="TreeXL - Export Folder Structures to Excel & Smart Audit">
     <meta property="og:description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.">
     <!-- Immagine principale -->
-    <meta property="og:image" content="https://www.yourdomain.com/images/og-image.png">
+    <meta property="og:image" content="https://www.linfalabs.com/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="TreeXL - Turn Messy Folders Into Perfect Excel Reports">
     <!-- Immagine di riserva quadrata -->
-    <meta property="og:image" content="https://www.yourdomain.com/images/og-image-square.png">
+    <meta property="og:image" content="https://www.linfalabs.com/images/og-image-square.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
     <meta property="og:image:alt" content="TreeXL logo">
@@ -49,7 +50,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TreeXL - Export Folder Structures to Excel & Smart Audit">
     <meta name="twitter:description" content="Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.">
-    <meta name="twitter:image" content="https://www.yourdomain.com/images/og-image.png">
+    <meta name="twitter:image" content="https://www.linfalabs.com/images/og-image.png">
     <meta name="twitter:image:alt" content="TreeXL - Turn Messy Folders Into Perfect Excel Reports">
 
     <!-- Google Fonts -->
@@ -67,7 +68,7 @@
           "applicationCategory": "UtilitiesApplication",
           "description": "Turn complex Windows folders into clean Excel (.xlsx) hierarchies instantly. Find duplicates, check long paths, and save storage space.",
           "url": "https://www.linfalabs.com/",
-          "image": "https://www.yourdomain.com/images/TreeXL_logo.png",
+          "image": "https://www.linfalabs.com/images/TreeXL_logo.png",
           "author": {
             "@type": "Organization",
             "name": "Linfa Labs"
@@ -78,17 +79,58 @@
               "name": "Free Edition",
               "price": "0",
               "priceCurrency": "EUR",
-              "url": "https://apps.microsoft.com/detail/9N3BN8K48QTP"
+              "url": "https://apps.microsoft.com/detail/9n3bn8k48qtp"
             },
             {
               "@type": "Offer",
               "name": "PRO Edition",
               "price": "12.99",
               "priceCurrency": "EUR",
-              "url": "https://apps.microsoft.com/detail/9N3BN8K48QTP"
+              "url": "https://apps.microsoft.com/detail/9n3bn8k48qtp"
             }
           ]
+
         }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I export a Windows folder structure to Excel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TreeXL scans a Windows folder and exports its files and subfolders into a formatted Excel (.xlsx) report, preserving the folder hierarchy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need PowerShell to export a folder tree to Excel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. TreeXL provides a graphical Windows workflow from File Explorer, so you can generate an Excel folder report without writing or maintaining a PowerShell script."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can TreeXL find duplicate files and long paths?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. TreeXL can identify duplicate files and report inaccessible items and excessively long paths as part of its audit features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does TreeXL process my files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TreeXL processes folder and file data locally on your Windows PC. Scanned file names, paths and contents are not uploaded to Linfa Labs."
+          }
+        }
+      ]
     </script>
 
     <style>
@@ -210,6 +252,105 @@
                 background: var(--surface);
                 border-color: var(--muted);
             }
+
+
+        .comparison-table-wrap {
+            overflow-x: auto;
+            margin-top: 42px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 620px;
+            background: var(--surface);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            color: var(--text);
+            background: #111827;
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            color: var(--muted);
+        }
+
+        .comparison-table td:nth-child(2) {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0 22px;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 20px 0;
+            font-weight: 600;
+            list-style-position: outside;
+        }
+
+        .faq-item p {
+            color: var(--muted);
+            padding: 0 0 20px;
+            margin: 0;
+        }
+
+
+        .store-badge {
+            display: inline-block;
+            line-height: 0;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        .store-badge img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .store-badge:hover {
+            transform: translateY(-2px);
+            opacity: .92;
+        }
+
+        .hero-store-badge {
+            display: inline-block;
+        }
+
+        .pricing-store-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .store-badge img {
+                width: 180px;
+            }
+        }
 
         /* --- Hamburger menu (mobile) --- */
         .hamburger {
@@ -625,14 +766,6 @@
             }
         }
 
-        /* Microsoft Store badge */
-        .store-badge { display:inline-block; line-height:0; transition:transform .2s ease, opacity .2s ease; }
-        .store-badge img { display:block; width:200px; height:auto; }
-        .store-badge:hover { transform:translateY(-2px); opacity:.92; }
-        .hero-store-badge { margin-top:4px; }
-        .pricing-store-badge { margin-top:16px; text-align:center; }
-        @media (max-width:480px) { .store-badge img { width:180px; } }
-
         /* Pricing Section */
         .pricing-grid {
             display: grid;
@@ -691,13 +824,14 @@
         <nav class="nav-links">
             <a href="#features">Features</a>
             <a href="#usecases">Who Is It For</a>
+            <a href="#comparison">Why TreeXL</a>
             <a href="#workflow">How it works</a>
             <a href="#pricing">Pricing</a>
             <a href="privacy.html">Privacy</a>
         </nav>
 
         <div class="header-actions">
-            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP" class="btn" target="_blank">Download</a>
+            <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank">Download</a>
             <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
                 <span></span><span></span><span></span>
             </button>
@@ -706,6 +840,7 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="#features">Features</a>
             <a href="#usecases">Who Is It For</a>
+            <a href="#comparison">Why TreeXL</a>
             <a href="#workflow">How it works</a>
             <a href="#pricing">Pricing</a>
             <a href="privacy.html">Privacy Policy</a>
@@ -717,16 +852,16 @@
         <div class="badge">
             <span>🛡️</span> Verified Microsoft Store App • Windows 10 & 11
         </div>
-        <h1>Turn Messy Folders Into <span>Perfect Excel Reports</span> Instantly</h1>
-        <p>Stop wasting hours manually copying directory structures or dealing with unreadable lists. TreeXL maps your files into a true visual Excel hierarchy, finds duplicates, and audits paths in seconds.</p>
+        <h1>Export Any Windows Folder Structure to <span>Excel</span></h1>
+        <p>Generate a professional <strong>.xlsx</strong> folder tree in seconds — directly from Windows File Explorer, without PowerShell, terminal commands or scripts. TreeXL also checks duplicates, long paths and inaccessible files.</p>
 
         <div class="hero-cta">
-            <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge hero-store-badge" target="_self" aria-label="Download TreeXL from Microsoft Store">
+            <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge hero-store-badge" target="_self" aria-label="Download TreeXL from Microsoft Store" data-track="store_click" data-location="hero">
                 <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Download TreeXL from the Microsoft Store">
             </a>
             <a href="#pricing" class="btn-secondary">View PRO Edition</a>
         </div>
-        <div class="store-guarantee">Free forever for standard checks • No credit card required</div>
+        <div class="store-guarantee">Free to download • Microsoft Store installation • No credit card required</div>
 
         <!-- Carosello -->
         <div class="carousel-container">
@@ -817,6 +952,46 @@
         </div>
     </section>
 
+
+    <section id="comparison" class="features container">
+        <h2 class="section-title">Folder Structure to Excel — Without the Scripting Work</h2>
+        <p class="section-subtitle">PowerShell and command-line tools are powerful. TreeXL is for when you want a polished Excel report without building or maintaining a script.</p>
+
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">🖱️</div>
+                <h3>Right-click from File Explorer</h3>
+                <p>Select a folder, right-click it and open TreeXL. No terminal window and no command to remember.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Native .xlsx output</h3>
+                <p>Get a structured Excel report instead of a raw text or CSV listing that still needs formatting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔎</div>
+                <h3>Built-in audit checks</h3>
+                <p>Go beyond a directory listing with duplicate-file checks, long-path warnings and inaccessible-item reporting.</p>
+            </div>
+        </div>
+
+        <div class="comparison-table-wrap">
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Capability</th><th>TreeXL</th><th>PowerShell / terminal</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Requires scripting</td><td>✓ No</td><td>Usually</td></tr>
+                    <tr><td>Formatted Excel report</td><td>✓</td><td>Requires setup</td></tr>
+                    <tr><td>Folder hierarchy</td><td>✓</td><td>Requires formatting</td></tr>
+                    <tr><td>File Explorer workflow</td><td>✓ Right-click</td><td>—</td></tr>
+                    <tr><td>Duplicate detection</td><td>✓ Built in</td><td>Custom script</td></tr>
+                    <tr><td>Long-path / inaccessible checks</td><td>✓ Built in</td><td>Custom script</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <section id="workflow" class="workflow container">
         <h2 class="section-title">How It Works</h2>
         <p class="section-subtitle">Analyze any folder in three simple steps.</p>
@@ -842,6 +1017,31 @@
         </div>
     </section>
 
+
+    <section id="faq" class="features container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Quick answers about exporting Windows folder structures to Excel with TreeXL.</p>
+
+        <div class="faq-grid">
+            <details class="faq-item">
+                <summary>How can I export a Windows folder structure to Excel?</summary>
+                <p>TreeXL scans the selected folder and exports its files and subfolders into a formatted .xlsx report while preserving the hierarchy.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Do I need PowerShell or a script?</summary>
+                <p>No. TreeXL is designed for a graphical workflow from File Explorer. Right-click a folder, analyze it and export the report.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can TreeXL find duplicate files?</summary>
+                <p>Yes. The audit tools can identify duplicate files and help you review potential redundant data.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does TreeXL upload my files?</summary>
+                <p>No. Folder scanning and report generation happen locally on your Windows PC. Your scanned file and folder data are not uploaded to Linfa Labs.</p>
+            </details>
+        </div>
+    </section>
+
     <!-- Pricing / Edition Section -->
     <section id="pricing" class="features container">
         <h2 class="section-title">Transparent Freemium Pricing</h2>
@@ -862,7 +1062,7 @@
                     </ul>
                 </div>
                 <div class="pricing-store-badge">
-                    <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge" target="_self" aria-label="Download TreeXL Free from Microsoft Store">
+                    <a href="https://get.microsoft.com/installer/download/9n3bn8k48qtp?referrer=appbadge&cid=download_landing_page" class="store-badge" target="_self" aria-label="Download TreeXL Free from Microsoft Store" data-track="store_click" data-location="pricing_free">
                         <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Download TreeXL Free from the Microsoft Store">
                     </a>
                 </div>
@@ -882,7 +1082,7 @@
                         <li><span class="feat-yes">✓</span> Direct priority updates via Microsoft Store</li>
                     </ul>
                 </div>
-                <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP" class="btn" style="text-align: center; display: block;" target="_blank">Get PRO Edition</a>
+                <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" style="text-align: center; display: block;" target="_blank" data-track="store_click" data-location="pricing_pro">Get PRO Edition</a>
             </div>
         </div>
     </section>
@@ -891,6 +1091,7 @@
         <p>© 2026 <span>Linfa Labs</span>. All rights reserved.</p>
         <div class="footer-links">
             <a href="privacy.html">Privacy Policy</a>
+            <a href="#" class="cky-banner-element">Cookie Settings</a>
             <a href="mailto:linfo@linfalabs.com">Contact</a>
         </div>
     </footer>
@@ -898,6 +1099,23 @@
     <!-- Script JavaScript per il carosello e il menu mobile -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+
+        // --- Lightweight conversion tracking ---
+        document.querySelectorAll('[data-track="store_click"]').forEach(link => {
+            link.addEventListener('click', () => {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', 'store_click', {
+                        location: link.dataset.location || 'unknown'
+                    });
+                }
+            });
+        });
+
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'pricing_view');
+        }
+
 
         // --- Menu hamburger mobile ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
