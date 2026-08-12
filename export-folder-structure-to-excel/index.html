@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Start cookieyes banner -->
+    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/625f694b69c32c81e2ec65d568070133/script.js"></script>
+    <!-- End cookieyes banner -->
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xvh42q5y6k");
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLR3108Y1K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GLR3108Y1K');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Folder Structure to Excel on Windows | TreeXL</title>
+    <meta name="description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts. Developed by Linfa Labs.">
+    <link rel="canonical" href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TreeXL by Linfa Labs">
+    <meta property="og:url" content="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+    <meta property="og:title" content="Export Folder Structure to Excel on Windows | TreeXL">
+    <meta property="og:description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts.">
+    <meta property="og:image" content="https://treexl.linfalabs.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TreeXL - Turn Messy Folders Into Perfect Excel Reports">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Export Folder Structure to Excel on Windows | TreeXL">
+    <meta name="twitter:description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts.">
+    <meta name="twitter:image" content="https://treexl.linfalabs.com/images/og-image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I export a folder tree to Excel?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "TreeXL scans the selected Windows folder and exports its files and subfolders into a formatted .xlsx report."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need PowerShell?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. TreeXL provides a graphical File Explorer workflow."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can TreeXL check duplicates and long paths?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. TreeXL includes audit features for duplicate files, long paths and inaccessible items."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --danger: #f87171;
+            --surface-color: var(--surface);
+            --surface-border: var(--border);
+            --text-muted: var(--muted);
+            --text-main: var(--text);
+            --bg-color: var(--bg);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+            }
+
+            .logo span {
+                color: var(--accent);
+            }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .nav-links a:hover {
+                    color: white;
+                }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: .2s;
+            display: inline-block;
+        }
+
+            .btn:hover {
+                background: var(--accent-hover);
+            }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            transition: .2s;
+            display: inline-block;
+        }
+
+            .btn-secondary:hover {
+                background: var(--surface);
+                border-color: var(--muted);
+            }
+
+        /* --- Hamburger menu (mobile) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+            .hamburger span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: var(--text);
+                margin: 0 auto;
+                transition: transform .2s ease, opacity .2s ease;
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger[aria-expanded="true"] span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            z-index: 50;
+        }
+
+            .mobile-nav.open {
+                display: flex;
+            }
+
+            .mobile-nav a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+                .mobile-nav a:last-child {
+                    border-bottom: none;
+                }
+
+                .mobile-nav a:hover {
+                    color: white;
+                }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 90px 0 60px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(16,185,129,.15);
+            color: var(--accent);
+            border: 1px solid rgba(16,185,129,.2);
+            margin-bottom: 24px;
+            font-size: .85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.75rem);
+            line-height: 1.1;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .hero p.lead {
+            max-width: 800px;
+            color: var(--muted);
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+        }
+
+        .hero-cta {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+            .section-title.centered {
+                text-align: center;
+            }
+
+        .section-subtitle {
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+            .section-subtitle.centered {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .section p.body-text {
+            color: var(--muted);
+            max-width: 800px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 10px;
+            padding: 32px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+            }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.925rem;
+            line-height: 1.5;
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0 20px;
+            margin: 12px 0;
+        }
+
+            .faq summary {
+                cursor: pointer;
+                padding: 18px 0;
+                font-weight: 600;
+                color: var(--text);
+                list-style: none;
+            }
+
+                .faq summary::-webkit-details-marker {
+                    display: none;
+                }
+
+                .faq summary::after {
+                    content: "+";
+                    float: right;
+                    color: var(--accent);
+                    font-weight: 700;
+                }
+
+            .faq[open] summary::after {
+                content: "−";
+            }
+
+            .faq p {
+                color: var(--muted);
+                padding-bottom: 18px;
+            }
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 30px 0;
+            color: var(--muted);
+        }
+
+            footer span {
+                color: var(--accent);
+                font-weight: 700;
+            }
+
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+            .footer-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.85rem;
+            }
+
+                .footer-links a:hover {
+                    color: white;
+                }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <a href="https://treexl.linfalabs.com/" class="logo">
+            <img src="../images/TreeXL_logo.png" alt="TreeXL Logo">
+            <span>TreeXL</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="https://treexl.linfalabs.com/">Home</a>
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">Folder → Excel</a>
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">PowerShell</a>
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">Folder Tree</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">Download</a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="https://treexl.linfalabs.com/">Home</a>
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">Folder → Excel</a>
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">PowerShell</a>
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">Folder Tree</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero container">
+        <div class="badge">TreeXL for Windows</div>
+        <h1>Export Any Windows Folder Structure to Excel</h1>
+        <p class="lead">Turn a Windows folder tree into a professional .xlsx report in seconds. TreeXL preserves the hierarchy and adds useful audit information, directly from File Explorer.</p>
+        <div class="hero-cta">
+            <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">📥 Download TreeXL Free</a>
+        </div>
+    </section>
+
+    <!-- Why export -->
+    <section class="section container">
+        <h2 class="section-title">Why export a folder structure to Excel?</h2>
+        <p class="body-text">Excel is useful when a folder structure needs to be reviewed, documented, shared or handed over. A formatted report is easier to filter, sort and annotate than a raw directory listing.</p>
+    </section>
+
+    <!-- What TreeXL does -->
+    <section class="section container">
+        <h2 class="section-title">What TreeXL does</h2>
+        <p class="section-subtitle">Designed to integrate seamlessly into your Windows workflow.</p>
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">🖱️</div>
+                <h3>Right-click workflow</h3>
+                <p>Select a folder in File Explorer and launch TreeXL without opening a terminal.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Formatted .xlsx</h3>
+                <p>Generate a structured Excel report instead of a raw text listing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Audit checks</h3>
+                <p>Review duplicate files, long paths and inaccessible items.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PowerShell vs TreeXL -->
+    <section class="section container">
+        <h2 class="section-title">PowerShell vs TreeXL</h2>
+        <p class="body-text">PowerShell is excellent for custom automation. TreeXL is designed for the specific workflow of turning a Windows folder structure into a polished Excel report without creating or maintaining a script.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <details class="faq">
+            <summary>How do I export a folder tree to Excel?</summary>
+            <p>TreeXL scans the selected Windows folder and exports its files and subfolders into a formatted .xlsx report.</p>
+        </details>
+        <details class="faq">
+            <summary>Do I need PowerShell?</summary>
+            <p>No. TreeXL provides a graphical File Explorer workflow.</p>
+        </details>
+        <details class="faq">
+            <summary>Can TreeXL check duplicates and long paths?</summary>
+            <p>Yes. TreeXL includes audit features for duplicate files, long paths and inaccessible items.</p>
+        </details>
+    </section>
+
+    <!-- Try TreeXL -->
+    <section class="section container">
+        <h2 class="section-title">Try TreeXL</h2>
+        <p class="body-text" style="margin-bottom: 24px;">Export your first Windows folder structure to a professional Excel report.</p>
+        <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">Download from Microsoft Store →</a>
+    </section>
+
+    <footer>
+        <p>© 2026 <span>Linfa Labs</span>. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://treexl.linfalabs.com/privacy.html">Privacy Policy</a>
+            <a href="mailto:linfo@linfalabs.com">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        const closeMobileNav = () => {
+        mobileNav.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        hamburgerBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileNav);
+        });
+
+        document.addEventListener('click', (e) => {
+        if (!mobileNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        closeMobileNav();
+        }
+        });
+        });
+    </script>
+</body>
+</html>
