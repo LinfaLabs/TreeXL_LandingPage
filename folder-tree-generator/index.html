@@ -1,0 +1,1468 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Folder Tree Generator for Windows: Create a Folder Tree in Excel | TreeXL</title>
+
+    <meta name="description"
+          content="Generate a folder tree on Windows and export your files and folders to a professional Excel report. Compare the tree command, PowerShell and TreeXL.">
+
+    <link rel="canonical"
+          href="https://treexl.linfalabs.com/folder-tree-generator/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+          content="Folder Tree Generator for Windows: Create a Folder Tree in Excel | TreeXL">
+    <meta property="og:description"
+          content="Generate a Windows folder tree and export it to a professional Excel report with TreeXL. No command line or scripting required.">
+    <meta property="og:url"
+          content="https://treexl.linfalabs.com/folder-tree-generator/">
+
+    <meta name="twitter:card" content="summary">
+
+
+    <style>
+
+        :root {
+            --bg: #0b0f14;
+            --surface: #111821;
+            --text: #f3f5f7;
+            --muted: #aab4c0;
+            --border: #273241;
+            --accent: #70d6a3;
+            --accent-hover: #5cc68f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #08100c;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: inline-block;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            color: #08100c;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            margin: 0 auto;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            z-index: 50;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            padding: 70px 0 90px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            max-width: 950px;
+            margin: 12px 0 20px;
+        }
+
+        .lead {
+            font-size: 20px;
+            color: var(--muted);
+            max-width: 850px;
+        }
+
+        .cta {
+            display: inline-block;
+            margin: 24px 0 35px;
+            padding: 14px 22px;
+            border-radius: 9px;
+            background: var(--accent);
+            color: #08100c;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .cta:hover {
+            background: var(--accent-hover);
+            color: #08100c;
+        }
+
+        .section {
+            margin: 58px 0;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            font-size: 21px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(240px, 1fr)
+            );
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .code {
+            overflow: auto;
+            background: #070a0e;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            font-family: Consolas, "Courier New", monospace;
+            color: #dce5ee;
+            white-space: pre;
+        }
+
+        .comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison th {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison tr:last-child td {
+            border-bottom: none;
+        }
+
+        .note {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 18px 22px;
+            margin: 25px 0;
+        }
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0 20px;
+            margin: 12px 0;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            padding: 18px 0;
+            font-weight: 700;
+        }
+
+        .faq p {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .header-actions .btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .comparison {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            header.container {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+            }
+
+            main {
+                padding-top: 48px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .lead {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+
+    <!-- WebPage structured data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Folder Tree Generator for Windows: Create a Folder Tree in Excel | TreeXL",
+        "url": "https://treexl.linfalabs.com/folder-tree-generator/",
+        "description": "Generate a Windows folder tree and export it to a professional Excel report with TreeXL."
+    }
+    </script>
+
+
+    <!-- FAQ structured data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+
+            {
+                "@type": "Question",
+                "name": "What is a folder tree generator?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A folder tree generator creates a structured representation of the folders and files contained inside a directory. It can be used for documentation, inventory, migration and file management."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "How can I create a folder tree on Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Windows provides command-line tools such as the tree command and PowerShell. TreeXL provides a graphical alternative that can export the scanned structure to a formatted Excel report."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can I export a folder tree to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TreeXL scans a Windows folder and exports its files and subfolders to a formatted .xlsx report."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can TreeXL handle large folder structures?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TreeXL is designed to scan Windows folder structures and report relevant issues such as long paths and inaccessible items."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Do I need PowerShell to generate a folder tree?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. TreeXL provides a graphical workflow from Windows File Explorer, so you do not need to write a PowerShell script for a folder-to-Excel report."
+                }
+            }
+
+        ]
+    }
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="container">
+
+        <a href="https://treexl.linfalabs.com/" class="logo">
+
+            <img
+                src="../images/TreeXL_logo.png"
+                alt="TreeXL Logo"
+            >
+
+            <span>TreeXL</span>
+
+        </a>
+
+
+        <nav class="nav-links" aria-label="Main navigation">
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="btn"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
+
+            <button
+                class="hamburger"
+                id="hamburgerBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="container">
+
+
+        <div class="eyebrow">
+            TreeXL for Windows
+        </div>
+
+
+        <h1>
+            Folder Tree Generator for Windows: Create a Folder Tree in Excel
+        </h1>
+
+
+        <p class="lead">
+            Generate a clear folder tree from any Windows directory and export
+            it to a professional Excel report. TreeXL makes folder structure
+            documentation easier without requiring command-line tools or
+            custom scripts.
+        </p>
+
+
+        <a
+            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+            class="cta"
+            target="_blank"
+            rel="noopener"
+        >
+            Download TreeXL Free →
+        </a>
+
+
+        <!-- =========================
+             WHAT IS A FOLDER TREE
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Is a Folder Tree Generator?
+            </h2>
+
+            <p>
+                A folder tree generator creates a structured representation
+                of the files and folders inside a directory. Instead of
+                manually opening every folder in Windows File Explorer,
+                a folder tree gives you a single overview of the structure.
+            </p>
+
+            <p>
+                Folder trees are useful when you need to understand,
+                document, review or share the organization of a large
+                collection of files.
+            </p>
+
+            <div class="code">Project
+├── Documents
+│   ├── Contracts
+│   └── Reports
+├── Images
+│   ├── Logo
+│   └── Screenshots
+└── Software
+    ├── Source
+    └── Builds</div>
+
+            <p>
+                The same concept can be represented in a structured Excel
+                report, making it easier to filter, sort, review and share
+                the information with other people.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Why Create a Folder Tree?
+            </h2>
+
+            <p>
+                A folder tree can be useful whenever the structure of a
+                directory matters as much as the individual files inside it.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Documentation
+                    </h3>
+
+                    <p>
+                        Create a snapshot of a project folder, shared drive
+                        or file server for technical documentation.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Migration Projects
+                    </h3>
+
+                    <p>
+                        Review the structure of source data before moving
+                        files to another server, storage system or platform.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        IT Audits
+                    </h3>
+
+                    <p>
+                        Produce a readable inventory that can be reviewed
+                        by IT teams, consultants or project stakeholders.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Project Handover
+                    </h3>
+
+                    <p>
+                        Give another person a clear overview of how project
+                        files are organized.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WINDOWS METHODS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                How to Generate a Folder Tree in Windows
+            </h2>
+
+            <p>
+                Windows users have several ways to inspect a folder structure.
+                The best approach depends on whether you need a quick text
+                representation, a scriptable workflow or a formatted report.
+            </p>
+
+            <h3>
+                1. Use the Windows tree command
+            </h3>
+
+            <p>
+                Windows includes the <code>tree</code> command, which can
+                display a directory structure directly from Command Prompt.
+            </p>
+
+            <div class="code">tree "C:\YourFolder"</div>
+
+            <p>
+                You can also redirect the output to a text file:
+            </p>
+
+            <div class="code">tree "C:\YourFolder" /F &gt; folder-tree.txt</div>
+
+            <p>
+                This is convenient when you simply need a textual view of a
+                directory. However, the resulting text file is not a
+                formatted Excel report and provides limited options for
+                further analysis.
+            </p>
+
+
+            <h3>
+                2. Use PowerShell
+            </h3>
+
+            <p>
+                PowerShell can recursively enumerate files and folders and
+                is particularly useful when you need custom automation.
+            </p>
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse</div>
+
+            <p>
+                With additional scripting, PowerShell can transform the
+                results into CSV or other formats. Building a polished
+                hierarchical Excel report, however, can require considerably
+                more scripting.
+            </p>
+
+
+            <h3>
+                3. Use TreeXL
+            </h3>
+
+            <p>
+                TreeXL is designed for the situation where you want the
+                result rather than a script: select a folder from Windows
+                File Explorer, run TreeXL and generate a formatted Excel
+                report containing the folder structure.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             LIMITATIONS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Why a Text Folder Tree Is Not Always Enough
+            </h2>
+
+            <p>
+                A text-based tree is excellent for quickly seeing the
+                hierarchy, but professional file documentation often needs
+                more information than a visual tree can provide.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        File Information
+                    </h3>
+
+                    <p>
+                        An Excel report can organize file and folder data
+                        into columns that are easier to filter and review.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Large Structures
+                    </h3>
+
+                    <p>
+                        Very large directory structures can be difficult to
+                        inspect in a single text document.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Review and Sharing
+                    </h3>
+
+                    <p>
+                        Excel is familiar to most business and IT users and
+                        is easier to annotate and share than command-line
+                        output.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Problem Detection
+                    </h3>
+
+                    <p>
+                        TreeXL can highlight duplicate files, long paths and
+                        inaccessible items during the scan.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TREE XL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Generate a Folder Tree with TreeXL
+            </h2>
+
+            <p>
+                TreeXL is built around a simple Windows workflow. Instead of
+                opening Command Prompt, writing a PowerShell script or
+                manually assembling an Excel workbook, you can start from
+                the folder itself.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Step 1 — Select a Folder
+                    </h3>
+
+                    <p>
+                        Open Windows File Explorer and select the folder you
+                        want to document.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Step 2 — Run TreeXL
+                    </h3>
+
+                    <p>
+                        Launch TreeXL directly from the Windows File Explorer
+                        context menu.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Step 3 — Generate the Report
+                    </h3>
+
+                    <p>
+                        TreeXL scans the directory and creates a structured
+                        Excel report.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXCEL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export the Folder Tree to Excel
+            </h2>
+
+            <p>
+                One of the main advantages of generating a folder tree in
+                Excel is that the resulting information can be used as a
+                working document rather than simply viewed as text.
+            </p>
+
+            <p>
+                You can use the report for documentation, review, filtering,
+                sorting and sharing with colleagues or clients.
+            </p>
+
+            <div class="note">
+                <strong>Tip:</strong>
+                Excel is particularly useful when a folder inventory needs
+                to become part of a larger documentation or migration
+                workflow.
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROBLEM CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Folder Trees, Long Paths and Inaccessible Folders
+            </h2>
+
+            <p>
+                Real-world Windows directories are not always clean. A scan
+                can encounter folders that cannot be accessed, very long
+                paths or files that appear more than once.
+            </p>
+
+            <p>
+                These cases are important when a folder tree is being used
+                for an inventory or migration project. A report that simply
+                lists successful results may not make it obvious that part
+                of the directory could not be inspected.
+            </p>
+
+            <p>
+                TreeXL is designed to surface relevant issues such as
+                <strong>long paths</strong>, <strong>inaccessible items</strong>
+                and <strong>duplicate files</strong> so they can be reviewed
+                as part of the resulting report.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             USE CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Common Folder Tree Use Cases
+            </h2>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        File Server Documentation
+                    </h3>
+
+                    <p>
+                        Document the structure of shared folders and file
+                        servers before an infrastructure change.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Data Migration
+                    </h3>
+
+                    <p>
+                        Create an inventory before moving data between
+                        servers, drives or storage systems.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Software Projects
+                    </h3>
+
+                    <p>
+                        Document source code, build output, assets,
+                        documentation and project directories.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Client Deliverables
+                    </h3>
+
+                    <p>
+                        Provide clients with a structured overview of
+                        delivered files and project folders.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Data Management
+                    </h3>
+
+                    <p>
+                        Review large collections of documents and identify
+                        areas that may require cleanup.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        IT Troubleshooting
+                    </h3>
+
+                    <p>
+                        Quickly inspect the structure of a directory when
+                        investigating file organization or access issues.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMPARISON
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Folder Tree Command vs PowerShell vs TreeXL
+            </h2>
+
+            <p>
+                Each approach has its place. The right choice depends on
+                whether you need command-line output, automation or a
+                ready-to-use report.
+            </p>
+
+
+            <table class="comparison">
+
+                <thead>
+
+                    <tr>
+                        <th>Feature</th>
+                        <th>tree command</th>
+                        <th>PowerShell</th>
+                        <th>TreeXL</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>Graphical workflow</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Requires scripting</td>
+                        <td>No</td>
+                        <td>Usually</td>
+                        <td>No</td>
+                    </tr>
+
+                    <tr>
+                        <td>Folder hierarchy</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Excel report</td>
+                        <td>No</td>
+                        <td>Requires additional work</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duplicate detection</td>
+                        <td>No</td>
+                        <td>Requires scripting</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Long-path warnings</td>
+                        <td>Limited</td>
+                        <td>Requires scripting</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inaccessible item reporting</td>
+                        <td>Limited</td>
+                        <td>Requires handling</td>
+                        <td>Yes</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             WHO
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Who Can Benefit from a Folder Tree Generator?
+            </h2>
+
+            <p>
+                A folder tree generator can be useful to anyone who needs
+                to understand or document a significant Windows file
+                structure.
+            </p>
+
+            <p>
+                Typical users include <strong>system administrators,
+                IT professionals, developers, data managers, consultants,
+                freelancers and project teams</strong>.
+            </p>
+
+            <p>
+                It can be particularly useful when the person reviewing the
+                directory is not the same person who originally created it.
+                A structured report provides a common reference point.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <details class="faq">
+
+                <summary>
+                    What is a folder tree generator?
+                </summary>
+
+                <p>
+                    A folder tree generator creates a structured
+                    representation of the folders and files contained
+                    inside a directory. It can be used for documentation,
+                    inventory, migration and file management.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How can I create a folder tree on Windows?
+                </summary>
+
+                <p>
+                    Windows provides command-line tools such as the
+                    <code>tree</code> command and PowerShell. TreeXL provides
+                    a graphical alternative that can export the scanned
+                    structure to a formatted Excel report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can I export a folder tree to Excel?
+                </summary>
+
+                <p>
+                    Yes. TreeXL scans a Windows folder and exports its
+                    files and subfolders to a formatted .xlsx report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can TreeXL handle large folder structures?
+                </summary>
+
+                <p>
+                    TreeXL is designed to scan Windows folder structures and
+                    report relevant issues such as long paths and
+                    inaccessible items.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Do I need PowerShell to generate a folder tree?
+                </summary>
+
+                <p>
+                    No. TreeXL provides a graphical workflow from Windows
+                    File Explorer, so you do not need to write a PowerShell
+                    script for a folder-to-Excel report.
+                </p>
+
+            </details>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Generate Your First Folder Tree
+            </h2>
+
+            <p>
+                Stop manually documenting complex folder structures.
+                Download TreeXL and turn a Windows directory into a
+                professional Excel report.
+            </p>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="cta"
+                target="_blank"
+                rel="noopener"
+            >
+                Download TreeXL Free →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Linfa Labs ·
+
+            <a href="https://treexl.linfalabs.com/privacy.html">
+                Privacy Policy
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================= -->
+
+    <script>
+
+        (function () {
+
+            const button =
+                document.getElementById("hamburgerBtn");
+
+            const menu =
+                document.getElementById("mobileNav");
+
+
+            if (!button || !menu) {
+                return;
+            }
+
+
+            button.addEventListener("click", function () {
+
+                const open =
+                    menu.classList.toggle("open");
+
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
+
+
+                button.setAttribute(
+                    "aria-label",
+                    open
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+
+            });
+
+
+            menu.querySelectorAll("a").forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    menu.classList.remove("open");
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                });
+
+            });
+
+        })();
+
+    </script>
+
+
+</body>
+</html>
