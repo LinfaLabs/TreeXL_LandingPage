@@ -1,0 +1,1571 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Windows Folder Inventory Tool: Create a File & Folder Inventory in Excel | TreeXL</title>
+
+    <meta name="description"
+          content="Create a Windows file and folder inventory in Excel. Learn how to inventory directories with File Explorer, PowerShell or TreeXL, including duplicates, long paths and inaccessible items.">
+
+    <link rel="canonical"
+          href="https://treexl.linfalabs.com/windows-folder-inventory/">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:title"
+          content="Windows Folder Inventory Tool: Create a File & Folder Inventory in Excel | TreeXL">
+
+    <meta property="og:description"
+          content="Create a Windows file and folder inventory in Excel. Compare manual methods, PowerShell and TreeXL.">
+
+    <meta property="og:url"
+          content="https://treexl.linfalabs.com/windows-folder-inventory/">
+
+    <meta name="twitter:card" content="summary">
+
+
+    <style>
+
+        :root {
+            --bg: #0b0f14;
+            --surface: #111821;
+            --text: #f3f5f7;
+            --muted: #aab4c0;
+            --border: #273241;
+            --accent: #70d6a3;
+            --accent-hover: #5cc68f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #08100c;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: inline-block;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            color: #08100c;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            margin: 0 auto;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px 20px;
+            z-index: 50;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            padding: 70px 0 90px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            max-width: 950px;
+            margin: 12px 0 20px;
+        }
+
+        .lead {
+            font-size: 20px;
+            color: var(--muted);
+            max-width: 850px;
+        }
+
+        .cta {
+            display: inline-block;
+            margin: 24px 0 35px;
+            padding: 14px 22px;
+            border-radius: 9px;
+            background: var(--accent);
+            color: #08100c;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .cta:hover {
+            background: var(--accent-hover);
+            color: #08100c;
+        }
+
+        .section {
+            margin: 58px 0;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            font-size: 21px;
+            margin-top: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(240px, 1fr)
+            );
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .code {
+            overflow: auto;
+            background: #070a0e;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            font-family: Consolas, "Courier New", monospace;
+            color: #dce5ee;
+            white-space: pre;
+        }
+
+        .note {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 18px 22px;
+            margin: 25px 0;
+        }
+
+        .checklist {
+            padding-left: 22px;
+        }
+
+        .checklist li {
+            margin-bottom: 10px;
+        }
+
+        .comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison th {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0 20px;
+            margin: 12px 0;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            padding: 18px 0;
+            font-weight: 700;
+        }
+
+        .faq p {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .header-actions .btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .comparison {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            header.container {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+            }
+
+            main {
+                padding-top: 48px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .lead {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+
+
+    <!-- WebPage structured data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Windows Folder Inventory Tool: Create a File & Folder Inventory in Excel | TreeXL",
+        "url": "https://treexl.linfalabs.com/windows-folder-inventory/",
+        "description": "Create a Windows file and folder inventory in Excel and learn how to inventory directories using File Explorer, PowerShell or TreeXL."
+    }
+    </script>
+
+
+    <!-- FAQ structured data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+
+            {
+                "@type": "Question",
+                "name": "What is a Windows folder inventory?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Windows folder inventory is a structured list of the folders and files contained within a directory or storage location. It can be used for documentation, auditing, migration, cleanup and data management."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "How can I create a file inventory in Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can manually inspect folders in File Explorer, use Command Prompt or PowerShell to enumerate files, or use a dedicated tool such as TreeXL to generate a structured Excel report."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can PowerShell create a file inventory?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. PowerShell can recursively enumerate files and folders and export the resulting data. Additional scripting may be required to create a polished Excel report."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can I export a Windows folder inventory to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TreeXL can scan a Windows folder and create a formatted Excel report containing its folder and file structure."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "What should a file inventory contain?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The useful information depends on the purpose of the inventory, but typically includes file and folder names, hierarchy and paths. Additional information can be useful for auditing, migration and cleanup."
+                }
+            }
+
+        ]
+    }
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="container">
+
+        <a href="https://treexl.linfalabs.com/" class="logo">
+
+            <img
+                src="../images/TreeXL_logo.png"
+                alt="TreeXL Logo"
+            >
+
+            <span>TreeXL</span>
+
+        </a>
+
+
+        <nav class="nav-links" aria-label="Main navigation">
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="btn"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
+
+            <button
+                class="hamburger"
+                id="hamburgerBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="container">
+
+
+        <div class="eyebrow">
+            Windows File & Folder Inventory
+        </div>
+
+
+        <h1>
+            Windows Folder Inventory Tool: Create a File and Folder Inventory in Excel
+        </h1>
+
+
+        <p class="lead">
+            Need to understand what is stored inside a Windows folder, file
+            server or shared directory? Create a structured inventory of
+            files and folders and export it to a professional Excel report
+            with TreeXL.
+        </p>
+
+
+        <a
+            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+            class="cta"
+            target="_blank"
+            rel="noopener"
+        >
+            Download TreeXL Free →
+        </a>
+
+
+        <!-- =========================
+             WHAT IS INVENTORY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Is a Windows File and Folder Inventory?
+            </h2>
+
+            <p>
+                A file inventory is a structured overview of the contents
+                of a directory or storage location. Instead of navigating
+                through folders one by one, an inventory gives you a
+                consolidated view of the data.
+            </p>
+
+            <p>
+                A simple folder might look like this:
+            </p>
+
+            <div class="code">Company
+├── Administration
+│   ├── Contracts
+│   └── Invoices
+├── Projects
+│   ├── Project A
+│   ├── Project B
+│   └── Project C
+└── Shared
+    ├── Templates
+    └── Documents</div>
+
+            <p>
+                For a small directory, manually browsing this structure
+                is easy. For a large file server or project archive,
+                however, understanding the complete structure can become
+                considerably more difficult.
+            </p>
+
+            <p>
+                This is where a file and folder inventory becomes useful.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHY INVENTORY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Why Create a Folder Inventory?
+            </h2>
+
+            <p>
+                There are many situations where knowing what exists inside
+                a directory is the first step toward making a decision
+                about the data.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Data Migration
+                    </h3>
+
+                    <p>
+                        Inventory existing files before moving data to a
+                        new server, NAS, cloud platform or storage system.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        File Server Audits
+                    </h3>
+
+                    <p>
+                        Create a snapshot of directory structures for
+                        documentation and infrastructure reviews.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Data Cleanup
+                    </h3>
+
+                    <p>
+                        Use an inventory to understand large or poorly
+                        organized directories before deciding what can
+                        be archived or removed.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Project Documentation
+                    </h3>
+
+                    <p>
+                        Document the files and folders associated with a
+                        software, engineering or business project.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Client Handover
+                    </h3>
+
+                    <p>
+                        Provide a readable overview of the files included
+                        in a project or delivery.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        IT Troubleshooting
+                    </h3>
+
+                    <p>
+                        Quickly inspect a directory when investigating
+                        unexpected file organization or access problems.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MANUAL METHOD
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                How to Create a Windows Folder Inventory
+            </h2>
+
+            <p>
+                The right method depends on the size of the directory and
+                the level of detail you need.
+            </p>
+
+
+            <h3>
+                Method 1: Browse the folder manually
+            </h3>
+
+            <p>
+                For a small folder, Windows File Explorer may be all you
+                need. You can navigate through the folders and inspect
+                their contents directly.
+            </p>
+
+            <p>
+                The problem appears when you need a complete record of
+                hundreds or thousands of files. Manually copying names
+                and paths into a spreadsheet is slow and easy to get wrong.
+            </p>
+
+
+            <h3>
+                Method 2: Use Command Prompt
+            </h3>
+
+            <p>
+                Windows includes commands that can enumerate directory
+                contents.
+            </p>
+
+            <div class="code">tree "C:\YourFolder" /F</div>
+
+            <p>
+                This is useful for creating a quick textual representation
+                of the folder hierarchy. However, the output is primarily
+                intended for viewing rather than analysis in Excel.
+            </p>
+
+
+            <h3>
+                Method 3: Use PowerShell
+            </h3>
+
+            <p>
+                PowerShell provides much more flexibility and is a good
+                option when the inventory needs to be part of an automated
+                workflow.
+            </p>
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse</div>
+
+            <p>
+                The output can be further processed and exported, for
+                example to CSV.
+            </p>
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
+Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
+
+            <p>
+                This approach is powerful, but creating a polished report
+                with additional logic can require a custom script.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHAT INVENTORY SHOULD CONTAIN
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Should a File Inventory Contain?
+            </h2>
+
+            <p>
+                The information required depends on the purpose of the
+                inventory. A useful inventory should at minimum make it
+                possible to understand where an item belongs within the
+                directory hierarchy.
+            </p>
+
+            <ul class="checklist">
+
+                <li>
+                    File and folder names
+                </li>
+
+                <li>
+                    Folder hierarchy
+                </li>
+
+                <li>
+                    File and folder paths
+                </li>
+
+                <li>
+                    Clear distinction between files and folders
+                </li>
+
+                <li>
+                    Identification of items that could not be accessed
+                </li>
+
+                <li>
+                    Visibility of unusually long paths
+                </li>
+
+                <li>
+                    Detection of duplicate files when relevant
+                </li>
+
+            </ul>
+
+            <div class="note">
+
+                <strong>Important:</strong>
+                An inventory is not necessarily a backup or a security
+                audit. Its purpose is to provide a structured view of
+                the contents and organization of a file system.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TREE XL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Create a Windows Folder Inventory with TreeXL
+            </h2>
+
+            <p>
+                TreeXL is designed for users who want a structured Excel
+                report without having to build or maintain a custom script.
+            </p>
+
+            <p>
+                The workflow starts from Windows File Explorer. Select the
+                folder you want to inspect and launch TreeXL from the
+                context menu.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        1. Select the Folder
+                    </h3>
+
+                    <p>
+                        Choose the directory you want to inventory in
+                        Windows File Explorer.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        2. Launch TreeXL
+                    </h3>
+
+                    <p>
+                        Start the export directly from the Windows
+                        context menu.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        3. Review the Report
+                    </h3>
+
+                    <p>
+                        Open the generated .xlsx file in Excel and use it
+                        for documentation, analysis or sharing.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROBLEM CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Happens with Difficult Files and Folders?
+            </h2>
+
+            <p>
+                Real-world file systems often contain more than just
+                ordinary files and folders. A useful inventory should also
+                make potential problems visible.
+            </p>
+
+
+            <h3>
+                Long Windows paths
+            </h3>
+
+            <p>
+                Deeply nested directories can result in very long file
+                paths. These can become relevant during migrations,
+                backups or other file-management operations.
+            </p>
+
+            <p>
+                TreeXL can identify paths exceeding the traditional
+                260-character Windows path length threshold and surface
+                them in the report.
+            </p>
+
+
+            <h3>
+                Inaccessible folders
+            </h3>
+
+            <p>
+                A user may not have permission to read every directory
+                inside a file server or shared location.
+            </p>
+
+            <p>
+                Instead of silently assuming that the inventory is
+                complete, TreeXL can report inaccessible items so they
+                can be reviewed.
+            </p>
+
+
+            <h3>
+                Duplicate files
+            </h3>
+
+            <p>
+                Large collections frequently contain files with identical
+                names or duplicate content. Identifying duplicates can
+                help during data cleanup and migration planning.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             USE CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Practical Windows Folder Inventory Examples
+            </h2>
+
+
+            <h3>
+                Before a file server migration
+            </h3>
+
+            <p>
+                Before moving a file server to new hardware or storage,
+                creating an inventory provides a reference for the
+                existing structure.
+            </p>
+
+            <p>
+                It can help answer questions such as: What folders exist?
+                How deeply nested is the data? Are there inaccessible
+                directories? Are there unusually long paths?
+            </p>
+
+
+            <h3>
+                Before cleaning up an old project archive
+            </h3>
+
+            <p>
+                An Excel inventory can provide a practical starting point
+                for reviewing a large archive before deciding which
+                information should be retained or reorganized.
+            </p>
+
+
+            <h3>
+                Documenting a client environment
+            </h3>
+
+            <p>
+                Consultants and IT professionals may need to document the
+                structure of a client's file storage as part of an
+                assessment or handover.
+            </p>
+
+
+            <h3>
+                Understanding an inherited directory
+            </h3>
+
+            <p>
+                When responsibility for a project or shared drive changes
+                hands, the existing folder structure may not be familiar
+                to the new owner.
+            </p>
+
+            <p>
+                An inventory provides a much faster starting point than
+                manually browsing the entire directory.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             COMPARISON
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Manual Inventory vs PowerShell vs TreeXL
+            </h2>
+
+            <p>
+                All three approaches can be useful. The main difference is
+                how much work is required to turn the directory contents
+                into a reusable report.
+            </p>
+
+
+            <table class="comparison">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Capability</th>
+
+                        <th>Manual</th>
+
+                        <th>PowerShell</th>
+
+                        <th>TreeXL</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>Works from File Explorer</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Requires scripting</td>
+                        <td>No</td>
+                        <td>Usually</td>
+                        <td>No</td>
+                    </tr>
+
+                    <tr>
+                        <td>Suitable for large directories</td>
+                        <td>Limited</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Folder hierarchy</td>
+                        <td>Manual</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Excel report</td>
+                        <td>Manual work</td>
+                        <td>Requires additional work</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duplicate detection</td>
+                        <td>Manual</td>
+                        <td>Requires scripting</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Long-path warnings</td>
+                        <td>Manual</td>
+                        <td>Requires scripting</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inaccessible item reporting</td>
+                        <td>Manual</td>
+                        <td>Requires handling</td>
+                        <td>Yes</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             WHO
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Who Uses File and Folder Inventory Tools?
+            </h2>
+
+            <p>
+                Folder inventory tools are especially useful for people
+                responsible for large or shared collections of files.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        System Administrators
+                    </h3>
+
+                    <p>
+                        Document file servers, shared folders and storage
+                        structures.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        IT Consultants
+                    </h3>
+
+                    <p>
+                        Create structured reports during infrastructure
+                        assessments and migration projects.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Developers
+                    </h3>
+
+                    <p>
+                        Document project directories, source trees and
+                        build structures.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Data Managers
+                    </h3>
+
+                    <p>
+                        Review large collections of files before
+                        restructuring or migrating data.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Freelancers
+                    </h3>
+
+                    <p>
+                        Produce structured file documentation for clients
+                        and projects.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Project Teams
+                    </h3>
+
+                    <p>
+                        Create a shared reference for the organization of
+                        project files.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <details class="faq">
+
+                <summary>
+                    What is a Windows folder inventory?
+                </summary>
+
+                <p>
+                    A Windows folder inventory is a structured list of the
+                    folders and files contained within a directory or
+                    storage location. It can be used for documentation,
+                    auditing, migration, cleanup and data management.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How can I create a file inventory in Windows?
+                </summary>
+
+                <p>
+                    You can manually inspect folders in File Explorer,
+                    use Command Prompt or PowerShell to enumerate files,
+                    or use a dedicated tool such as TreeXL to generate a
+                    structured Excel report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can PowerShell create a file inventory?
+                </summary>
+
+                <p>
+                    Yes. PowerShell can recursively enumerate files and
+                    folders and export the resulting data. Additional
+                    scripting may be required to create a polished
+                    Excel report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can I export a Windows folder inventory to Excel?
+                </summary>
+
+                <p>
+                    Yes. TreeXL can scan a Windows folder and create a
+                    formatted Excel report containing its folder and
+                    file structure.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    What should a file inventory contain?
+                </summary>
+
+                <p>
+                    The useful information depends on the purpose of the
+                    inventory, but typically includes file and folder
+                    names, hierarchy and paths. Additional information
+                    can be useful for auditing, migration and cleanup.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Is a folder inventory the same as a backup?
+                </summary>
+
+                <p>
+                    No. An inventory documents the organization and
+                    contents of a file structure. It does not replace
+                    a backup of the actual files.
+                </p>
+
+            </details>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL CTA
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Create Your Windows File Inventory
+            </h2>
+
+            <p>
+                Turn a Windows folder structure into a structured Excel
+                report without manually copying files or writing a custom
+                script.
+            </p>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="cta"
+                target="_blank"
+                rel="noopener"
+            >
+                Download TreeXL Free →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Linfa Labs ·
+
+            <a href="https://treexl.linfalabs.com/privacy.html">
+                Privacy Policy
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         MOBILE MENU
+    ========================= -->
+
+    <script>
+
+        (function () {
+
+            const button =
+                document.getElementById("hamburgerBtn");
+
+            const menu =
+                document.getElementById("mobileNav");
+
+
+            if (!button || !menu) {
+                return;
+            }
+
+
+            button.addEventListener("click", function () {
+
+                const open =
+                    menu.classList.toggle("open");
+
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
+
+
+                button.setAttribute(
+                    "aria-label",
+                    open
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+
+            });
+
+
+            menu.querySelectorAll("a").forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    menu.classList.remove("open");
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                });
+
+            });
+
+        })();
+
+    </script>
+
+
+</body>
+</html>
