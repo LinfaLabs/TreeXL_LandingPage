@@ -25,461 +25,539 @@
 
     <style>
 
-        :root {
-            --bg: #0b0f14;
-            --surface: #111821;
-            --text: #f3f5f7;
-            --muted: #aab4c0;
-            --border: #273241;
-            --accent: #70d6a3;
-            --accent-hover: #5cc68f;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        a {
-            color: var(--accent);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 24px;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header.container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .logo img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .btn {
-            background: var(--accent);
-            color: #08100c;
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            display: inline-block;
-            transition: .2s;
-        }
-
-        .btn:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: var(--text);
-            margin: 0 auto;
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 12px 24px 20px;
-            z-index: 50;
-        }
-
-        .mobile-nav.open {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main {
-            padding: 70px 0 90px;
-        }
-
-        .eyebrow {
-            color: var(--accent);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            font-size: 13px;
-        }
-
-        h1 {
-            font-size: clamp(38px, 6vw, 64px);
-            line-height: 1.05;
-            max-width: 950px;
-            margin: 12px 0 20px;
-        }
-
-        .lead {
-            font-size: 20px;
-            color: var(--muted);
-            max-width: 850px;
-        }
-
-        .cta {
-            display: inline-block;
-            margin: 24px 0 35px;
-            padding: 14px 22px;
-            border-radius: 9px;
-            background: var(--accent);
-            color: #08100c;
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        .cta:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
-
-        .section {
-            margin: 58px 0;
-        }
-
-        .section h2 {
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        .section h3 {
-            font-size: 21px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
-            gap: 18px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .card h3 {
-            margin-top: 0;
-        }
-
-        .code {
-            overflow: auto;
-            background: #070a0e;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px;
-            font-family: Consolas, "Courier New", monospace;
-            color: #dce5ee;
-            white-space: pre;
-        }
-
-        .comparison {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .comparison th,
-        .comparison td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .comparison th {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .comparison tr:last-child td {
-            border-bottom: none;
-        }
-
-        .note {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 18px 22px;
-            margin: 25px 0;
-        }
-
-
-        /* =========================
-           FAQ
-        ========================= */
-
-        .faq {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 0 20px;
-            margin: 12px 0;
-        }
-
-        .faq summary {
-            cursor: pointer;
-            padding: 18px 0;
-            font-weight: 700;
-        }
-
-        .faq p {
-            color: var(--muted);
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 28px 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        footer a {
-            color: var(--muted);
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .header-actions .btn {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .comparison {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        }
-
-        @media (max-width: 700px) {
-
-            header.container {
-                padding-top: 18px;
-                padding-bottom: 18px;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .logo img {
-                width: 42px;
-                height: 42px;
-                border-radius: 10px;
-            }
-
-            main {
-                padding-top: 48px;
-            }
-
-            h1 {
-                font-size: 40px;
-            }
-
-            .lead {
-                font-size: 18px;
-            }
-
-        }
-
+                :root {
+                    --bg: #0b0f14;
+                    --surface: #111821;
+                    --text: #f3f5f7;
+                    --muted: #aab4c0;
+                    --border: #273241;
+                    --accent: #70d6a3;
+                    --accent-hover: #5cc68f;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                body {
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    background: var(--bg);
+                    color: var(--text);
+                    line-height: 1.7;
+                }
+
+                a {
+                    color: var(--accent);
+                }
+
+                .container {
+                    max-width: 1200px;
+                    margin: auto;
+                    padding: 0 24px;
+                }
+
+
+                /* =========================
+                   HEADER
+                ========================= */
+
+                header.container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                    border-bottom: 1px solid var(--border);
+                    position: relative;
+                }
+
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    flex-shrink: 0;
+                }
+
+                    .logo img {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 12px;
+                        object-fit: contain;
+                        display: block;
+                    }
+
+                    .logo span {
+                        color: var(--accent);
+                    }
+
+                .nav-links {
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                }
+
+                    .nav-links a {
+                        color: var(--muted);
+                        text-decoration: none;
+                        font-weight: 500;
+                    }
+
+                        .nav-links a:hover {
+                            color: white;
+                        }
+
+                .header-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .btn {
+                    background: var(--accent);
+                    color: #08100c;
+                    text-decoration: none;
+                    padding: 12px 22px;
+                    border-radius: 8px;
+                    font-weight: 700;
+                    display: inline-block;
+                    transition: .2s;
+                }
+
+                    .btn:hover {
+                        background: var(--accent-hover);
+                        color: #08100c;
+                    }
+
+                .hamburger {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 5px;
+                    width: 40px;
+                    height: 40px;
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    cursor: pointer;
+                    padding: 0;
+                }
+
+                    .hamburger span {
+                        display: block;
+                        width: 18px;
+                        height: 2px;
+                        background: var(--text);
+                        margin: 0 auto;
+                    }
+
+                .mobile-nav {
+                    display: none;
+                    flex-direction: column;
+                    gap: 4px;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: var(--surface);
+                    border-bottom: 1px solid var(--border);
+                    padding: 12px 24px 20px;
+                    z-index: 50;
+                }
+
+                    .mobile-nav.open {
+                        display: flex;
+                    }
+
+                    .mobile-nav a {
+                        color: var(--muted);
+                        text-decoration: none;
+                        font-weight: 500;
+                        padding: 10px 0;
+                        border-bottom: 1px solid var(--border);
+                    }
+
+                        .mobile-nav a:last-child {
+                            border-bottom: none;
+                        }
+
+
+                /* =========================
+                   MAIN
+                ========================= */
+
+                main {
+                    padding: 70px 0 90px;
+                }
+
+                .eyebrow {
+                    color: var(--accent);
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: .08em;
+                    font-size: 13px;
+                }
+
+                h1 {
+                    font-size: clamp(38px, 6vw, 64px);
+                    line-height: 1.05;
+                    max-width: 950px;
+                    margin: 12px 0 20px;
+                }
+
+                .lead {
+                    font-size: 20px;
+                    color: var(--muted);
+                    max-width: 850px;
+                }
+
+                .cta {
+                    display: inline-block;
+                    margin: 24px 0 35px;
+                    padding: 14px 22px;
+                    border-radius: 9px;
+                    background: var(--accent);
+                    color: #08100c;
+                    text-decoration: none;
+                    font-weight: 800;
+                }
+
+                    .cta:hover {
+                        background: var(--accent-hover);
+                        color: #08100c;
+                    }
+
+                .section {
+                    margin: 58px 0;
+                }
+
+                    .section h2 {
+                        font-size: 30px;
+                        line-height: 1.2;
+                        margin-bottom: 15px;
+                    }
+
+                    .section h3 {
+                        font-size: 21px;
+                    }
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+                    gap: 18px;
+                }
+
+                .card {
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    border-radius: 12px;
+                    padding: 24px;
+                }
+
+                    .card h3 {
+                        margin-top: 0;
+                    }
+
+                .code {
+                    overflow: auto;
+                    background: #070a0e;
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    padding: 18px;
+                    font-family: Consolas, "Courier New", monospace;
+                    color: #dce5ee;
+                    white-space: pre;
+                }
+
+                .comparison {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+
+                    .comparison th,
+                    .comparison td {
+                        padding: 15px;
+                        text-align: left;
+                        border-bottom: 1px solid var(--border);
+                    }
+
+                    .comparison th {
+                        color: var(--accent);
+                        font-weight: 700;
+                    }
+
+                    .comparison tr:last-child td {
+                        border-bottom: none;
+                    }
+
+                .note {
+                    background: var(--surface);
+                    border-left: 3px solid var(--accent);
+                    padding: 18px 22px;
+                    margin: 25px 0;
+                }
+                /* =========================
+
+            SCREEN  PREVIEW
+        */
+
+                .product-preview {
+                    margin: 45px auto 55px;
+                    max-width: 1100px;
+                }
+
+                    .product-preview img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        border: 1px solid var(--border);
+                        border-radius: 14px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+                    }
+
+                    .product-preview figcaption {
+                        margin-top: 12px;
+                        text-align: center;
+                        color: var(--muted);
+                        font-size: 14px;
+                    }
+
+                /* =========================
+                   FAQ
+                ========================= */
+
+                .faq {
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    padding: 0 20px;
+                    margin: 12px 0;
+                }
+
+                    .faq summary {
+                        cursor: pointer;
+                        padding: 18px 0;
+                        font-weight: 700;
+                    }
+
+                    .faq p {
+                        color: var(--muted);
+                    }
+
+                /* =====  BREADCRUMB  ===*/
+
+                .breadcrumbs {
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    margin-bottom: 35px;
+                    font-size: 14px;
+                    color: var(--muted);
+                }
+
+                    .breadcrumbs a {
+                        color: var(--muted);
+                        text-decoration: none;
+                    }
+
+                        .breadcrumbs a:hover {
+                            color: var(--accent);
+                        }
+
+                    .breadcrumbs span:last-child {
+                        color: var(--text);
+                    }
+
+                /* =========================
+                   FOOTER
+                ========================= */
+
+                footer {
+                    border-top: 1px solid var(--border);
+                    padding: 28px 0;
+                    color: var(--muted);
+                    font-size: 14px;
+                }
+
+                    footer a {
+                        color: var(--muted);
+                    }
+
+
+                /* =========================
+                   RESPONSIVE
+                ========================= */
+
+                @media (max-width: 900px) {
+
+                    .nav-links {
+                        display: none;
+                    }
+
+                    .header-actions .btn {
+                        display: none;
+                    }
+
+                    .hamburger {
+                        display: flex;
+                    }
+
+                    .comparison {
+                        display: block;
+                        overflow-x: auto;
+                        white-space: nowrap;
+                    }
+                }
+
+                @media (max-width: 700px) {
+
+                    header.container {
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                    }
+
+                    .logo {
+                        font-size: 1.3rem;
+                    }
+
+                        .logo img {
+                            width: 42px;
+                            height: 42px;
+                            border-radius: 10px;
+                        }
+
+                    main {
+                        padding-top: 48px;
+                    }
+
+                    h1 {
+                        font-size: 40px;
+                    }
+
+                    .lead {
+                        font-size: 18px;
+                    }
+                }
     </style>
 
 
     <!-- WebPage structured data -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Folder Tree Generator for Windows: Create a Folder Tree in Excel | TreeXL",
-        "url": "https://treexl.linfalabs.com/folder-tree-generator/",
-        "description": "Generate a Windows folder tree and export it to a professional Excel report with TreeXL."
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Folder Tree Generator for Windows | TreeXL",
+            "url": "https://treexl.linfalabs.com/folder-tree-generator/",
+            "description": "Learn how to generate a folder tree in Windows using built-in commands, PowerShell or TreeXL, and export folder structures to Excel."
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://treexl.linfalabs.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Folder Tree Generator",
+                    "item": "https://treexl.linfalabs.com/folder-tree-generator/"
+                }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "TreeXL",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows",
+            "description": "Windows application for generating structured Excel reports from folders and files.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Linfa Labs"
+            }
+        }
     </script>
 
 
     <!-- FAQ structured data -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
 
-            {
-                "@type": "Question",
-                "name": "What is a folder tree generator?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A folder tree generator creates a structured representation of the folders and files contained inside a directory. It can be used for documentation, inventory, migration and file management."
+                {
+                    "@type": "Question",
+                    "name": "What is a folder tree generator?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A folder tree generator creates a structured representation of the folders and files contained inside a directory. It can be used for documentation, inventory, migration and file management."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How can I create a folder tree on Windows?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Windows provides command-line tools such as the tree command and PowerShell. TreeXL provides a graphical alternative that can export the scanned structure to a formatted Excel report."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Can I export a folder tree to Excel?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. TreeXL scans a Windows folder and exports its files and subfolders to a formatted .xlsx report."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Can TreeXL handle large folder structures?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "TreeXL is designed to scan Windows folder structures and report relevant issues such as long paths and inaccessible items."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Do I need PowerShell to generate a folder tree?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. TreeXL provides a graphical workflow from Windows File Explorer, so you do not need to write a PowerShell script for a folder-to-Excel report."
+                    }
                 }
-            },
 
-            {
-                "@type": "Question",
-                "name": "How can I create a folder tree on Windows?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Windows provides command-line tools such as the tree command and PowerShell. TreeXL provides a graphical alternative that can export the scanned structure to a formatted Excel report."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Can I export a folder tree to Excel?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. TreeXL scans a Windows folder and exports its files and subfolders to a formatted .xlsx report."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Can TreeXL handle large folder structures?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "TreeXL is designed to scan Windows folder structures and report relevant issues such as long paths and inaccessible items."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Do I need PowerShell to generate a folder tree?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No. TreeXL provides a graphical workflow from Windows File Explorer, so you do not need to write a PowerShell script for a folder-to-Excel report."
-                }
-            }
-
-        ]
-    }
+            ]
+        }
     </script>
 
 </head>
@@ -602,7 +680,11 @@
     ========================= -->
 
     <main class="container">
-
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="https://treexl.linfalabs.com/">Home</a>
+            <span>›</span>
+            <span>Folder Tree Generator</span>
+        </nav>
 
         <div class="eyebrow">
             TreeXL for Windows
@@ -622,19 +704,37 @@
         </p>
 
 
-        <a
-            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-            class="cta"
-            target="_blank"
-            rel="noopener"
-        >
+        <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+           class="cta"
+           target="_blank"
+           rel="noopener">
             Download TreeXL Free →
         </a>
 
+        <h2>From a Folder Tree to a Structured Excel Report</h2>
+
+        <p>
+            A traditional folder tree is useful for seeing the hierarchy.
+            TreeXL takes that structure further by generating a formatted Excel
+            workbook that can be filtered, shared and documented.
+        </p>
+
+        <figure class="product-preview">
+            <img src="../images/TreeXL_report_preview.png"
+                 alt="TreeXL Excel folder and file structure report showing hierarchical folders, duplicate files, long paths and inaccessible items"
+                 loading="lazy"
+                 width="1600"
+                 height="1000">
+            <figcaption>
+                Example of an Excel folder and file structure report generated by TreeXL.
+                The report preserves the folder hierarchy and highlights duplicates,
+                long paths and inaccessible items.
+            </figcaption>
+        </figure>
 
         <!-- =========================
-             WHAT IS A FOLDER TREE
-        ========================= -->
+         WHAT IS A FOLDER TREE
+    ========================= -->
 
         <section class="section">
 
@@ -655,16 +755,18 @@
                 collection of files.
             </p>
 
-            <div class="code">Project
-├── Documents
-│   ├── Contracts
-│   └── Reports
-├── Images
-│   ├── Logo
-│   └── Screenshots
-└── Software
-    ├── Source
-    └── Builds</div>
+            <div class="code">
+                Project
+                ├── Documents
+                │   ├── Contracts
+                │   └── Reports
+                ├── Images
+                │   ├── Logo
+                │   └── Screenshots
+                └── Software
+                ├── Source
+                └── Builds
+            </div>
 
             <p>
                 The same concept can be represented in a structured Excel
@@ -676,8 +778,8 @@
 
 
         <!-- =========================
-             WHY
-        ========================= -->
+         WHY
+    ========================= -->
 
         <section class="section">
 
@@ -754,8 +856,8 @@
 
 
         <!-- =========================
-             WINDOWS METHODS
-        ========================= -->
+         WINDOWS METHODS
+    ========================= -->
 
         <section class="section">
 
@@ -828,8 +930,8 @@
 
 
         <!-- =========================
-             LIMITATIONS
-        ========================= -->
+         LIMITATIONS
+    ========================= -->
 
         <section class="section">
 
@@ -908,8 +1010,8 @@
 
 
         <!-- =========================
-             TREE XL
-        ========================= -->
+         TREE XL
+    ========================= -->
 
         <section class="section">
 
@@ -974,8 +1076,8 @@
 
 
         <!-- =========================
-             EXCEL
-        ========================= -->
+         EXCEL
+    ========================= -->
 
         <section class="section">
 
@@ -1005,8 +1107,8 @@
 
 
         <!-- =========================
-             PROBLEM CASES
-        ========================= -->
+         PROBLEM CASES
+    ========================= -->
 
         <section class="section">
 
@@ -1038,8 +1140,8 @@
 
 
         <!-- =========================
-             USE CASES
-        ========================= -->
+         USE CASES
+    ========================= -->
 
         <section class="section">
 
@@ -1139,8 +1241,8 @@
 
 
         <!-- =========================
-             COMPARISON
-        ========================= -->
+         COMPARISON
+    ========================= -->
 
         <section class="section">
 
@@ -1228,8 +1330,8 @@
 
 
         <!-- =========================
-             WHO
-        ========================= -->
+         WHO
+    ========================= -->
 
         <section class="section">
 
@@ -1244,9 +1346,11 @@
             </p>
 
             <p>
-                Typical users include <strong>system administrators,
-                IT professionals, developers, data managers, consultants,
-                freelancers and project teams</strong>.
+                Typical users include <strong>
+                    system administrators,
+                    IT professionals, developers, data managers, consultants,
+                    freelancers and project teams
+                </strong>.
             </p>
 
             <p>
@@ -1259,8 +1363,8 @@
 
 
         <!-- =========================
-             FAQ
-        ========================= -->
+         FAQ
+    ========================= -->
 
         <section class="section">
 
@@ -1348,8 +1452,8 @@
 
 
         <!-- =========================
-             CTA
-        ========================= -->
+         CTA
+    ========================= -->
 
         <section class="section">
 
@@ -1363,12 +1467,10 @@
                 professional Excel report.
             </p>
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                class="cta"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               class="cta"
+               target="_blank"
+               rel="noopener">
                 Download TreeXL Free →
             </a>
 

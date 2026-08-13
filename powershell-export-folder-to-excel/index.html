@@ -29,424 +29,466 @@
 
     <style>
 
-        :root {
-            --bg: #0b0f14;
-            --surface: #111821;
-            --text: #f3f5f7;
-            --muted: #aab4c0;
-            --border: #273241;
-            --accent: #70d6a3;
-            --accent-hover: #5cc68f;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        a {
-            color: var(--accent);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 24px;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header.container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .logo img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .btn {
-            background: var(--accent);
-            color: #08100c;
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            display: inline-block;
-            transition: .2s;
-        }
-
-        .btn:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: var(--text);
-            margin: 0 auto;
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            padding: 12px 24px 20px;
-            z-index: 50;
-        }
-
-        .mobile-nav.open {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        main {
-            padding: 70px 0 90px;
-        }
-
-        .eyebrow {
-            color: var(--accent);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            font-size: 13px;
-        }
-
-        h1 {
-            font-size: clamp(38px, 6vw, 64px);
-            line-height: 1.05;
-            max-width: 950px;
-            margin: 12px 0 20px;
-        }
-
-        h2 {
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            font-size: 21px;
-            margin-top: 30px;
-        }
-
-        .lead {
-            font-size: 20px;
-            color: var(--muted);
-            max-width: 880px;
-        }
-
-        .cta {
-            display: inline-block;
-            margin: 24px 0 35px;
-            padding: 14px 22px;
-            border-radius: 9px;
-            background: var(--accent);
-            color: #08100c;
-            text-decoration: none;
-            font-weight: 800;
-        }
-
-        .cta:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
-
-        .section {
-            margin: 58px 0;
-        }
-
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
-            gap: 18px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .card h3 {
-            margin-top: 0;
-        }
-
-
-        /* =========================
-           CODE
-        ========================= */
-
-        .code {
-            overflow-x: auto;
-            background: #070a0e;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px;
-            font-family: Consolas, "Courier New", monospace;
-            color: #dce5ee;
-            white-space: pre;
-            margin: 20px 0;
-        }
-
-
-        /* =========================
-           NOTE
-        ========================= */
-
-        .note {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 18px 22px;
-            margin: 25px 0;
-        }
-
-
-        /* =========================
-           LIST
-        ========================= */
-
-        .checklist {
-            padding-left: 22px;
-        }
-
-        .checklist li {
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================
-           TABLE
-        ========================= */
-
-        .comparison-wrapper {
-            overflow-x: auto;
-        }
-
-        .comparison {
-            width: 100%;
-            min-width: 700px;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-        }
-
-        .comparison th,
-        .comparison td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .comparison th {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .comparison tr:last-child td {
-            border-bottom: none;
-        }
-
-
-        /* =========================
-           FAQ
-        ========================= */
-
-        .faq {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 0 20px;
-            margin: 12px 0;
-        }
-
-        .faq summary {
-            cursor: pointer;
-            padding: 18px 0;
-            font-weight: 700;
-        }
-
-        .faq p {
-            color: var(--muted);
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 28px 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        footer a {
-            color: var(--muted);
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .header-actions .btn {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            header.container {
-                padding-top: 18px;
-                padding-bottom: 18px;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .logo img {
-                width: 42px;
-                height: 42px;
-                border-radius: 10px;
-            }
-
-            main {
-                padding-top: 48px;
-            }
-
-            h1 {
-                font-size: 40px;
-            }
-
-            .lead {
-                font-size: 18px;
-            }
-
-        }
-
+                :root {
+                    --bg: #0b0f14;
+                    --surface: #111821;
+                    --text: #f3f5f7;
+                    --muted: #aab4c0;
+                    --border: #273241;
+                    --accent: #70d6a3;
+                    --accent-hover: #5cc68f;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                body {
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    background: var(--bg);
+                    color: var(--text);
+                    line-height: 1.7;
+                }
+
+                a {
+                    color: var(--accent);
+                }
+
+                .container {
+                    max-width: 1200px;
+                    margin: auto;
+                    padding: 0 24px;
+                }
+
+
+                /* =========================
+                   HEADER
+                ========================= */
+
+                header.container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                    border-bottom: 1px solid var(--border);
+                    position: relative;
+                }
+
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    flex-shrink: 0;
+                }
+
+                    .logo img {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 12px;
+                        object-fit: contain;
+                        display: block;
+                    }
+
+                    .logo span {
+                        color: var(--accent);
+                    }
+
+                .nav-links {
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                }
+
+                    .nav-links a {
+                        color: var(--muted);
+                        text-decoration: none;
+                        font-weight: 500;
+                    }
+
+                        .nav-links a:hover {
+                            color: white;
+                        }
+
+                .header-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .btn {
+                    background: var(--accent);
+                    color: #08100c;
+                    text-decoration: none;
+                    padding: 12px 22px;
+                    border-radius: 8px;
+                    font-weight: 700;
+                    display: inline-block;
+                    transition: .2s;
+                }
+
+                    .btn:hover {
+                        background: var(--accent-hover);
+                        color: #08100c;
+                    }
+
+                .hamburger {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 5px;
+                    width: 40px;
+                    height: 40px;
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    cursor: pointer;
+                    padding: 0;
+                }
+
+                    .hamburger span {
+                        display: block;
+                        width: 18px;
+                        height: 2px;
+                        background: var(--text);
+                        margin: 0 auto;
+                    }
+
+                .mobile-nav {
+                    display: none;
+                    flex-direction: column;
+                    gap: 4px;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: var(--surface);
+                    border-bottom: 1px solid var(--border);
+                    padding: 12px 24px 20px;
+                    z-index: 50;
+                }
+
+                    .mobile-nav.open {
+                        display: flex;
+                    }
+
+                    .mobile-nav a {
+                        color: var(--muted);
+                        text-decoration: none;
+                        font-weight: 500;
+                        padding: 10px 0;
+                        border-bottom: 1px solid var(--border);
+                    }
+
+                        .mobile-nav a:last-child {
+                            border-bottom: none;
+                        }
+
+
+                /* =========================
+                   MAIN
+                ========================= */
+
+                main {
+                    padding: 70px 0 90px;
+                }
+
+                .eyebrow {
+                    color: var(--accent);
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: .08em;
+                    font-size: 13px;
+                }
+
+                h1 {
+                    font-size: clamp(38px, 6vw, 64px);
+                    line-height: 1.05;
+                    max-width: 950px;
+                    margin: 12px 0 20px;
+                }
+
+                h2 {
+                    font-size: 30px;
+                    line-height: 1.2;
+                    margin-bottom: 15px;
+                }
+
+                h3 {
+                    font-size: 21px;
+                    margin-top: 30px;
+                }
+
+                .lead {
+                    font-size: 20px;
+                    color: var(--muted);
+                    max-width: 880px;
+                }
+
+                .cta {
+                    display: inline-block;
+                    margin: 24px 0 35px;
+                    padding: 14px 22px;
+                    border-radius: 9px;
+                    background: var(--accent);
+                    color: #08100c;
+                    text-decoration: none;
+                    font-weight: 800;
+                }
+
+                    .cta:hover {
+                        background: var(--accent-hover);
+                        color: #08100c;
+                    }
+
+                .section {
+                    margin: 58px 0;
+                }
+
+
+                /* =========================
+                   CARDS
+                ========================= */
+
+                .cards {
+                    display: grid;
+                    grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+                    gap: 18px;
+                }
+
+                .card {
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    border-radius: 12px;
+                    padding: 24px;
+                }
+
+                    .card h3 {
+                        margin-top: 0;
+                    }
+
+
+                /* =========================
+                   CODE
+                ========================= */
+
+                .code {
+                    overflow-x: auto;
+                    background: #070a0e;
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    padding: 18px;
+                    font-family: Consolas, "Courier New", monospace;
+                    color: #dce5ee;
+                    white-space: pre;
+                    margin: 20px 0;
+                }
+
+
+                /* =========================
+                   NOTE
+                ========================= */
+
+                .note {
+                    background: var(--surface);
+                    border-left: 3px solid var(--accent);
+                    padding: 18px 22px;
+                    margin: 25px 0;
+                }
+
+
+                /* =========================
+                   LIST
+                ========================= */
+
+                .checklist {
+                    padding-left: 22px;
+                }
+
+                    .checklist li {
+                        margin-bottom: 10px;
+                    }
+
+
+                /* =========================
+                   TABLE
+                ========================= */
+
+                .comparison-wrapper {
+                    overflow-x: auto;
+                }
+
+                .comparison {
+                    width: 100%;
+                    min-width: 700px;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                }
+
+                    .comparison th,
+                    .comparison td {
+                        padding: 15px;
+                        text-align: left;
+                        border-bottom: 1px solid var(--border);
+                    }
+
+                    .comparison th {
+                        color: var(--accent);
+                        font-weight: 700;
+                    }
+
+                    .comparison tr:last-child td {
+                        border-bottom: none;
+                    }
+
+                /* =========================
+
+            SCREEN  PREVIEW
+        */
+
+                .product-preview {
+                    margin: 45px auto 55px;
+                    max-width: 1100px;
+                }
+
+                    .product-preview img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        border: 1px solid var(--border);
+                        border-radius: 14px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+                    }
+
+                    .product-preview figcaption {
+                        margin-top: 12px;
+                        text-align: center;
+                        color: var(--muted);
+                        font-size: 14px;
+                    }
+
+                /* =========================
+                   FAQ
+                ========================= */
+
+                .faq {
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                    padding: 0 20px;
+                    margin: 12px 0;
+                }
+
+                    .faq summary {
+                        cursor: pointer;
+                        padding: 18px 0;
+                        font-weight: 700;
+                    }
+
+                    .faq p {
+                        color: var(--muted);
+                    }
+
+                /* =====  BREADCRUMB  ===*/
+
+                .breadcrumbs {
+                    display: flex;
+                    align-items: center;
+                    gap: 9px;
+                    margin-bottom: 35px;
+                    font-size: 14px;
+                    color: var(--muted);
+                }
+
+                    .breadcrumbs a {
+                        color: var(--muted);
+                        text-decoration: none;
+                    }
+
+                        .breadcrumbs a:hover {
+                            color: var(--accent);
+                        }
+
+                    .breadcrumbs span:last-child {
+                        color: var(--text);
+                    }
+
+                /* =========================
+                   FOOTER
+                ========================= */
+
+                footer {
+                    border-top: 1px solid var(--border);
+                    padding: 28px 0;
+                    color: var(--muted);
+                    font-size: 14px;
+                }
+
+                    footer a {
+                        color: var(--muted);
+                    }
+
+
+                /* =========================
+                   RESPONSIVE
+                ========================= */
+
+                @media (max-width: 900px) {
+
+                    .nav-links {
+                        display: none;
+                    }
+
+                    .header-actions .btn {
+                        display: none;
+                    }
+
+                    .hamburger {
+                        display: flex;
+                    }
+                }
+
+
+                @media (max-width: 700px) {
+
+                    header.container {
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                    }
+
+                    .logo {
+                        font-size: 1.3rem;
+                    }
+
+                        .logo img {
+                            width: 42px;
+                            height: 42px;
+                            border-radius: 10px;
+                        }
+
+                    main {
+                        padding-top: 48px;
+                    }
+
+                    h1 {
+                        font-size: 40px;
+                    }
+
+                    .lead {
+                        font-size: 18px;
+                    }
+                }
     </style>
 
 
@@ -455,13 +497,49 @@
     ========================= -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "PowerShell Export Folder Structure to Excel | Windows | TreeXL",
-        "url": "https://treexl.linfalabs.com/powershell-export-folder-to-excel/",
-        "description": "A practical guide to exporting Windows folder structures and files to Excel with PowerShell, including recursive directory scans, CSV output and alternatives."
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "PowerShell Export Folder Structure to Excel | Windows | TreeXL",
+            "url": "https://treexl.linfalabs.com/powershell-export-folder-to-excel/",
+            "description": "Learn how to export Windows folder structures and files to Excel with PowerShell, including recursive directory scanning, CSV output and alternatives."
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://treexl.linfalabs.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "PowerShell Export Folder to Excel",
+                    "item": "https://treexl.linfalabs.com/powershell-export-folder-to-excel/"
+                }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "TreeXL",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows",
+            "description": "Windows application for exporting folder and file structures to professionally formatted Excel reports.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Linfa Labs"
+            }
+        }
     </script>
 
 
@@ -470,85 +548,85 @@
     ========================= -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
 
-            {
-                "@type": "Question",
-                "name": "How do I export a folder structure using PowerShell?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "PowerShell can recursively enumerate folders and files with Get-ChildItem and the -Recurse parameter. The resulting objects can then be selected and exported to CSV or processed into an Excel-compatible report."
+                {
+                    "@type": "Question",
+                    "name": "How do I export a folder structure using PowerShell?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "PowerShell can recursively enumerate folders and files with Get-ChildItem and the -Recurse parameter. The resulting objects can then be selected and exported to CSV or processed into an Excel-compatible report."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How do I export a folder structure to Excel using PowerShell?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A common approach is to use Get-ChildItem with -Recurse, select the required properties and export the results to CSV with Export-Csv. The CSV file can then be opened in Microsoft Excel. Direct XLSX generation may require an additional PowerShell module or library."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How do I list all files in a folder and subfolders with PowerShell?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Use Get-ChildItem with the -Recurse parameter. For example: Get-ChildItem 'C:\\YourFolder' -Recurse -File. This recursively returns files contained in the specified directory."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How do I export a PowerShell file list to CSV?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Pipe the results of Get-ChildItem into Export-Csv, for example: Get-ChildItem 'C:\\YourFolder' -Recurse | Export-Csv 'folder-list.csv' -NoTypeInformation."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Can PowerShell create an XLSX file?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "PowerShell can create CSV files using built-in commands. Creating a native XLSX workbook generally requires an Excel automation approach or an additional PowerShell module or library."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How do I export folders and subfolders recursively?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Use Get-ChildItem with the -Recurse parameter. This tells PowerShell to traverse child directories recursively."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "What are the limitations of using PowerShell to export folders to Excel?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "PowerShell provides considerable flexibility, but producing a polished Excel report can require scripting, formatting logic, error handling and additional components. Complex directory structures may also contain inaccessible folders or very long paths that need special handling."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Is there an easier alternative to a PowerShell folder export script?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. TreeXL is a Windows application designed to generate Excel reports from folder structures without requiring users to write or maintain a PowerShell script."
+                    }
                 }
-            },
 
-            {
-                "@type": "Question",
-                "name": "How do I export a folder structure to Excel using PowerShell?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A common approach is to use Get-ChildItem with -Recurse, select the required properties and export the results to CSV with Export-Csv. The CSV file can then be opened in Microsoft Excel. Direct XLSX generation may require an additional PowerShell module or library."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "How do I list all files in a folder and subfolders with PowerShell?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Use Get-ChildItem with the -Recurse parameter. For example: Get-ChildItem 'C:\\YourFolder' -Recurse -File. This recursively returns files contained in the specified directory."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "How do I export a PowerShell file list to CSV?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Pipe the results of Get-ChildItem into Export-Csv, for example: Get-ChildItem 'C:\\YourFolder' -Recurse | Export-Csv 'folder-list.csv' -NoTypeInformation."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Can PowerShell create an XLSX file?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "PowerShell can create CSV files using built-in commands. Creating a native XLSX workbook generally requires an Excel automation approach or an additional PowerShell module or library."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "How do I export folders and subfolders recursively?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Use Get-ChildItem with the -Recurse parameter. This tells PowerShell to traverse child directories recursively."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "What are the limitations of using PowerShell to export folders to Excel?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "PowerShell provides considerable flexibility, but producing a polished Excel report can require scripting, formatting logic, error handling and additional components. Complex directory structures may also contain inaccessible folders or very long paths that need special handling."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Is there an easier alternative to a PowerShell folder export script?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. TreeXL is a Windows application designed to generate Excel reports from folder structures without requiring users to write or maintain a PowerShell script."
-                }
-            }
-
-        ]
-    }
+            ]
+        }
     </script>
 
 </head>
@@ -679,11 +757,15 @@
     ========================= -->
 
     <main class="container">
-
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="https://treexl.linfalabs.com/">Home</a>
+            <span>›</span>
+            <span>PowerShell Export Folder to Excel</span>
+        </nav>
 
         <!-- =========================
-             HERO
-        ========================= -->
+         HERO
+    ========================= -->
 
         <div class="eyebrow">
             PowerShell Windows Guide
@@ -703,19 +785,37 @@
         </p>
 
 
-        <a
-            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-            class="cta"
-            target="_blank"
-            rel="noopener"
-        >
+        <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+           class="cta"
+           target="_blank"
+           rel="noopener">
             Try TreeXL Free →
         </a>
 
+        <h2>From Folder Structure to a Ready-to-Use Excel Report</h2>
+
+        <p>
+            PowerShell can enumerate files and folders, but turning the results into
+            a structured, presentation-ready Excel report requires additional work.
+            TreeXL automates that step.
+        </p>
+
+        <figure class="product-preview">
+            <img src="../images/TreeXL_report_preview.png"
+                 alt="TreeXL Excel folder and file structure report showing hierarchical folders, duplicate files, long paths and inaccessible items"
+                 loading="lazy"
+                 width="1600"
+                 height="1000">
+            <figcaption>
+                Example of an Excel folder and file structure report generated by TreeXL.
+                The report preserves the folder hierarchy and highlights duplicates,
+                long paths and inaccessible items.
+            </figcaption>
+        </figure>
 
         <!-- =========================
-             QUICK ANSWER
-        ========================= -->
+         QUICK ANSWER
+    ========================= -->
 
         <section class="section">
 
@@ -730,8 +830,10 @@
             </p>
 
 
-            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
-Export-Csv "folder-structure.csv" -NoTypeInformation</div>
+            <div class="code">
+                Get-ChildItem "C:\YourFolder" -Recurse |
+                Export-Csv "folder-structure.csv" -NoTypeInformation
+            </div>
 
 
             <p>
@@ -755,8 +857,8 @@ Export-Csv "folder-structure.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             HOW POWERSHELL WORKS
-        ========================= -->
+         HOW POWERSHELL WORKS
+    ========================= -->
 
         <section class="section">
 
@@ -798,8 +900,8 @@ Export-Csv "folder-structure.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             FILES ONLY
-        ========================= -->
+         FILES ONLY
+    ========================= -->
 
         <section class="section">
 
@@ -831,8 +933,8 @@ Export-Csv "folder-structure.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             FOLDERS ONLY
-        ========================= -->
+         FOLDERS ONLY
+    ========================= -->
 
         <section class="section">
 
@@ -858,8 +960,8 @@ Export-Csv "folder-structure.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             USEFUL PROPERTIES
-        ========================= -->
+         USEFUL PROPERTIES
+    ========================= -->
 
         <section class="section">
 
@@ -877,9 +979,11 @@ Export-Csv "folder-structure.csv" -NoTypeInformation</div>
             </p>
 
 
-            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse -File |
-Select-Object FullName, Name, Extension, Length, LastWriteTime |
-Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
+            <div class="code">
+                Get-ChildItem "C:\YourFolder" -Recurse -File |
+                Select-Object FullName, Name, Extension, Length, LastWriteTime |
+                Export-Csv "folder-inventory.csv" -NoTypeInformation
+            </div>
 
 
             <p>
@@ -915,8 +1019,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             CSV
-        ========================= -->
+         CSV
+    ========================= -->
 
         <section class="section">
 
@@ -930,8 +1034,10 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
             </p>
 
 
-            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
-Export-Csv "folder-list.csv" -NoTypeInformation</div>
+            <div class="code">
+                Get-ChildItem "C:\YourFolder" -Recurse |
+                Export-Csv "folder-list.csv" -NoTypeInformation
+            </div>
 
 
             <p>
@@ -960,8 +1066,8 @@ Export-Csv "folder-list.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             XLSX
-        ========================= -->
+         XLSX
+    ========================= -->
 
         <section class="section">
 
@@ -1024,8 +1130,8 @@ Export-Csv "folder-list.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             PATH RELATIONSHIP
-        ========================= -->
+         PATH RELATIONSHIP
+    ========================= -->
 
         <section class="section">
 
@@ -1043,12 +1149,14 @@ Export-Csv "folder-list.csv" -NoTypeInformation</div>
             </p>
 
 
-            <div class="code">C:\Project\Documentation
-C:\Project\Documentation\Requirements
-C:\Project\Documentation\Requirements\spec.pdf
-C:\Project\Source
-C:\Project\Source\Application
-C:\Project\Source\Application\main.cs</div>
+            <div class="code">
+                C:\Project\Documentation
+                C:\Project\Documentation\Requirements
+                C:\Project\Documentation\Requirements\spec.pdf
+                C:\Project\Source
+                C:\Project\Source\Application
+                C:\Project\Source\Application\main.cs
+            </div>
 
 
             <p>
@@ -1065,8 +1173,8 @@ C:\Project\Source\Application\main.cs</div>
 
 
         <!-- =========================
-             SCRIPT LIMITATIONS
-        ========================= -->
+         SCRIPT LIMITATIONS
+    ========================= -->
 
         <section class="section">
 
@@ -1173,8 +1281,8 @@ C:\Project\Source\Application\main.cs</div>
 
 
         <!-- =========================
-             ACCESS DENIED
-        ========================= -->
+         ACCESS DENIED
+    ========================= -->
 
         <section class="section">
 
@@ -1202,8 +1310,8 @@ C:\Project\Source\Application\main.cs</div>
 
 
         <!-- =========================
-             LONG PATHS
-        ========================= -->
+         LONG PATHS
+    ========================= -->
 
         <section class="section">
 
@@ -1231,8 +1339,8 @@ C:\Project\Source\Application\main.cs</div>
 
 
         <!-- =========================
-             TREE XL
-        ========================= -->
+         TREE XL
+    ========================= -->
 
         <section class="section">
 
@@ -1250,11 +1358,13 @@ C:\Project\Source\Application\main.cs</div>
             </p>
 
 
-            <div class="code">Select folder
-      ↓
-Scan folders and files
-      ↓
-Generate Excel report</div>
+            <div class="code">
+                Select folder
+                ↓
+                Scan folders and files
+                ↓
+                Generate Excel report
+            </div>
 
 
             <p>
@@ -1328,12 +1438,10 @@ Generate Excel report</div>
             </div>
 
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                class="cta"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               class="cta"
+               target="_blank"
+               rel="noopener">
                 Try TreeXL Free →
             </a>
 
@@ -1341,8 +1449,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             POWERSHELL VS TREEXL
-        ========================= -->
+         POWERSHELL VS TREEXL
+    ========================= -->
 
         <section class="section">
 
@@ -1505,8 +1613,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             WHEN TO USE
-        ========================= -->
+         WHEN TO USE
+    ========================= -->
 
         <section class="section">
 
@@ -1550,8 +1658,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             WHEN TREE XL
-        ========================= -->
+         WHEN TREE XL
+    ========================= -->
 
         <section class="section">
 
@@ -1595,8 +1703,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             USE CASES
-        ========================= -->
+         USE CASES
+    ========================= -->
 
         <section class="section">
 
@@ -1696,8 +1804,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             RELATED
-        ========================= -->
+         RELATED
+    ========================= -->
 
         <section class="section">
 
@@ -1766,8 +1874,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             FAQ
-        ========================= -->
+         FAQ
+    ========================= -->
 
         <section class="section">
 
@@ -1915,8 +2023,8 @@ Generate Excel report</div>
 
 
         <!-- =========================
-             FINAL CTA
-        ========================= -->
+         FINAL CTA
+    ========================= -->
 
         <section class="section">
 
@@ -1935,12 +2043,10 @@ Generate Excel report</div>
             </p>
 
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                class="cta"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               class="cta"
+               target="_blank"
+               rel="noopener">
                 Download TreeXL Free →
             </a>
 

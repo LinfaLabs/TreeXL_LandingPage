@@ -66,8 +66,8 @@
 
 
         /* =========================
-           HEADER
-        ========================= */
+                   HEADER
+                ========================= */
 
         header.container {
             display: flex;
@@ -90,17 +90,17 @@
             flex-shrink: 0;
         }
 
-        .logo img {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            object-fit: contain;
-            display: block;
-        }
+            .logo img {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                object-fit: contain;
+                display: block;
+            }
 
-        .logo span {
-            color: var(--accent);
-        }
+            .logo span {
+                color: var(--accent);
+            }
 
         .nav-links {
             display: flex;
@@ -108,15 +108,15 @@
             gap: 24px;
         }
 
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-        }
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+            }
 
-        .nav-links a:hover {
-            color: white;
-        }
+                .nav-links a:hover {
+                    color: white;
+                }
 
         .header-actions {
             display: flex;
@@ -135,10 +135,10 @@
             transition: .2s;
         }
 
-        .btn:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
+            .btn:hover {
+                background: var(--accent-hover);
+                color: #08100c;
+            }
 
         .hamburger {
             display: none;
@@ -154,13 +154,13 @@
             padding: 0;
         }
 
-        .hamburger span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: var(--text);
-            margin: 0 auto;
-        }
+            .hamburger span {
+                display: block;
+                width: 18px;
+                height: 2px;
+                background: var(--text);
+                margin: 0 auto;
+            }
 
         .mobile-nav {
             display: none;
@@ -176,26 +176,26 @@
             z-index: 50;
         }
 
-        .mobile-nav.open {
-            display: flex;
-        }
+            .mobile-nav.open {
+                display: flex;
+            }
 
-        .mobile-nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-        }
+            .mobile-nav a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+            }
 
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
+                .mobile-nav a:last-child {
+                    border-bottom: none;
+                }
 
 
         /* =========================
-           MAIN
-        ========================= */
+                   MAIN
+                ========================= */
 
         main {
             padding: 70px 0 90px;
@@ -233,32 +233,29 @@
             font-weight: 800;
         }
 
-        .cta:hover {
-            background: var(--accent-hover);
-            color: #08100c;
-        }
+            .cta:hover {
+                background: var(--accent-hover);
+                color: #08100c;
+            }
 
         .section {
             margin: 58px 0;
         }
 
-        .section h2 {
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
+            .section h2 {
+                font-size: 30px;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
 
-        .section h3 {
-            font-size: 21px;
-            margin-top: 30px;
-        }
+            .section h3 {
+                font-size: 21px;
+                margin-top: 30px;
+            }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
+            grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
             gap: 18px;
         }
 
@@ -269,9 +266,9 @@
             padding: 24px;
         }
 
-        .card h3 {
-            margin-top: 0;
-        }
+            .card h3 {
+                margin-top: 0;
+            }
 
         .code {
             overflow: auto;
@@ -295,9 +292,9 @@
             padding-left: 22px;
         }
 
-        .checklist li {
-            margin-bottom: 10px;
-        }
+            .checklist li {
+                margin-bottom: 10px;
+            }
 
         .comparison {
             width: 100%;
@@ -307,26 +304,51 @@
             border: 1px solid var(--border);
         }
 
-        .comparison th,
-        .comparison td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
+            .comparison th,
+            .comparison td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid var(--border);
+            }
 
-        .comparison th {
-            color: var(--accent);
-            font-weight: 700;
-        }
+            .comparison th {
+                color: var(--accent);
+                font-weight: 700;
+            }
 
-        .comparison tr:last-child td {
-            border-bottom: none;
-        }
-
+            .comparison tr:last-child td {
+                border-bottom: none;
+            }
 
         /* =========================
-           FAQ
-        ========================= */
+
+            SCREEN  PREVIEW
+        */
+
+        .product-preview {
+            margin: 45px auto 55px;
+            max-width: 1100px;
+        }
+
+            .product-preview img {
+                display: block;
+                width: 100%;
+                height: auto;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+            }
+
+            .product-preview figcaption {
+                margin-top: 12px;
+                text-align: center;
+                color: var(--muted);
+                font-size: 14px;
+            }
+
+        /* =========================
+                   FAQ
+                ========================= */
 
         .faq {
             background: var(--surface);
@@ -336,20 +358,43 @@
             margin: 12px 0;
         }
 
-        .faq summary {
-            cursor: pointer;
-            padding: 18px 0;
-            font-weight: 700;
-        }
+            .faq summary {
+                cursor: pointer;
+                padding: 18px 0;
+                font-weight: 700;
+            }
 
-        .faq p {
+            .faq p {
+                color: var(--muted);
+            }
+
+        /* =====  BREADCRUMB  ===*/
+
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 35px;
+            font-size: 14px;
             color: var(--muted);
         }
 
+            .breadcrumbs a {
+                color: var(--muted);
+                text-decoration: none;
+            }
+
+                .breadcrumbs a:hover {
+                    color: var(--accent);
+                }
+
+            .breadcrumbs span:last-child {
+                color: var(--text);
+            }
 
         /* =========================
-           FOOTER
-        ========================= */
+                   FOOTER
+                ========================= */
 
         footer {
             border-top: 1px solid var(--border);
@@ -358,14 +403,14 @@
             font-size: 14px;
         }
 
-        footer a {
-            color: var(--muted);
-        }
+            footer a {
+                color: var(--muted);
+            }
 
 
         /* =========================
-           RESPONSIVE
-        ========================= */
+                   RESPONSIVE
+                ========================= */
 
         @media (max-width: 900px) {
 
@@ -399,11 +444,11 @@
                 font-size: 1.3rem;
             }
 
-            .logo img {
-                width: 42px;
-                height: 42px;
-                border-radius: 10px;
-            }
+                .logo img {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 10px;
+                }
 
             main {
                 padding-top: 48px;
@@ -417,78 +462,113 @@
                 font-size: 18px;
             }
         }
-
     </style>
 
 
     <!-- WebPage structured data -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Windows Folder Inventory Tool: Create a File & Folder Inventory in Excel | TreeXL",
-        "url": "https://treexl.linfalabs.com/windows-folder-inventory/",
-        "description": "Create a Windows file and folder inventory in Excel and learn how to inventory directories using File Explorer, PowerShell or TreeXL."
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Windows Folder Inventory Tool | Export Files and Folders to Excel | TreeXL",
+            "url": "https://treexl.linfalabs.com/windows-folder-inventory/",
+            "description": "Create a Windows folder and file inventory in Excel. TreeXL preserves hierarchy and highlights duplicates, long paths and inaccessible items."
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://treexl.linfalabs.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Windows Folder Inventory",
+                    "item": "https://treexl.linfalabs.com/windows-folder-inventory/"
+                }
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "TreeXL",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows",
+            "description": "Windows application for creating structured folder and file inventory reports in Excel.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Linfa Labs"
+            }
+        }
     </script>
 
 
     <!-- FAQ structured data -->
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
 
-            {
-                "@type": "Question",
-                "name": "What is a Windows folder inventory?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A Windows folder inventory is a structured list of the folders and files contained within a directory or storage location. It can be used for documentation, auditing, migration, cleanup and data management."
+                {
+                    "@type": "Question",
+                    "name": "What is a Windows folder inventory?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A Windows folder inventory is a structured list of the folders and files contained within a directory or storage location. It can be used for documentation, auditing, migration, cleanup and data management."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "How can I create a file inventory in Windows?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "You can manually inspect folders in File Explorer, use Command Prompt or PowerShell to enumerate files, or use a dedicated tool such as TreeXL to generate a structured Excel report."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Can PowerShell create a file inventory?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. PowerShell can recursively enumerate files and folders and export the resulting data. Additional scripting may be required to create a polished Excel report."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "Can I export a Windows folder inventory to Excel?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. TreeXL can scan a Windows folder and create a formatted Excel report containing its folder and file structure."
+                    }
+                },
+
+                {
+                    "@type": "Question",
+                    "name": "What should a file inventory contain?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The useful information depends on the purpose of the inventory, but typically includes file and folder names, hierarchy and paths. Additional information can be useful for auditing, migration and cleanup."
+                    }
                 }
-            },
 
-            {
-                "@type": "Question",
-                "name": "How can I create a file inventory in Windows?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can manually inspect folders in File Explorer, use Command Prompt or PowerShell to enumerate files, or use a dedicated tool such as TreeXL to generate a structured Excel report."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Can PowerShell create a file inventory?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. PowerShell can recursively enumerate files and folders and export the resulting data. Additional scripting may be required to create a polished Excel report."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "Can I export a Windows folder inventory to Excel?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. TreeXL can scan a Windows folder and create a formatted Excel report containing its folder and file structure."
-                }
-            },
-
-            {
-                "@type": "Question",
-                "name": "What should a file inventory contain?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The useful information depends on the purpose of the inventory, but typically includes file and folder names, hierarchy and paths. Additional information can be useful for auditing, migration and cleanup."
-                }
-            }
-
-        ]
-    }
+            ]
+        }
     </script>
 
 </head>
@@ -505,10 +585,8 @@
 
         <a href="https://treexl.linfalabs.com/" class="logo">
 
-            <img
-                src="../images/TreeXL_logo.png"
-                alt="TreeXL Logo"
-            >
+            <img src="../images/TreeXL_logo.png"
+                 alt="TreeXL Logo">
 
             <span>TreeXL</span>
 
@@ -542,23 +620,19 @@
 
         <div class="header-actions">
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                class="btn"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               class="btn"
+               target="_blank"
+               rel="noopener">
                 Download
             </a>
 
 
-            <button
-                class="hamburger"
-                id="hamburgerBtn"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="mobileNav"
-            >
+            <button class="hamburger"
+                    id="hamburgerBtn"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="mobileNav">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -567,11 +641,9 @@
         </div>
 
 
-        <nav
-            class="mobile-nav"
-            id="mobileNav"
-            aria-label="Mobile navigation"
-        >
+        <nav class="mobile-nav"
+             id="mobileNav"
+             aria-label="Mobile navigation">
 
             <a href="https://treexl.linfalabs.com/">
                 Home
@@ -593,11 +665,9 @@
                 Folder Inventory
             </a>
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               target="_blank"
+               rel="noopener">
                 Download
             </a>
 
@@ -611,7 +681,11 @@
     ========================= -->
 
     <main class="container">
-
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="https://treexl.linfalabs.com/">Home</a>
+            <span>›</span>
+            <span>Windows Folder Inventory</span>
+        </nav>
 
         <div class="eyebrow">
             Windows File & Folder Inventory
@@ -631,19 +705,38 @@
         </p>
 
 
-        <a
-            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-            class="cta"
-            target="_blank"
-            rel="noopener"
-        >
+        <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+           class="cta"
+           target="_blank"
+           rel="noopener">
             Download TreeXL Free →
         </a>
 
+        <h2>Example of a Windows Folder Inventory Report</h2>
+
+        <p>
+            The generated workbook provides a structured view of folders and files,
+            while clearly identifying duplicates, long paths and items that could
+            not be accessed during the scan.
+        </p>
+
+        <figure class="product-preview">
+            <img src="../images/TreeXL_report_preview.png"
+                 alt="TreeXL Excel folder and file structure report showing hierarchical folders, duplicate files, long paths and inaccessible items"
+                 loading="lazy"
+                 width="1600"
+                 height="1000">
+            <figcaption>
+                Example of an Excel folder and file structure report generated by TreeXL.
+                The report preserves the folder hierarchy and highlights duplicates,
+                long paths and inaccessible items.
+            </figcaption>
+        </figure>
+
 
         <!-- =========================
-             WHAT IS INVENTORY
-        ========================= -->
+         WHAT IS INVENTORY
+    ========================= -->
 
         <section class="section">
 
@@ -662,17 +755,19 @@
                 A simple folder might look like this:
             </p>
 
-            <div class="code">Company
-├── Administration
-│   ├── Contracts
-│   └── Invoices
-├── Projects
-│   ├── Project A
-│   ├── Project B
-│   └── Project C
-└── Shared
-    ├── Templates
-    └── Documents</div>
+            <div class="code">
+                Company
+                ├── Administration
+                │   ├── Contracts
+                │   └── Invoices
+                ├── Projects
+                │   ├── Project A
+                │   ├── Project B
+                │   └── Project C
+                └── Shared
+                ├── Templates
+                └── Documents
+            </div>
 
             <p>
                 For a small directory, manually browsing this structure
@@ -689,8 +784,8 @@
 
 
         <!-- =========================
-             WHY INVENTORY
-        ========================= -->
+         WHY INVENTORY
+    ========================= -->
 
         <section class="section">
 
@@ -797,8 +892,8 @@
 
 
         <!-- =========================
-             MANUAL METHOD
-        ========================= -->
+         MANUAL METHOD
+    ========================= -->
 
         <section class="section">
 
@@ -864,8 +959,10 @@
                 example to CSV.
             </p>
 
-            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
-Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
+            <div class="code">
+                Get-ChildItem "C:\YourFolder" -Recurse |
+                Export-Csv "folder-inventory.csv" -NoTypeInformation
+            </div>
 
             <p>
                 This approach is powerful, but creating a polished report
@@ -876,8 +973,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             WHAT INVENTORY SHOULD CONTAIN
-        ========================= -->
+         WHAT INVENTORY SHOULD CONTAIN
+    ========================= -->
 
         <section class="section">
 
@@ -937,8 +1034,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             TREE XL
-        ========================= -->
+         TREE XL
+    ========================= -->
 
         <section class="section">
 
@@ -1007,8 +1104,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             PROBLEM CASES
-        ========================= -->
+         PROBLEM CASES
+    ========================= -->
 
         <section class="section">
 
@@ -1070,8 +1167,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             USE CASES
-        ========================= -->
+         USE CASES
+    ========================= -->
 
         <section class="section">
 
@@ -1138,8 +1235,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             COMPARISON
-        ========================= -->
+         COMPARISON
+    ========================= -->
 
         <section class="section">
 
@@ -1239,8 +1336,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             WHO
-        ========================= -->
+         WHO
+    ========================= -->
 
         <section class="section">
 
@@ -1344,8 +1441,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             FAQ
-        ========================= -->
+         FAQ
+    ========================= -->
 
         <section class="section">
 
@@ -1451,8 +1548,8 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
 
         <!-- =========================
-             FINAL CTA
-        ========================= -->
+         FINAL CTA
+    ========================= -->
 
         <section class="section">
 
@@ -1466,12 +1563,10 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
                 script.
             </p>
 
-            <a
-                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
-                class="cta"
-                target="_blank"
-                rel="noopener"
-            >
+            <a href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+               class="cta"
+               target="_blank"
+               rel="noopener">
                 Download TreeXL Free →
             </a>
 
@@ -1508,59 +1603,59 @@ Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
 
         (function () {
 
-            const button =
-                document.getElementById("hamburgerBtn");
+        const button =
+        document.getElementById("hamburgerBtn");
 
-            const menu =
-                document.getElementById("mobileNav");
-
-
-            if (!button || !menu) {
-                return;
-            }
+        const menu =
+        document.getElementById("mobileNav");
 
 
-            button.addEventListener("click", function () {
-
-                const open =
-                    menu.classList.toggle("open");
-
-
-                button.setAttribute(
-                    "aria-expanded",
-                    String(open)
-                );
+        if (!button || !menu) {
+        return;
+        }
 
 
-                button.setAttribute(
-                    "aria-label",
-                    open
-                        ? "Close navigation menu"
-                        : "Open navigation menu"
-                );
+        button.addEventListener("click", function () {
 
-            });
+        const open =
+        menu.classList.toggle("open");
 
 
-            menu.querySelectorAll("a").forEach(function (link) {
+        button.setAttribute(
+        "aria-expanded",
+        String(open)
+        );
 
-                link.addEventListener("click", function () {
 
-                    menu.classList.remove("open");
+        button.setAttribute(
+        "aria-label",
+        open
+        ? "Close navigation menu"
+        : "Open navigation menu"
+        );
 
-                    button.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+        });
 
-                    button.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
 
-                });
+        menu.querySelectorAll("a").forEach(function (link) {
 
-            });
+        link.addEventListener("click", function () {
+
+        menu.classList.remove("open");
+
+        button.setAttribute(
+        "aria-expanded",
+        "false"
+        );
+
+        button.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+        );
+
+        });
+
+        });
 
         })();
 
