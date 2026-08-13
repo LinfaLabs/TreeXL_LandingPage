@@ -1,118 +1,66 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Start cookieyes banner -->
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/625f694b69c32c81e2ec65d568070133/script.js"></script>
-    <!-- End cookieyes banner -->
 
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "xvh42q5y6k");
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLR3108Y1K"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GLR3108Y1K');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Export Folder Structure to Excel on Windows | TreeXL</title>
-    <meta name="description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts. Developed by Linfa Labs.">
-    <link rel="canonical" href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
 
-    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta name="description"
+          content="Learn how to export a folder structure to Excel on Windows. Compare manual methods, Command Prompt and PowerShell, or create a formatted Excel folder tree with TreeXL.">
+
+    <link rel="canonical"
+          href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="TreeXL by Linfa Labs">
-    <meta property="og:url" content="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
-    <meta property="og:title" content="Export Folder Structure to Excel on Windows | TreeXL">
-    <meta property="og:description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts.">
-    <meta property="og:image" content="https://treexl.linfalabs.com/images/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="TreeXL - Turn Messy Folders Into Perfect Excel Reports">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Export Folder Structure to Excel on Windows | TreeXL">
-    <meta name="twitter:description" content="Export any Windows folder structure to a professional Excel .xlsx report without PowerShell or scripts.">
-    <meta name="twitter:image" content="https://treexl.linfalabs.com/images/og-image.png">
+    <meta property="og:title"
+          content="Export Folder Structure to Excel on Windows | TreeXL">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:description"
+          content="Export Windows folder structures and file trees to a professional Excel report. Compare manual methods, PowerShell and TreeXL.">
 
-    <!-- Structured data -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How do I export a folder tree to Excel?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "TreeXL scans the selected Windows folder and exports its files and subfolders into a formatted .xlsx report."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do I need PowerShell?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. TreeXL provides a graphical File Explorer workflow."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can TreeXL check duplicates and long paths?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. TreeXL includes audit features for duplicate files, long paths and inaccessible items."
-              }
-            }
-          ]
-        }
-    </script>
+    <meta property="og:url"
+          content="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+
+    <meta name="twitter:card" content="summary">
+
+
+    <!-- =========================
+         STYLES
+    ========================= -->
 
     <style>
+
         :root {
-            --bg: #0f172a;
-            --surface: #1e293b;
-            --border: #334155;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --accent: #10b981;
-            --accent-hover: #059669;
-            --danger: #f87171;
-            --surface-color: var(--surface);
-            --surface-border: var(--border);
-            --text-muted: var(--muted);
-            --text-main: var(--text);
-            --bg-color: var(--bg);
+            --bg: #0b0f14;
+            --surface: #111821;
+            --text: #f3f5f7;
+            --muted: #aab4c0;
+            --border: #273241;
+            --accent: #70d6a3;
+            --accent-hover: #5cc68f;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
         }
 
         .container {
@@ -121,11 +69,17 @@
             padding: 0 24px;
         }
 
-        header {
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header.container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
+            padding-top: 24px;
+            padding-bottom: 24px;
             border-bottom: 1px solid var(--border);
             position: relative;
         }
@@ -138,17 +92,20 @@
             color: white;
             font-weight: 700;
             font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-            .logo img {
-                width: 48px;
-                height: 48px;
-                border-radius: 12px;
-            }
+        .logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: contain;
+            display: block;
+        }
 
-            .logo span {
-                color: var(--accent);
-            }
+        .logo span {
+            color: var(--accent);
+        }
 
         .nav-links {
             display: flex;
@@ -156,15 +113,15 @@
             gap: 24px;
         }
 
-            .nav-links a {
-                color: var(--muted);
-                text-decoration: none;
-                font-weight: 500;
-            }
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-                .nav-links a:hover {
-                    color: white;
-                }
+        .nav-links a:hover {
+            color: white;
+        }
 
         .header-actions {
             display: flex;
@@ -174,37 +131,20 @@
 
         .btn {
             background: var(--accent);
-            color: #fff;
+            color: #08100c;
             text-decoration: none;
             padding: 12px 22px;
             border-radius: 8px;
             font-weight: 700;
-            transition: .2s;
             display: inline-block;
+            transition: .2s;
         }
 
-            .btn:hover {
-                background: var(--accent-hover);
-            }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            text-decoration: none;
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            border: 1px solid var(--border);
-            transition: .2s;
-            display: inline-block;
+        .btn:hover {
+            background: var(--accent-hover);
+            color: #08100c;
         }
 
-            .btn-secondary:hover {
-                background: var(--surface);
-                border-color: var(--muted);
-            }
-
-        /* --- Hamburger menu (mobile) --- */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -219,26 +159,13 @@
             padding: 0;
         }
 
-            .hamburger span {
-                display: block;
-                width: 18px;
-                height: 2px;
-                background: var(--text);
-                margin: 0 auto;
-                transition: transform .2s ease, opacity .2s ease;
-            }
-
-            .hamburger[aria-expanded="true"] span:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
-            }
-
-            .hamburger[aria-expanded="true"] span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger[aria-expanded="true"] span:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
-            }
+        .hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text);
+            margin: 0 auto;
+        }
 
         .mobile-nav {
             display: none;
@@ -254,135 +181,188 @@
             z-index: 50;
         }
 
-            .mobile-nav.open {
-                display: flex;
-            }
-
-            .mobile-nav a {
-                color: var(--muted);
-                text-decoration: none;
-                font-weight: 500;
-                padding: 10px 0;
-                border-bottom: 1px solid var(--border);
-            }
-
-                .mobile-nav a:last-child {
-                    border-bottom: none;
-                }
-
-                .mobile-nav a:hover {
-                    color: white;
-                }
-
-        /* --- Hero --- */
-        .hero {
-            padding: 90px 0 60px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            background: rgba(16,185,129,.15);
-            color: var(--accent);
-            border: 1px solid rgba(16,185,129,.2);
-            margin-bottom: 24px;
-            font-size: .85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: .04em;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.4rem, 5vw, 3.75rem);
-            line-height: 1.1;
-            max-width: 900px;
-            margin-bottom: 20px;
-        }
-
-        .hero p.lead {
-            max-width: 800px;
-            color: var(--muted);
-            font-size: 1.15rem;
-            margin-bottom: 32px;
-        }
-
-        .hero-cta {
-            margin-bottom: 10px;
+        .mobile-nav.open {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
         }
 
-        /* --- Sections --- */
+        .mobile-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            padding: 70px 0 90px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            max-width: 950px;
+            margin: 12px 0 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 21px;
+            margin-top: 30px;
+        }
+
+        .lead {
+            font-size: 20px;
+            color: var(--muted);
+            max-width: 850px;
+        }
+
+        .cta {
+            display: inline-block;
+            margin: 24px 0 35px;
+            padding: 14px 22px;
+            border-radius: 9px;
+            background: var(--accent);
+            color: #08100c;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .cta:hover {
+            background: var(--accent-hover);
+            color: #08100c;
+        }
+
         .section {
-            padding: 60px 0;
-            border-top: 1px solid var(--border);
+            margin: 58px 0;
         }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
 
-            .section-title.centered {
-                text-align: center;
-            }
+        /* =========================
+           CARDS
+        ========================= */
 
-        .section-subtitle {
-            color: var(--muted);
-            max-width: 700px;
-            margin-bottom: 40px;
-        }
-
-            .section-subtitle.centered {
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-        .section p.body-text {
-            color: var(--muted);
-            max-width: 800px;
-        }
-
-        .grid {
+        .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(240px, 1fr)
+            );
+            gap: 18px;
         }
 
-        .feature-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--surface-border);
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           CODE
+        ========================= */
+
+        .code {
+            overflow: auto;
+            background: #070a0e;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 32px;
-            transition: transform 0.2s, border-color 0.2s;
+            padding: 18px;
+            font-family: Consolas, "Courier New", monospace;
+            color: #dce5ee;
+            white-space: pre;
         }
 
-            .feature-card:hover {
-                transform: translateY(-4px);
-                border-color: var(--accent);
-            }
 
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
+        /* =========================
+           NOTE
+        ========================= */
+
+        .note {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 18px 22px;
+            margin: 25px 0;
         }
 
-        .feature-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
+
+        /* =========================
+           LIST
+        ========================= */
+
+        .checklist {
+            padding-left: 22px;
+        }
+
+        .checklist li {
             margin-bottom: 10px;
         }
 
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.925rem;
-            line-height: 1.5;
+
+        /* =========================
+           COMPARISON TABLE
+        ========================= */
+
+        .comparison-wrapper {
+            overflow-x: auto;
         }
 
-        /* --- FAQ --- */
+        .comparison {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison th {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
         .faq {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -391,66 +371,44 @@
             margin: 12px 0;
         }
 
-            .faq summary {
-                cursor: pointer;
-                padding: 18px 0;
-                font-weight: 600;
-                color: var(--text);
-                list-style: none;
-            }
+        .faq summary {
+            cursor: pointer;
+            padding: 18px 0;
+            font-weight: 700;
+        }
 
-                .faq summary::-webkit-details-marker {
-                    display: none;
-                }
-
-                .faq summary::after {
-                    content: "+";
-                    float: right;
-                    color: var(--accent);
-                    font-weight: 700;
-                }
-
-            .faq[open] summary::after {
-                content: "−";
-            }
-
-            .faq p {
-                color: var(--muted);
-                padding-bottom: 18px;
-            }
-
-        footer {
-            border-top: 1px solid var(--border);
-            text-align: center;
-            padding: 30px 0;
+        .faq p {
             color: var(--muted);
         }
 
-            footer span {
-                color: var(--accent);
-                font-weight: 700;
-            }
 
-        .footer-links {
-            margin-top: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 14px;
         }
 
-            .footer-links a {
-                color: var(--muted);
-                text-decoration: none;
-                font-size: 0.85rem;
+        footer a {
+            color: var(--muted);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
             }
 
-                .footer-links a:hover {
-                    color: white;
-                }
-
-        @media(max-width:768px) {
-            .nav-links {
+            .header-actions .btn {
                 display: none;
             }
 
@@ -458,140 +416,1598 @@
                 display: flex;
             }
         }
+
+
+        @media (max-width: 700px) {
+
+            header.container {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+            }
+
+            main {
+                padding-top: 48px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .lead {
+                font-size: 18px;
+            }
+
+        }
+
     </style>
+
+
+    <!-- =========================
+         WEBPAGE STRUCTURED DATA
+    ========================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Export Folder Structure to Excel on Windows | TreeXL",
+        "url": "https://treexl.linfalabs.com/export-folder-structure-to-excel/",
+        "description": "Learn how to export a Windows folder structure to Excel using manual methods, Command Prompt, PowerShell or TreeXL."
+    }
+    </script>
+
+
+    <!-- =========================
+         FAQ STRUCTURED DATA
+    ========================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+
+            {
+                "@type": "Question",
+                "name": "How can I export a folder structure to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can export a folder structure to Excel manually, with a PowerShell script, or with a dedicated application such as TreeXL. TreeXL scans a Windows folder and creates a formatted Excel report containing the folder and file structure."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can I export a folder tree to Excel without PowerShell?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TreeXL provides a graphical Windows application that can export a folder structure to an Excel report without requiring you to write or run a PowerShell script."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "How do I export folders and subfolders to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A recursive directory scan is required to include folders and their subfolders. PowerShell can perform this operation programmatically, while TreeXL provides a graphical workflow for generating the Excel report."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can PowerShell export a folder structure to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PowerShell can recursively enumerate folders and files and export the resulting data. Creating a formatted Excel report may require additional scripting or modules."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can TreeXL export large folder structures?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TreeXL is designed to scan Windows folders containing potentially large numbers of files and folders. The application also identifies situations such as long paths and inaccessible items."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can I export a folder structure from Windows File Explorer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TreeXL integrates with the Windows File Explorer context menu so that a folder can be exported without manually entering its path into a command-line tool."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "What is the difference between a folder tree and a folder inventory?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A folder tree primarily represents the hierarchy of directories. A folder inventory can provide a broader record of files and folders and may include additional information useful for auditing, migration and data management."
+                }
+            }
+
+        ]
+    }
+    </script>
+
 </head>
+
+
 <body>
 
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header class="container">
-        <a href="https://treexl.linfalabs.com/" class="logo">
-            <img src="../images/TreeXL_logo.png" alt="TreeXL Logo">
+
+        <a
+            href="https://treexl.linfalabs.com/"
+            class="logo"
+        >
+
+            <img
+                src="../images/TreeXL_logo.png"
+                alt="TreeXL Logo"
+            >
+
             <span>TreeXL</span>
+
         </a>
 
-        <nav class="nav-links">
-            <a href="https://treexl.linfalabs.com/">Home</a>
-            <!--<a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">Folder → Excel</a>
-    <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">PowerShell</a>
-    <a href="https://treexl.linfalabs.com/folder-tree-generator/">Folder Tree</a>-->
+
+        <nav
+            class="nav-links"
+            aria-label="Main navigation"
+        >
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
         </nav>
+
 
         <div class="header-actions">
-            <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">Download</a>
-            <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
-                <span></span><span></span><span></span>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="btn"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
+
+            <button
+                class="hamburger"
+                id="hamburgerBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
             </button>
+
         </div>
 
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="https://treexl.linfalabs.com/">Home</a>
-            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">Folder → Excel</a>
-            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">PowerShell</a>
-            <a href="https://treexl.linfalabs.com/folder-tree-generator/">Folder Tree</a>
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="https://treexl.linfalabs.com/">
+                Home
+            </a>
+
+            <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                Folder → Excel
+            </a>
+
+            <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                PowerShell
+            </a>
+
+            <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                Folder Tree
+            </a>
+
+            <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                Folder Inventory
+            </a>
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                target="_blank"
+                rel="noopener"
+            >
+                Download
+            </a>
+
         </nav>
+
     </header>
 
-    <!-- Hero -->
-    <section class="hero container">
-        <div class="badge">TreeXL for Windows</div>
-        <h1>Export Any Windows Folder Structure to Excel</h1>
-        <p class="lead">Turn a Windows folder tree into a professional .xlsx report in seconds. TreeXL preserves the hierarchy and adds useful audit information, directly from File Explorer.</p>
-        <div class="hero-cta">
-            <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">📥 Download TreeXL Free</a>
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             HERO
+        ========================= -->
+
+        <div class="eyebrow">
+            Windows Folder Export to Excel
         </div>
-    </section>
 
-    <!-- Why export -->
-    <section class="section container">
-        <h2 class="section-title">Why export a folder structure to Excel?</h2>
-        <p class="body-text">Excel is useful when a folder structure needs to be reviewed, documented, shared or handed over. A formatted report is easier to filter, sort and annotate than a raw directory listing.</p>
-    </section>
 
-    <!-- What TreeXL does -->
-    <section class="section container">
-        <h2 class="section-title">What TreeXL does</h2>
-        <p class="section-subtitle">Designed to integrate seamlessly into your Windows workflow.</p>
-        <div class="grid">
-            <div class="feature-card">
-                <div class="feature-icon">🖱️</div>
-                <h3>Right-click workflow</h3>
-                <p>Select a folder in File Explorer and launch TreeXL without opening a terminal.</p>
+        <h1>
+            Export a Folder Structure to Excel on Windows
+        </h1>
+
+
+        <p class="lead">
+            Turn any Windows folder, including its subfolders and files,
+            into a structured and professionally formatted Excel report.
+            TreeXL makes it possible to export a folder tree directly from
+            Windows File Explorer without writing a script.
+        </p>
+
+
+        <a
+            href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+            class="cta"
+            target="_blank"
+            rel="noopener"
+        >
+            Download TreeXL Free →
+        </a>
+
+
+        <!-- =========================
+             QUICK ANSWER
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                The Quickest Way to Export a Folder Structure to Excel
+            </h2>
+
+            <p>
+                If you need to turn a Windows directory into an Excel
+                spreadsheet, the basic process is simple:
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        1. Select a Folder
+                    </h3>
+
+                    <p>
+                        Open Windows File Explorer and select the folder
+                        containing the files and subfolders you want to
+                        document.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        2. Run TreeXL
+                    </h3>
+
+                    <p>
+                        Launch TreeXL directly from the Windows context
+                        menu.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        3. Get an Excel Report
+                    </h3>
+
+                    <p>
+                        TreeXL scans the directory and creates an
+                        <strong>.xlsx</strong> report containing the
+                        folder and file structure.
+                    </p>
+
+                </div>
+
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Formatted .xlsx</h3>
-                <p>Generate a structured Excel report instead of a raw text listing.</p>
+
+        </section>
+
+
+        <!-- =========================
+             WHAT IS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Does "Export Folder Structure to Excel" Mean?
+            </h2>
+
+            <p>
+                A folder structure describes how directories and files are
+                organized inside a storage location.
+            </p>
+
+            <p>
+                For example, a Windows project folder might contain:
+            </p>
+
+
+            <div class="code">Project
+├── Documentation
+│   ├── Requirements
+│   └── Specifications
+├── Source
+│   ├── Application
+│   └── Tests
+├── Releases
+│   ├── Version 1
+│   └── Version 2
+└── Archive</div>
+
+
+            <p>
+                Exporting this structure to Excel means converting that
+                hierarchy into a spreadsheet that can be searched,
+                filtered, reviewed, documented and shared.
+            </p>
+
+            <p>
+                This can be particularly useful when the directory
+                contains hundreds, thousands or more files and manually
+                browsing the structure is no longer practical.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHY EXCEL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Why Export a Folder Structure to Excel?
+            </h2>
+
+            <p>
+                A text-based folder tree is useful for quickly looking at
+                a directory. Excel becomes more useful when you need to
+                work with the information.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Search
+                    </h3>
+
+                    <p>
+                        Search the exported data for specific file names,
+                        extensions, folders or paths.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Filter
+                    </h3>
+
+                    <p>
+                        Filter the report to focus on particular parts of
+                        a large directory.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Document
+                    </h3>
+
+                    <p>
+                        Keep a readable snapshot of a folder structure for
+                        documentation or project records.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Share
+                    </h3>
+
+                    <p>
+                        Send the report to colleagues, clients,
+                        administrators or project teams.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Review
+                    </h3>
+
+                    <p>
+                        Analyze the contents of a directory before a
+                        migration, cleanup or restructuring operation.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Archive
+                    </h3>
+
+                    <p>
+                        Keep a lightweight record of how a directory was
+                        organized at a particular point in time.
+                    </p>
+
+                </div>
+
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3>Audit checks</h3>
-                <p>Review duplicate files, long paths and inaccessible items.</p>
+
+        </section>
+
+
+        <!-- =========================
+             MANUAL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                How to Export a Folder Structure to Excel Manually
+            </h2>
+
+            <p>
+                Windows does not provide a simple one-click File Explorer
+                command that turns an entire directory hierarchy into a
+                polished Excel report.
+            </p>
+
+            <p>
+                As a result, users commonly resort to a combination of
+                File Explorer, Command Prompt, PowerShell and Excel.
+            </p>
+
+
+            <h3>
+                Step 1: Find the folder
+            </h3>
+
+            <p>
+                Navigate to the directory you want to document.
+            </p>
+
+
+            <h3>
+                Step 2: Enumerate the contents
+            </h3>
+
+            <p>
+                You can use a Windows command or PowerShell to recursively
+                retrieve files and folders.
+            </p>
+
+
+            <h3>
+                Step 3: Export the results
+            </h3>
+
+            <p>
+                The resulting data can then be saved to CSV or another
+                format and opened in Excel.
+            </p>
+
+
+            <h3>
+                Step 4: Format the spreadsheet
+            </h3>
+
+            <p>
+                If you want a professional report rather than raw
+                command output, additional formatting and organization
+                may be required.
+            </p>
+
+
+            <div class="note">
+
+                <strong>The problem:</strong>
+                this workflow works, but it can involve several manual
+                steps. For occasional exports this may be perfectly fine.
+                For repeated work, a dedicated tool can save time.
+
             </div>
-        </div>
-    </section>
 
-    <!-- PowerShell vs TreeXL -->
-    <section class="section container">
-        <h2 class="section-title">PowerShell vs TreeXL</h2>
-        <p class="body-text">PowerShell is excellent for custom automation. TreeXL is designed for the specific workflow of turning a Windows folder structure into a polished Excel report without creating or maintaining a script.</p>
-    </section>
+        </section>
 
-    <!-- FAQ -->
-    <section class="section container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <details class="faq">
-            <summary>How do I export a folder tree to Excel?</summary>
-            <p>TreeXL scans the selected Windows folder and exports its files and subfolders into a formatted .xlsx report.</p>
-        </details>
-        <details class="faq">
-            <summary>Do I need PowerShell?</summary>
-            <p>No. TreeXL provides a graphical File Explorer workflow.</p>
-        </details>
-        <details class="faq">
-            <summary>Can TreeXL check duplicates and long paths?</summary>
-            <p>Yes. TreeXL includes audit features for duplicate files, long paths and inaccessible items.</p>
-        </details>
-    </section>
 
-    <!-- Try TreeXL -->
-    <section class="section container">
-        <h2 class="section-title">Try TreeXL</h2>
-        <p class="body-text" style="margin-bottom: 24px;">Export your first Windows folder structure to a professional Excel report.</p>
-        <a href="https://apps.microsoft.com/detail/9n3bn8k48qtp" class="btn" target="_blank" rel="noopener">Download from Microsoft Store →</a>
-    </section>
+        <!-- =========================
+             COMMAND PROMPT
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export a Folder Tree with Command Prompt
+            </h2>
+
+            <p>
+                Windows includes the <strong>tree</strong> command, which
+                can display a directory structure from the command line.
+            </p>
+
+
+            <div class="code">tree "C:\YourFolder" /F</div>
+
+
+            <p>
+                The <code>/F</code> option includes files in the output.
+            </p>
+
+            <p>
+                This is a convenient way to quickly inspect a directory
+                hierarchy, but the result is text output rather than a
+                ready-to-use Excel report.
+            </p>
+
+
+            <p>
+                For simple documentation, this may be enough. If you need
+                a spreadsheet that can be filtered, reviewed and shared,
+                additional processing is required.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             POWERSHELL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export a Folder Structure to Excel with PowerShell
+            </h2>
+
+            <p>
+                PowerShell is another common solution for exporting
+                Windows folder structures.
+            </p>
+
+            <p>
+                A recursive file listing can be generated with:
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse</div>
+
+
+            <p>
+                The results can then be exported to CSV:
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
+Export-Csv "folder-structure.csv" -NoTypeInformation</div>
+
+
+            <p>
+                The CSV file can be opened with Microsoft Excel.
+            </p>
+
+            <p>
+                This is a powerful approach and is especially useful for
+                administrators who already use PowerShell in their
+                workflows.
+            </p>
+
+
+            <p>
+                However, creating a polished report with additional
+                information, formatting, hierarchy and error handling
+                can require considerably more scripting.
+            </p>
+
+
+            <p>
+                If PowerShell is exactly what you are looking for, see the
+                dedicated
+                <a href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
+                    PowerShell folder export guide
+                </a>.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHY TREE XL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export a Folder Structure to Excel Without Writing a Script
+            </h2>
+
+            <p>
+                TreeXL is designed for users who want the result of a
+                directory export without having to build and maintain
+                their own script.
+            </p>
+
+            <p>
+                Instead of opening a terminal and entering commands,
+                TreeXL integrates with Windows File Explorer.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Windows Context Menu
+                    </h3>
+
+                    <p>
+                        Start the export from the folder's right-click
+                        context menu.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Recursive Scanning
+                    </h3>
+
+                    <p>
+                        Include the folder hierarchy and the files
+                        contained within nested directories.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Excel Output
+                    </h3>
+
+                    <p>
+                        Generate a structured <strong>.xlsx</strong>
+                        report instead of raw command-line output.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        No Custom Script
+                    </h3>
+
+                    <p>
+                        No need to write, save or maintain a PowerShell
+                        script for a recurring export.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REPORT
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Can a TreeXL Excel Report Be Used For?
+            </h2>
+
+            <p>
+                The generated spreadsheet can serve as a practical
+                reference for many different workflows.
+            </p>
+
+
+            <ul class="checklist">
+
+                <li>
+                    Documenting a project folder
+                </li>
+
+                <li>
+                    Reviewing a file server
+                </li>
+
+                <li>
+                    Preparing a data migration
+                </li>
+
+                <li>
+                    Reviewing an archive before cleanup
+                </li>
+
+                <li>
+                    Sharing a directory structure with a client
+                </li>
+
+                <li>
+                    Creating technical documentation
+                </li>
+
+                <li>
+                    Comparing the organization of files and folders
+                </li>
+
+                <li>
+                    Investigating large or unfamiliar directories
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             DIFFICULT CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Exporting Real-World Windows Folders Is Not Always Simple
+            </h2>
+
+            <p>
+                A directory in a real Windows environment may contain
+                much more than a clean hierarchy of ordinary files.
+            </p>
+
+            <p>
+                Large file servers and shared folders can contain
+                inaccessible directories, duplicate files and very long
+                paths.
+            </p>
+
+
+            <h3>
+                Long file paths
+            </h3>
+
+            <p>
+                Deeply nested directories can produce very long paths.
+                These paths may become important during migrations,
+                backups or other file-management operations.
+            </p>
+
+            <p>
+                TreeXL can identify paths exceeding the traditional
+                260-character threshold and highlight them in the
+                generated report.
+            </p>
+
+
+            <h3>
+                Inaccessible folders
+            </h3>
+
+            <p>
+                Not every folder is necessarily accessible to the current
+                Windows user.
+            </p>
+
+            <p>
+                When permissions prevent access to part of a directory,
+                the limitation should be visible rather than silently
+                ignored.
+            </p>
+
+
+            <h3>
+                Duplicate files
+            </h3>
+
+            <p>
+                Large collections can contain duplicate files that are
+                difficult to identify manually.
+            </p>
+
+            <p>
+                Duplicate detection can be useful when preparing data for
+                cleanup, restructuring or migration.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             USE CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Common Use Cases for Exporting Folder Structures to Excel
+            </h2>
+
+
+            <h3>
+                IT and System Administration
+            </h3>
+
+            <p>
+                System administrators can create a readable representation
+                of shared folders and file servers for documentation,
+                audits and infrastructure projects.
+            </p>
+
+
+            <h3>
+                Data Migration
+            </h3>
+
+            <p>
+                Before moving data to a new server, NAS, storage platform
+                or cloud environment, an exported structure can provide
+                a useful reference for the existing organization.
+            </p>
+
+
+            <h3>
+                Software Development
+            </h3>
+
+            <p>
+                Developers may need to document project directories,
+                generated files, assets or deployment structures.
+            </p>
+
+
+            <h3>
+                Consulting
+            </h3>
+
+            <p>
+                IT consultants can use folder exports when assessing
+                client environments or preparing migration and
+                restructuring projects.
+            </p>
+
+
+            <h3>
+                Project Handover
+            </h3>
+
+            <p>
+                A spreadsheet can make it easier for another person to
+                understand the organization of a project without manually
+                exploring every folder.
+            </p>
+
+
+            <h3>
+                File Cleanup
+            </h3>
+
+            <p>
+                An exported structure can be used as a starting point for
+                reviewing large directories before archiving or deleting
+                unnecessary data.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             COMPARISON
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Best Ways to Export a Folder Structure to Excel
+            </h2>
+
+            <p>
+                There is no single method that is best for every situation.
+                The right choice depends on whether you prefer control,
+                automation or simplicity.
+            </p>
+
+
+            <div class="comparison-wrapper">
+
+                <table class="comparison">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Method
+                            </th>
+
+                            <th>
+                                Easy to use
+                            </th>
+
+                            <th>
+                                Recursive
+                            </th>
+
+                            <th>
+                                Excel output
+                            </th>
+
+                            <th>
+                                Requires scripting
+                            </th>
+
+                            <th>
+                                Best for
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Manual
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Manual
+                            </td>
+
+                            <td>
+                                Manual
+                            </td>
+
+                            <td>
+                                No
+                            </td>
+
+                            <td>
+                                Small folders
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Command Prompt
+                            </td>
+
+                            <td>
+                                Moderate
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Additional work
+                            </td>
+
+                            <td>
+                                No
+                            </td>
+
+                            <td>
+                                Quick text output
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                PowerShell
+                            </td>
+
+                            <td>
+                                Moderate
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Requires processing
+                            </td>
+
+                            <td>
+                                Usually
+                            </td>
+
+                            <td>
+                                Automation
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                TreeXL
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                No
+                            </td>
+
+                            <td>
+                                Ready-to-use reports
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOLDER TREE VS INVENTORY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Folder Tree vs Folder Inventory
+            </h2>
+
+            <p>
+                These terms are related, but they are not exactly the
+                same.
+            </p>
+
+            <p>
+                A <strong>folder tree</strong> primarily focuses on the
+                hierarchy of directories: which folders are inside which
+                other folders.
+            </p>
+
+            <p>
+                A <strong>folder inventory</strong> generally has a broader
+                purpose and can include files and additional information
+                useful for documentation, auditing or migration.
+            </p>
+
+            <p>
+                TreeXL can be useful for both workflows because it starts
+                from the actual Windows file system and turns the
+                structure into a report that can be examined in Excel.
+            </p>
+
+            <p>
+                If your primary goal is simply generating a visual or
+                structured folder tree, see the
+                <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                    Windows Folder Tree Generator
+                </a>
+                page.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             WHO
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Who Needs to Export Folder Structures to Excel?
+            </h2>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        System Administrators
+                    </h3>
+
+                    <p>
+                        Document shared folders, file servers and
+                        infrastructure environments.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        IT Professionals
+                    </h3>
+
+                    <p>
+                        Prepare data for audits, migrations and
+                        restructuring projects.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Developers
+                    </h3>
+
+                    <p>
+                        Document application and project directory
+                        structures.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Data Managers
+                    </h3>
+
+                    <p>
+                        Analyze and document large collections of files.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Consultants
+                    </h3>
+
+                    <p>
+                        Produce client-ready documentation during
+                        technical assessments.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Freelancers
+                    </h3>
+
+                    <p>
+                        Create readable file structure documentation for
+                        projects and client handovers.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAQ
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <details class="faq">
+
+                <summary>
+                    How can I export a folder structure to Excel?
+                </summary>
+
+                <p>
+                    You can manually copy directory information, use
+                    Command Prompt or PowerShell, or use a dedicated
+                    application such as TreeXL. TreeXL scans a Windows
+                    folder and creates a formatted Excel report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can I export a folder tree to Excel without PowerShell?
+                </summary>
+
+                <p>
+                    Yes. TreeXL provides a graphical Windows application
+                    that can export a folder structure to an Excel report
+                    without requiring you to write or run a PowerShell
+                    script.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How do I export folders and subfolders to Excel?
+                </summary>
+
+                <p>
+                    The folder must be scanned recursively so that nested
+                    directories are included. PowerShell can perform a
+                    recursive scan, while TreeXL provides a graphical
+                    workflow for generating the resulting Excel report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can PowerShell export a folder structure to Excel?
+                </summary>
+
+                <p>
+                    PowerShell can recursively enumerate files and folders
+                    and export the resulting information. Additional
+                    scripting or modules may be required when a formatted
+                    Excel report is needed.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can I export a folder directly from File Explorer?
+                </summary>
+
+                <p>
+                    Yes. TreeXL integrates with the Windows File Explorer
+                    context menu, allowing you to start the export from
+                    the folder you want to scan.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can TreeXL export files as well as folders?
+                </summary>
+
+                <p>
+                    Yes. TreeXL is designed to report both the folder
+                    hierarchy and the files contained within the selected
+                    directory.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Is PowerShell better than TreeXL?
+                </summary>
+
+                <p>
+                    PowerShell is an excellent choice when you need a
+                    highly customized or automated workflow. TreeXL is
+                    intended for users who want to generate a structured
+                    Excel report without writing and maintaining their own
+                    script.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    What happens with inaccessible folders?
+                </summary>
+
+                <p>
+                    Windows permissions can prevent applications from
+                    reading certain directories. TreeXL can identify
+                    inaccessible items so that limitations in the exported
+                    structure are visible for review.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    What about very long Windows paths?
+                </summary>
+
+                <p>
+                    Deeply nested folders can result in very long paths.
+                    TreeXL can identify paths exceeding the traditional
+                    260-character threshold and surface them in the
+                    report.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Is a folder structure export the same as a backup?
+                </summary>
+
+                <p>
+                    No. An exported folder structure is documentation of
+                    the organization and contents of a file system. It
+                    does not contain a backup copy of the original files.
+                </p>
+
+            </details>
+
+        </section>
+
+
+        <!-- =========================
+             FINAL CTA
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export Your Windows Folder Structure to Excel
+            </h2>
+
+            <p>
+                Skip the manual copy-and-paste process and avoid writing
+                a custom script every time you need a readable folder
+                structure report.
+            </p>
+
+            <p>
+                Select a folder in Windows File Explorer, launch TreeXL,
+                and create your Excel report.
+            </p>
+
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="cta"
+                target="_blank"
+                rel="noopener"
+            >
+                Download TreeXL Free →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
-        <p>© 2026 <span>Linfa Labs</span>. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="https://treexl.linfalabs.com/privacy.html">Privacy Policy</a>
-            <a href="mailto:linfo@linfalabs.com">Contact</a>
+
+        <div class="container">
+
+            © 2026 Linfa Labs ·
+
+            <a href="https://treexl.linfalabs.com/privacy.html">
+                Privacy Policy
+            </a>
+
         </div>
+
     </footer>
 
+
+    <!-- =========================
+         MOBILE MENU
+    ========================= -->
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileNav = document.getElementById('mobileNav');
 
-        const closeMobileNav = () => {
-        mobileNav.classList.remove('open');
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        };
+        (function () {
 
-        hamburgerBtn.addEventListener('click', () => {
-        const isOpen = mobileNav.classList.toggle('open');
-        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
-        });
+            const button =
+                document.getElementById("hamburgerBtn");
 
-        mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeMobileNav);
-        });
+            const menu =
+                document.getElementById("mobileNav");
 
-        document.addEventListener('click', (e) => {
-        if (!mobileNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        closeMobileNav();
-        }
-        });
-        });
+
+            if (!button || !menu) {
+                return;
+            }
+
+
+            button.addEventListener("click", function () {
+
+                const open =
+                    menu.classList.toggle("open");
+
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(open)
+                );
+
+
+                button.setAttribute(
+                    "aria-label",
+                    open
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+
+            });
+
+
+            menu.querySelectorAll("a").forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    menu.classList.remove("open");
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                });
+
+            });
+
+        })();
+
     </script>
+
+
 </body>
 </html>
