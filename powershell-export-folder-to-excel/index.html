@@ -1,26 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>PowerShell Export Folder to Excel: Easier Windows Alternative | TreeXL</title>
+    <title>PowerShell Export Folder Structure to Excel | Windows | TreeXL</title>
 
     <meta name="description"
-          content="Compare PowerShell folder exports with TreeXL. Export a Windows directory structure to formatted Excel without writing or maintaining scripts.">
+          content="Learn how to export a Windows folder structure to Excel with PowerShell. Get practical commands and scripts for recursive folders and files, CSV and Excel output, and discover TreeXL as a no-script alternative.">
 
     <link rel="canonical"
           href="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
 
     <meta property="og:type" content="website">
+
     <meta property="og:title"
-          content="PowerShell Export Folder to Excel: Easier Windows Alternative | TreeXL">
+          content="PowerShell Export Folder Structure to Excel | Windows | TreeXL">
+
     <meta property="og:description"
-          content="Export a Windows folder structure to formatted Excel without writing or maintaining PowerShell scripts.">
+          content="Learn how to export Windows folders and files to Excel with PowerShell, including recursive folder structures, CSV output and practical alternatives.">
+
     <meta property="og:url"
           content="https://treexl.linfalabs.com/powershell-export-folder-to-excel/">
 
     <meta name="twitter:card" content="summary">
+
 
     <style>
 
@@ -127,8 +132,8 @@
             padding: 12px 22px;
             border-radius: 8px;
             font-weight: 700;
-            transition: .2s;
             display: inline-block;
+            transition: .2s;
         }
 
         .btn:hover {
@@ -208,14 +213,25 @@
         h1 {
             font-size: clamp(38px, 6vw, 64px);
             line-height: 1.05;
-            max-width: 900px;
+            max-width: 950px;
             margin: 12px 0 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 21px;
+            margin-top: 30px;
         }
 
         .lead {
             font-size: 20px;
             color: var(--muted);
-            max-width: 820px;
+            max-width: 880px;
         }
 
         .cta {
@@ -235,14 +251,13 @@
         }
 
         .section {
-            margin: 52px 0;
+            margin: 58px 0;
         }
 
-        .section h2 {
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
+
+        /* =========================
+           CARDS
+        ========================= */
 
         .cards {
             display: grid;
@@ -262,17 +277,82 @@
 
         .card h3 {
             margin-top: 0;
-            font-size: 21px;
         }
 
+
+        /* =========================
+           CODE
+        ========================= */
+
         .code {
-            overflow: auto;
+            overflow-x: auto;
             background: #070a0e;
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 18px;
             font-family: Consolas, "Courier New", monospace;
             color: #dce5ee;
+            white-space: pre;
+            margin: 20px 0;
+        }
+
+
+        /* =========================
+           NOTE
+        ========================= */
+
+        .note {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 18px 22px;
+            margin: 25px 0;
+        }
+
+
+        /* =========================
+           LIST
+        ========================= */
+
+        .checklist {
+            padding-left: 22px;
+        }
+
+        .checklist li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .comparison-wrapper {
+            overflow-x: auto;
+        }
+
+        .comparison {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison th {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison tr:last-child td {
+            border-bottom: none;
         }
 
 
@@ -332,7 +412,9 @@
             .hamburger {
                 display: flex;
             }
+
         }
+
 
         @media (max-width: 700px) {
 
@@ -362,55 +444,109 @@
             .lead {
                 font-size: 18px;
             }
+
         }
 
     </style>
 
 
-    <!-- WebPage structured data -->
+    <!-- =========================
+         WEBPAGE STRUCTURED DATA
+    ========================= -->
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "PowerShell Export Folder to Excel: Easier Windows Alternative | TreeXL",
+        "name": "PowerShell Export Folder Structure to Excel | Windows | TreeXL",
         "url": "https://treexl.linfalabs.com/powershell-export-folder-to-excel/",
-        "description": "Compare PowerShell folder exports with TreeXL. Export a Windows directory structure to formatted Excel without writing or maintaining scripts."
+        "description": "A practical guide to exporting Windows folder structures and files to Excel with PowerShell, including recursive directory scans, CSV output and alternatives."
     }
     </script>
 
 
-    <!-- FAQ structured data -->
+    <!-- =========================
+         FAQ STRUCTURED DATA
+    ========================= -->
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
+
             {
                 "@type": "Question",
-                "name": "Can PowerShell export a folder to Excel?",
+                "name": "How do I export a folder structure using PowerShell?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "PowerShell can enumerate folders and export structured data, commonly to CSV. Additional scripting may be required for a polished Excel report."
+                    "text": "PowerShell can recursively enumerate folders and files with Get-ChildItem and the -Recurse parameter. The resulting objects can then be selected and exported to CSV or processed into an Excel-compatible report."
                 }
             },
+
             {
                 "@type": "Question",
-                "name": "What is the easiest graphical alternative?",
+                "name": "How do I export a folder structure to Excel using PowerShell?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "TreeXL provides a Windows File Explorer workflow for scanning a folder and exporting a formatted .xlsx report."
+                    "text": "A common approach is to use Get-ChildItem with -Recurse, select the required properties and export the results to CSV with Export-Csv. The CSV file can then be opened in Microsoft Excel. Direct XLSX generation may require an additional PowerShell module or library."
                 }
             },
+
             {
                 "@type": "Question",
-                "name": "Is TreeXL a replacement for PowerShell?",
+                "name": "How do I list all files in a folder and subfolders with PowerShell?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Not for general automation. TreeXL is a focused folder-to-Excel utility."
+                    "text": "Use Get-ChildItem with the -Recurse parameter. For example: Get-ChildItem 'C:\\YourFolder' -Recurse -File. This recursively returns files contained in the specified directory."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "How do I export a PowerShell file list to CSV?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pipe the results of Get-ChildItem into Export-Csv, for example: Get-ChildItem 'C:\\YourFolder' -Recurse | Export-Csv 'folder-list.csv' -NoTypeInformation."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Can PowerShell create an XLSX file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PowerShell can create CSV files using built-in commands. Creating a native XLSX workbook generally requires an Excel automation approach or an additional PowerShell module or library."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "How do I export folders and subfolders recursively?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use Get-ChildItem with the -Recurse parameter. This tells PowerShell to traverse child directories recursively."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "What are the limitations of using PowerShell to export folders to Excel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PowerShell provides considerable flexibility, but producing a polished Excel report can require scripting, formatting logic, error handling and additional components. Complex directory structures may also contain inaccessible folders or very long paths that need special handling."
+                }
+            },
+
+            {
+                "@type": "Question",
+                "name": "Is there an easier alternative to a PowerShell folder export script?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TreeXL is a Windows application designed to generate Excel reports from folder structures without requiring users to write or maintain a PowerShell script."
                 }
             }
+
         ]
     }
     </script>
@@ -427,7 +563,10 @@
 
     <header class="container">
 
-        <a href="https://treexl.linfalabs.com/" class="logo">
+        <a
+            href="https://treexl.linfalabs.com/"
+            class="logo"
+        >
 
             <img
                 src="../images/TreeXL_logo.png"
@@ -439,7 +578,10 @@
         </a>
 
 
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav
+            class="nav-links"
+            aria-label="Main navigation"
+        >
 
             <a href="https://treexl.linfalabs.com/">
                 Home
@@ -483,15 +625,15 @@
                 aria-expanded="false"
                 aria-controls="mobileNav"
             >
+
                 <span></span>
                 <span></span>
                 <span></span>
+
             </button>
 
         </div>
 
-
-        <!-- Mobile navigation -->
 
         <nav
             class="mobile-nav"
@@ -533,26 +675,31 @@
 
 
     <!-- =========================
-         CONTENT
+         MAIN
     ========================= -->
 
     <main class="container">
 
 
+        <!-- =========================
+             HERO
+        ========================= -->
+
         <div class="eyebrow">
-            TreeXL for Windows
+            PowerShell Windows Guide
         </div>
 
 
         <h1>
-            Export a Windows Folder to Excel Without Writing a PowerShell Script
+            PowerShell: Export a Folder Structure to Excel
         </h1>
 
 
         <p class="lead">
-            PowerShell is a powerful way to enumerate Windows files and folders.
-            If your goal is to produce a polished Excel report, TreeXL provides
-            a graphical alternative.
+            Learn how to recursively list Windows folders and files with
+            PowerShell, export the results to CSV for Excel, and build a
+            more useful folder inventory. If you do not want to maintain
+            scripts, TreeXL provides a graphical alternative.
         </p>
 
 
@@ -562,72 +709,913 @@
             target="_blank"
             rel="noopener"
         >
-            Download TreeXL Free →
+            Try TreeXL Free →
         </a>
 
 
-        <!-- SECTION 1 -->
+        <!-- =========================
+             QUICK ANSWER
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                Using PowerShell
+                Quick Answer: Export a Folder to Excel with PowerShell
             </h2>
 
             <p>
-                A basic recursive listing can start with
-                <code>Get-ChildItem</code>:
+                The simplest built-in PowerShell approach is to recursively
+                retrieve the contents of a folder and export the results
+                to CSV.
             </p>
 
-            <div class="code">
-Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInformation
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
+Export-Csv "folder-structure.csv" -NoTypeInformation</div>
+
+
+            <p>
+                Open the resulting
+                <strong>folder-structure.csv</strong>
+                file with Microsoft Excel.
+            </p>
+
+
+            <div class="note">
+
+                <strong>Important:</strong>
+                this creates a CSV file, not a native XLSX workbook.
+                CSV is often sufficient for basic data analysis, while
+                generating a polished XLSX report requires additional
+                processing.
+
             </div>
 
-            <p>
-                This is useful for automation, but a CSV is not the same thing
-                as a formatted hierarchical Excel report.
-            </p>
-
         </section>
 
 
-        <!-- SECTION 2 -->
+        <!-- =========================
+             HOW POWERSHELL WORKS
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                Where scripting becomes work
+                How PowerShell Folder Export Works
             </h2>
 
             <p>
-                Depending on the required report, you may need hierarchy logic,
-                formatting, duplicate detection, long-path handling and error
-                handling for inaccessible folders.
+                PowerShell is particularly useful for this task because
+                it can traverse directories recursively and return
+                structured objects rather than just plain text.
+            </p>
+
+            <p>
+                The main command used for directory enumeration is:
+            </p>
+
+
+            <div class="code">Get-ChildItem</div>
+
+
+            <p>
+                The
+                <strong>-Recurse</strong>
+                parameter tells PowerShell to process child directories
+                as well.
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse</div>
+
+
+            <p>
+                This can return both folders and files below the selected
+                directory.
             </p>
 
         </section>
 
 
-        <!-- SECTION 3 -->
+        <!-- =========================
+             FILES ONLY
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                TreeXL as the graphical alternative
+                List All Files in a Folder and Its Subfolders
+            </h2>
+
+            <p>
+                If you are interested only in files, use the
+                <strong>-File</strong> parameter:
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse -File</div>
+
+
+            <p>
+                This is useful when you need a flat inventory of all files
+                below a directory.
+            </p>
+
+
+            <p>
+                For example, you could use it to investigate a project
+                directory containing many nested folders.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FOLDERS ONLY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                List All Folders and Subfolders with PowerShell
+            </h2>
+
+            <p>
+                To retrieve directories rather than files, use the
+                <strong>-Directory</strong> parameter:
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse -Directory</div>
+
+
+            <p>
+                This produces a recursive list of directories below the
+                selected location.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             USEFUL PROPERTIES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export Useful File Properties
+            </h2>
+
+            <p>
+                One advantage of PowerShell is that you can choose which
+                properties should be included in the exported data.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse -File |
+Select-Object FullName, Name, Extension, Length, LastWriteTime |
+Export-Csv "folder-inventory.csv" -NoTypeInformation</div>
+
+
+            <p>
+                The resulting CSV can contain information such as:
+            </p>
+
+
+            <ul class="checklist">
+
+                <li>
+                    Full file path
+                </li>
+
+                <li>
+                    File name
+                </li>
+
+                <li>
+                    File extension
+                </li>
+
+                <li>
+                    File size
+                </li>
+
+                <li>
+                    Last modified date
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             CSV
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Export PowerShell Results to CSV for Excel
+            </h2>
+
+            <p>
+                CSV is one of the easiest ways to move PowerShell data
+                into Excel.
+            </p>
+
+
+            <div class="code">Get-ChildItem "C:\YourFolder" -Recurse |
+Export-Csv "folder-list.csv" -NoTypeInformation</div>
+
+
+            <p>
+                After running the command, open
+                <strong>folder-list.csv</strong>
+                in Excel.
+            </p>
+
+
+            <p>
+                From there you can sort, filter and format the information
+                according to your needs.
+            </p>
+
+
+            <div class="note">
+
+                <strong>CSV vs XLSX:</strong>
+                CSV stores tabular data as text. XLSX is a native Excel
+                workbook and can contain richer formatting, multiple
+                worksheets, formulas and other spreadsheet features.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             XLSX
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Can PowerShell Create a Real XLSX File?
+            </h2>
+
+            <p>
+                Yes, but creating a native XLSX workbook is different from
+                exporting a CSV file.
+            </p>
+
+            <p>
+                PowerShell itself provides straightforward commands such
+                as <strong>Export-Csv</strong>, but producing a fully
+                formatted Excel workbook generally requires an additional
+                approach, such as Excel automation or an external
+                PowerShell module.
+            </p>
+
+
+            <p>
+                This becomes relevant when you want a report that is more
+                than a simple list of paths.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        CSV
+                    </h3>
+
+                    <p>
+                        Simple, portable and easy to generate directly
+                        from PowerShell.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        XLSX
+                    </h3>
+
+                    <p>
+                        Better suited to formatted, presentation-ready
+                        Excel reports.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PATH RELATIONSHIP
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Create a More Readable Folder Hierarchy
+            </h2>
+
+            <p>
+                A recursive PowerShell export often produces a flat list
+                of paths.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+
+            <div class="code">C:\Project\Documentation
+C:\Project\Documentation\Requirements
+C:\Project\Documentation\Requirements\spec.pdf
+C:\Project\Source
+C:\Project\Source\Application
+C:\Project\Source\Application\main.cs</div>
+
+
+            <p>
+                This is technically useful, but it is not necessarily the
+                most readable representation of a folder tree.
+            </p>
+
+            <p>
+                Creating a report that visually communicates the hierarchy
+                requires additional processing and formatting.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             SCRIPT LIMITATIONS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Limitations of a PowerShell Folder Export Script
+            </h2>
+
+            <p>
+                PowerShell is powerful, flexible and excellent for
+                automation. However, a simple recursive command does not
+                automatically solve every problem encountered in a
+                real-world file system.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Script Maintenance
+                    </h3>
+
+                    <p>
+                        Custom scripts need to be created, tested,
+                        maintained and adapted when requirements change.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Excel Formatting
+                    </h3>
+
+                    <p>
+                        Producing a polished XLSX report requires more
+                        work than producing a CSV.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Permissions
+                    </h3>
+
+                    <p>
+                        Some directories may not be accessible to the
+                        current user.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Long Paths
+                    </h3>
+
+                    <p>
+                        Very long Windows paths can require additional
+                        consideration during file-system scans.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Error Handling
+                    </h3>
+
+                    <p>
+                        A production-quality script may need to account
+                        for errors encountered during recursive scanning.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Repeated Work
+                    </h3>
+
+                    <p>
+                        Running the same multi-step process repeatedly can
+                        become inconvenient when the task is frequent.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACCESS DENIED
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What Happens When PowerShell Encounters Access Denied?
+            </h2>
+
+            <p>
+                A recursive directory scan can encounter folders that the
+                current Windows account cannot read.
+            </p>
+
+            <p>
+                Depending on the command and error-handling configuration,
+                these situations can produce errors or incomplete results.
+            </p>
+
+            <p>
+                When creating an inventory for migration or auditing,
+                knowing that a directory could not be read can be just as
+                important as knowing what was successfully scanned.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             LONG PATHS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                PowerShell and Long Windows Paths
+            </h2>
+
+            <p>
+                Deeply nested directories can produce paths that are very
+                long.
+            </p>
+
+            <p>
+                This can become relevant during migrations, backups,
+                synchronization and file-management operations.
+            </p>
+
+            <p>
+                If your goal is simply to identify these paths and include
+                them in a structured report, a dedicated folder inventory
+                tool can make the workflow easier.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             TREE XL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                A No-Script Alternative to PowerShell
+            </h2>
+
+            <p>
+                PowerShell is an excellent solution when you need
+                customization or automation.
+            </p>
+
+            <p>
+                But if the goal is simply:
+            </p>
+
+
+            <div class="code">Select folder
+      ↓
+Scan folders and files
+      ↓
+Generate Excel report</div>
+
+
+            <p>
+                you may not need to write a script at all.
+            </p>
+
+
+            <p>
+                TreeXL is a Windows application designed specifically for
+                this workflow.
+            </p>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        No PowerShell Script
+                    </h3>
+
+                    <p>
+                        Generate the report without creating or maintaining
+                        a custom script.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        File Explorer Integration
+                    </h3>
+
+                    <p>
+                        Start TreeXL from the Windows folder context menu.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        XLSX Report
+                    </h3>
+
+                    <p>
+                        Create a structured Excel workbook rather than
+                        stopping at raw command output.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Real-World Folders
+                    </h3>
+
+                    <p>
+                        The application is designed to deal with situations
+                        such as long paths, duplicate files and inaccessible
+                        items.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
+                class="cta"
+                target="_blank"
+                rel="noopener"
+            >
+                Try TreeXL Free →
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             POWERSHELL VS TREEXL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                PowerShell vs TreeXL
+            </h2>
+
+            <div class="comparison-wrapper">
+
+                <table class="comparison">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Feature
+                            </th>
+
+                            <th>
+                                PowerShell
+                            </th>
+
+                            <th>
+                                TreeXL
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Recursive scanning
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Requires scripting
+                            </td>
+
+                            <td>
+                                Usually
+                            </td>
+
+                            <td>
+                                No
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                CSV output
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                            <td>
+                                Not the primary output
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Native XLSX report
+                            </td>
+
+                            <td>
+                                Additional work
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Custom automation
+                            </td>
+
+                            <td>
+                                Excellent
+                            </td>
+
+                            <td>
+                                Limited
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                File Explorer workflow
+                            </td>
+
+                            <td>
+                                Manual
+                            </td>
+
+                            <td>
+                                Yes
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Best suited for
+                            </td>
+
+                            <td>
+                                Automation and custom workflows
+                            </td>
+
+                            <td>
+                                Fast Excel reports
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WHEN TO USE
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                When Should You Use PowerShell?
+            </h2>
+
+            <p>
+                PowerShell is probably the better choice when you need
+                programmatic control over the process.
+            </p>
+
+
+            <ul class="checklist">
+
+                <li>
+                    You need to automate the export on a schedule.
+                </li>
+
+                <li>
+                    You need custom filtering logic.
+                </li>
+
+                <li>
+                    You need to integrate the results with another
+                    administrative workflow.
+                </li>
+
+                <li>
+                    You are comfortable writing and maintaining scripts.
+                </li>
+
+                <li>
+                    You need complete control over which properties are
+                    exported.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             WHEN TREE XL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                When Is TreeXL More Convenient?
+            </h2>
+
+            <p>
+                TreeXL is intended for situations where the desired result
+                is a useful Excel report rather than a programmable
+                directory-processing workflow.
+            </p>
+
+
+            <ul class="checklist">
+
+                <li>
+                    You want to export a folder without writing code.
+                </li>
+
+                <li>
+                    You want to start the process from File Explorer.
+                </li>
+
+                <li>
+                    You need a formatted XLSX report.
+                </li>
+
+                <li>
+                    You regularly perform manual folder documentation.
+                </li>
+
+                <li>
+                    You want to make the process accessible to less
+                    technical users.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             USE CASES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Common PowerShell Folder Export Use Cases
             </h2>
 
 
             <div class="cards">
 
-
                 <div class="card">
 
                     <h3>
-                        No script to maintain
+                        IT Administration
                     </h3>
 
                     <p>
-                        Run the workflow directly from Windows File Explorer.
+                        Inventory shared folders, servers and directory
+                        structures.
                     </p>
 
                 </div>
@@ -636,11 +1624,12 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
                 <div class="card">
 
                     <h3>
-                        Formatted .xlsx
+                        Data Migration
                     </h3>
 
                     <p>
-                        Generate a report intended for review and sharing.
+                        Analyze a directory before moving data to another
+                        server or storage platform.
                     </p>
 
                 </div>
@@ -649,56 +1638,155 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
                 <div class="card">
 
                     <h3>
-                        Audit features
+                        File Auditing
                     </h3>
 
                     <p>
-                        Surface duplicates, long paths and inaccessible items.
+                        Generate a structured list of files and folders
+                        for review.
                     </p>
 
                 </div>
 
+
+                <div class="card">
+
+                    <h3>
+                        Cleanup Projects
+                    </h3>
+
+                    <p>
+                        Produce a file inventory before reorganizing or
+                        archiving data.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Documentation
+                    </h3>
+
+                    <p>
+                        Capture the organization of a project or technical
+                        environment.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Automation
+                    </h3>
+
+                    <p>
+                        Integrate directory exports into larger
+                        administrative scripts.
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- SECTION 4 -->
+        <!-- =========================
+             RELATED
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                When should you use PowerShell instead?
+                Related Windows Folder Export Guides
             </h2>
 
-            <p>
-                Use PowerShell for custom automation and scheduled jobs.
-                Use TreeXL for a quick folder-to-Excel report without scripting.
-            </p>
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>
+                        Export Folder Structure to Excel
+                    </h3>
+
+                    <p>
+                        A broader guide covering manual methods, Command
+                        Prompt, PowerShell and TreeXL.
+                    </p>
+
+                    <a href="https://treexl.linfalabs.com/export-folder-structure-to-excel/">
+                        Read the guide →
+                    </a>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Windows Folder Tree Generator
+                    </h3>
+
+                    <p>
+                        Learn more about generating a structured folder tree
+                        from a Windows directory.
+                    </p>
+
+                    <a href="https://treexl.linfalabs.com/folder-tree-generator/">
+                        Open guide →
+                    </a>
+
+                </div>
+
+
+                <div class="card">
+
+                    <h3>
+                        Windows Folder Inventory
+                    </h3>
+
+                    <p>
+                        Learn how to create a broader inventory of files
+                        and folders.
+                    </p>
+
+                    <a href="https://treexl.linfalabs.com/windows-folder-inventory/">
+                        Open guide →
+                    </a>
+
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- FAQ -->
+        <!-- =========================
+             FAQ
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                Frequently Asked Questions
+                PowerShell Folder Export FAQ
             </h2>
 
 
             <details class="faq">
 
                 <summary>
-                    Can PowerShell export a folder to Excel?
+                    How do I export a folder structure using PowerShell?
                 </summary>
 
                 <p>
-                    PowerShell can enumerate folders and export structured data,
-                    commonly to CSV. Additional scripting may be required for a
-                    polished Excel report.
+                    Use Get-ChildItem with the -Recurse parameter to
+                    recursively enumerate the directory. The results can
+                    then be selected and exported to CSV or processed into
+                    an Excel workbook.
                 </p>
 
             </details>
@@ -707,12 +1795,102 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
             <details class="faq">
 
                 <summary>
-                    What is the easiest graphical alternative?
+                    How do I export a folder structure to Excel with PowerShell?
                 </summary>
 
                 <p>
-                    TreeXL provides a Windows File Explorer workflow for scanning
-                    a folder and exporting a formatted .xlsx report.
+                    A simple approach is to use Get-ChildItem -Recurse and
+                    pipe the results to Export-Csv. The resulting CSV can
+                    be opened in Excel. Creating a native XLSX workbook
+                    generally requires additional processing.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How do I list all files in a folder and subfolders?
+                </summary>
+
+                <p>
+                    Use:
+                    Get-ChildItem "C:\YourFolder" -Recurse -File
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How do I list only folders and subfolders?
+                </summary>
+
+                <p>
+                    Use the -Directory parameter together with -Recurse:
+                    Get-ChildItem "C:\YourFolder" -Recurse -Directory
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    How do I export a PowerShell file list to CSV?
+                </summary>
+
+                <p>
+                    Pipe Get-ChildItem into Export-Csv:
+                    Get-ChildItem "C:\YourFolder" -Recurse |
+                    Export-Csv "folder-list.csv" -NoTypeInformation
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Can PowerShell create XLSX files?
+                </summary>
+
+                <p>
+                    Yes, but native XLSX generation generally requires
+                    Excel automation or an additional module or library.
+                    Export-Csv is available directly for CSV output.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    What is the difference between CSV and XLSX?
+                </summary>
+
+                <p>
+                    CSV is a text-based tabular format. XLSX is the native
+                    Excel workbook format and supports richer formatting
+                    and spreadsheet features.
+                </p>
+
+            </details>
+
+
+            <details class="faq">
+
+                <summary>
+                    Is there a PowerShell alternative that does not require scripting?
+                </summary>
+
+                <p>
+                    Yes. TreeXL provides a graphical Windows workflow for
+                    exporting folder structures to Excel without requiring
+                    users to write or maintain a PowerShell script.
                 </p>
 
             </details>
@@ -725,8 +1903,10 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
                 </summary>
 
                 <p>
-                    Not for general automation. TreeXL is a focused
-                    folder-to-Excel utility.
+                    Not generally. PowerShell is better suited to custom
+                    automation and programmable workflows. TreeXL focuses
+                    on quickly generating structured Excel reports from
+                    Windows folders.
                 </p>
 
             </details>
@@ -734,18 +1914,26 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
         </section>
 
 
-        <!-- FINAL CTA -->
+        <!-- =========================
+             FINAL CTA
+        ========================= -->
 
         <section class="section">
 
             <h2>
-                Try TreeXL
+                Need the Excel Report Without Writing a PowerShell Script?
             </h2>
 
             <p>
-                Download TreeXL from the Microsoft Store and create your first
-                Windows folder report in Excel.
+                PowerShell gives you complete control, but not every folder
+                export needs a custom script.
             </p>
+
+            <p>
+                With TreeXL, you can select a Windows folder, start the
+                export from File Explorer and generate an Excel report.
+            </p>
+
 
             <a
                 href="https://apps.microsoft.com/detail/9N3BN8K48QTP"
@@ -782,7 +1970,7 @@ Get-ChildItem "C:\YourFolder" -Recurse | Export-Csv "folder-list.csv" -NoTypeInf
 
 
     <!-- =========================
-         MOBILE MENU SCRIPT
+         MOBILE MENU
     ========================= -->
 
     <script>
